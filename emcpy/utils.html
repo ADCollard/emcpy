@@ -94,6 +94,14 @@
 
 
 <span class="k">def</span> <span class="nf">float10Power</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        value: value to get the 10^(exponent)</span>
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        exponent: value expressed as 10^(exponent)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
@@ -106,13 +114,22 @@
 
 <span class="k">def</span> <span class="nf">roundNumber</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Input: Number</span>
-<span class="sd">    Output: Number rounded to the nearest 10th.</span>
-<span class="sd">    eg.</span>
-<span class="sd">    0.01231 =&gt; 0.01    0.0164  =&gt; 0.02</span>
-<span class="sd">    2.3     =&gt; 2.0     2.8     =&gt; 3.0</span>
-<span class="sd">    6.2     =&gt; 10</span>
-<span class="sd">    59      =&gt; 60</span>
+<span class="sd">    Round the number to the nearest 10th.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        value: Number to be rounded</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        rounded_value: Number rounded to nearest 10th</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        0.01231 =&gt; 0.01</span>
+<span class="sd">        0.0164  =&gt; 0.02</span>
+<span class="sd">        2.3     =&gt; 2.0</span>
+<span class="sd">        2.8     =&gt; 3.0</span>
+<span class="sd">        6.2     =&gt; 10</span>
+<span class="sd">        59      =&gt; 60</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">d</span> <span class="o">=</span> <span class="n">float10Power</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
@@ -121,50 +138,78 @@
     <span class="k">return</span> <span class="n">round_value</span>
 
 
-<span class="k">def</span> <span class="nf">pickle</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;wb&#39;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">pickle</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;wb&#39;</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    fname - filename to pickle to</span>
-<span class="sd">    data  - data to pickle</span>
-<span class="sd">    mode - mode to pickle (default: wb)</span>
+<span class="sd">    Pickle `data` into a file</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        filename: filename to pickle to</span>
+<span class="sd">        data: data to pickle</span>
+<span class="sd">        mode: mode to pickle (default: wb)</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;pickling ... </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">fname</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;pickling ... {filename}&#39;</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">_pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
+        <span class="n">_pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
     <span class="k">except</span> <span class="n">_pickle</span><span class="o">.</span><span class="n">PicklingError</span><span class="p">:</span>
         <span class="k">raise</span>
     <span class="k">return</span>
 
 
-<span class="k">def</span> <span class="nf">unpickle</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;rb&#39;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">unpickle</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;rb&#39;</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    fname - filename to unpickle to</span>
-<span class="sd">    mode - mode to unpickle (default: rb)</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        filename: filename to unpickle to</span>
+<span class="sd">        mode: mode to unpickle (default: rb)</span>
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        data: unpickled data from filename</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;unpickling ... </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">fname</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;unpickling ... {filename}&#39;</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">_pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">_pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
     <span class="k">except</span> <span class="n">_pickle</span><span class="o">.</span><span class="n">UnpicklingError</span><span class="p">:</span>
         <span class="k">raise</span>
     <span class="k">return</span> <span class="n">data</span>
 
 
-<span class="k">def</span> <span class="nf">writeHDF</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">vname</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">complevel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">complib</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fletcher32</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;writing ... </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">fname</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">writeHDF</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">complevel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">complib</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fletcher32</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        filename: HDF5 filename to write to</span>
+<span class="sd">        variable_name: name of the variable to write to</span>
+<span class="sd">        data: variable data array</span>
+<span class="sd">        complevel: compression level (default: 0)</span>
+<span class="sd">        complib: compression library to choose from (default: None)</span>
+<span class="sd">        fletcher32: compression related option (default: False)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;writing ... {filename}&#39;</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">hdf</span> <span class="o">=</span> <span class="n">_pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span>
+        <span class="n">hdf</span> <span class="o">=</span> <span class="n">_pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span>
                            <span class="n">complevel</span><span class="o">=</span><span class="n">complevel</span><span class="p">,</span> <span class="n">complib</span><span class="o">=</span><span class="n">complib</span><span class="p">,</span>
                            <span class="n">fletcher32</span><span class="o">=</span><span class="n">fletcher32</span><span class="p">)</span>
-        <span class="n">hdf</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">vname</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">hdf</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">variable_name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
         <span class="n">hdf</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
         <span class="k">raise</span>
     <span class="k">return</span>
 
 
-<span class="k">def</span> <span class="nf">readHDF</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">vname</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;reading ... </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">fname</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">readHDF</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        filename: HDF5 filename to read from</span>
+<span class="sd">        variable_name: name of the variable to read from file</span>
+<span class="sd">        **kwargs: additional arguments to pandas.read_hdf()</span>
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        data: data read from filename for variable_name</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;reading ... {filename}&#39;</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">_pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">vname</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">_pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
         <span class="k">raise</span>
     <span class="k">return</span> <span class="n">data</span>
@@ -172,12 +217,14 @@
 
 <span class="k">def</span> <span class="nf">EmptyDataFrame</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Create an empty Multi-index DataFrame</span>
-<span class="sd">        Input:</span>
-<span class="sd">            columns = &#39;name of all columns; including indices&#39;</span>
-<span class="sd">            names = &#39;name of index columns&#39;</span>
-<span class="sd">        Output:</span>
-<span class="sd">            df = Multi-index DataFrame object</span>
+<span class="sd">    Create an empty Multi-index DataFrame</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        columns: name of all columns; including indices</span>
+<span class="sd">        names: name of index columns</span>
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        df = Multi-index DataFrame object</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">levels</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">))]</span>
@@ -190,7 +237,11 @@
 
 <span class="k">def</span> <span class="nf">printcolour</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Print the stdout in color</span>
+<span class="sd">    Print the input text to stdout in color</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        text: ascii text</span>
+<span class="sd">        color: choice of color for text (default: red)</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">colours</span> <span class="o">=</span> <span class="p">{</span>
@@ -226,6 +277,14 @@
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">float10Power</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        value: value to get the 10^(exponent)</span>
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        exponent: value expressed as 10^(exponent)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
@@ -238,7 +297,17 @@
 
         </details>
 
-    
+            <div class="docstring"><h2 id="parameters">Parameters</h2>
+
+<pre><code>value: value to get the 10^(exponent)
+</code></pre>
+
+<h2 id="return">Return</h2>
+
+<pre><code>exponent: value expressed as 10^(exponent)
+</code></pre>
+</div>
+
 
                 </section>
                 <section id="roundNumber">
@@ -253,13 +322,22 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">roundNumber</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Input: Number</span>
-<span class="sd">    Output: Number rounded to the nearest 10th.</span>
-<span class="sd">    eg.</span>
-<span class="sd">    0.01231 =&gt; 0.01    0.0164  =&gt; 0.02</span>
-<span class="sd">    2.3     =&gt; 2.0     2.8     =&gt; 3.0</span>
-<span class="sd">    6.2     =&gt; 10</span>
-<span class="sd">    59      =&gt; 60</span>
+<span class="sd">    Round the number to the nearest 10th.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        value: Number to be rounded</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        rounded_value: Number rounded to nearest 10th</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">        0.01231 =&gt; 0.01</span>
+<span class="sd">        0.0164  =&gt; 0.02</span>
+<span class="sd">        2.3     =&gt; 2.0</span>
+<span class="sd">        2.8     =&gt; 3.0</span>
+<span class="sd">        6.2     =&gt; 10</span>
+<span class="sd">        59      =&gt; 60</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">d</span> <span class="o">=</span> <span class="n">float10Power</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
@@ -270,13 +348,27 @@
 
         </details>
 
-            <div class="docstring"><p>Input: Number
-Output: Number rounded to the nearest 10th.
-eg.
-0.01231 =&gt; 0.01    0.0164  =&gt; 0.02
-2.3     =&gt; 2.0     2.8     =&gt; 3.0
+            <div class="docstring"><p>Round the number to the nearest 10th.</p>
+
+<h2 id="parameters">Parameters</h2>
+
+<pre><code>value: Number to be rounded
+</code></pre>
+
+<h2 id="returns">Returns</h2>
+
+<pre><code>rounded_value: Number rounded to nearest 10th
+</code></pre>
+
+<h2 id="examples">Examples</h2>
+
+<pre><code>0.01231 =&gt; 0.01
+0.0164  =&gt; 0.02
+2.3     =&gt; 2.0
+2.8     =&gt; 3.0
 6.2     =&gt; 10
-59      =&gt; 60</p>
+59      =&gt; 60
+</code></pre>
 </div>
 
 
@@ -286,20 +378,23 @@ eg.
 
         
             <span class="def">def</span>
-            <span class="name">pickle</span><span class="signature">(fname, data, mode=&#39;wb&#39;)</span>:
+            <span class="name">pickle</span><span class="signature">(filename, data, mode=&#39;wb&#39;)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">pickle</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;wb&#39;</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">pickle</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;wb&#39;</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    fname - filename to pickle to</span>
-<span class="sd">    data  - data to pickle</span>
-<span class="sd">    mode - mode to pickle (default: wb)</span>
+<span class="sd">    Pickle `data` into a file</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        filename: filename to pickle to</span>
+<span class="sd">        data: data to pickle</span>
+<span class="sd">        mode: mode to pickle (default: wb)</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;pickling ... </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">fname</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;pickling ... {filename}&#39;</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">_pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
+        <span class="n">_pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
     <span class="k">except</span> <span class="n">_pickle</span><span class="o">.</span><span class="n">PicklingError</span><span class="p">:</span>
         <span class="k">raise</span>
     <span class="k">return</span>
@@ -307,9 +402,14 @@ eg.
 
         </details>
 
-            <div class="docstring"><p>fname - filename to pickle to
-data  - data to pickle
-mode - mode to pickle (default: wb)</p>
+            <div class="docstring"><p>Pickle <code>data</code> into a file</p>
+
+<h2 id="parameters">Parameters</h2>
+
+<pre><code>filename: filename to pickle to
+data: data to pickle
+mode: mode to pickle (default: wb)
+</code></pre>
 </div>
 
 
@@ -319,19 +419,24 @@ mode - mode to pickle (default: wb)</p>
 
         
             <span class="def">def</span>
-            <span class="name">unpickle</span><span class="signature">(fname, mode=&#39;rb&#39;)</span>:
+            <span class="name">unpickle</span><span class="signature">(filename, mode=&#39;rb&#39;)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">unpickle</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;rb&#39;</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">unpickle</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;rb&#39;</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    fname - filename to unpickle to</span>
-<span class="sd">    mode - mode to unpickle (default: rb)</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        filename: filename to unpickle to</span>
+<span class="sd">        mode: mode to unpickle (default: rb)</span>
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        data: unpickled data from filename</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;unpickling ... </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">fname</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;unpickling ... {filename}&#39;</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">_pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">_pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
     <span class="k">except</span> <span class="n">_pickle</span><span class="o">.</span><span class="n">UnpicklingError</span><span class="p">:</span>
         <span class="k">raise</span>
     <span class="k">return</span> <span class="n">data</span>
@@ -339,8 +444,16 @@ mode - mode to pickle (default: wb)</p>
 
         </details>
 
-            <div class="docstring"><p>fname - filename to unpickle to
-mode - mode to unpickle (default: rb)</p>
+            <div class="docstring"><h2 id="parameters">Parameters</h2>
+
+<pre><code>filename: filename to unpickle to
+mode: mode to unpickle (default: rb)
+</code></pre>
+
+<h2 id="return">Return</h2>
+
+<pre><code>data: unpickled data from filename
+</code></pre>
 </div>
 
 
@@ -350,18 +463,35 @@ mode - mode to unpickle (default: rb)</p>
 
         
             <span class="def">def</span>
-            <span class="name">writeHDF</span><span class="signature">(fname, vname, data, complevel=0, complib=None, fletcher32=False)</span>:
+            <span class="name">writeHDF</span><span class="signature">(
+    filename,
+    variable_name,
+    data,
+    complevel=0,
+    complib=None,
+    fletcher32=False
+)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">writeHDF</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">vname</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">complevel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">complib</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fletcher32</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;writing ... </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">fname</span><span class="p">)</span>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">writeHDF</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">complevel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">complib</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">fletcher32</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        filename: HDF5 filename to write to</span>
+<span class="sd">        variable_name: name of the variable to write to</span>
+<span class="sd">        data: variable data array</span>
+<span class="sd">        complevel: compression level (default: 0)</span>
+<span class="sd">        complib: compression library to choose from (default: None)</span>
+<span class="sd">        fletcher32: compression related option (default: False)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;writing ... {filename}&#39;</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">hdf</span> <span class="o">=</span> <span class="n">_pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span>
+        <span class="n">hdf</span> <span class="o">=</span> <span class="n">_pd</span><span class="o">.</span><span class="n">HDFStore</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span>
                            <span class="n">complevel</span><span class="o">=</span><span class="n">complevel</span><span class="p">,</span> <span class="n">complib</span><span class="o">=</span><span class="n">complib</span><span class="p">,</span>
                            <span class="n">fletcher32</span><span class="o">=</span><span class="n">fletcher32</span><span class="p">)</span>
-        <span class="n">hdf</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">vname</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">hdf</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">variable_name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
         <span class="n">hdf</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
         <span class="k">raise</span>
@@ -370,7 +500,17 @@ mode - mode to unpickle (default: rb)</p>
 
         </details>
 
-    
+            <div class="docstring"><h2 id="parameters">Parameters</h2>
+
+<pre><code>filename: HDF5 filename to write to
+variable_name: name of the variable to write to
+data: variable data array
+complevel: compression level (default: 0)
+complib: compression library to choose from (default: None)
+fletcher32: compression related option (default: False)
+</code></pre>
+</div>
+
 
                 </section>
                 <section id="readHDF">
@@ -378,15 +518,25 @@ mode - mode to unpickle (default: rb)</p>
 
         
             <span class="def">def</span>
-            <span class="name">readHDF</span><span class="signature">(fname, vname, **kwargs)</span>:
+            <span class="name">readHDF</span><span class="signature">(filename, variable_name, **kwargs)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">readHDF</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">vname</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;reading ... </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">fname</span><span class="p">)</span>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">readHDF</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        filename: HDF5 filename to read from</span>
+<span class="sd">        variable_name: name of the variable to read from file</span>
+<span class="sd">        **kwargs: additional arguments to pandas.read_hdf()</span>
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        data: data read from filename for variable_name</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;reading ... {filename}&#39;</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">_pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">vname</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">_pd</span><span class="o">.</span><span class="n">read_hdf</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
         <span class="k">raise</span>
     <span class="k">return</span> <span class="n">data</span>
@@ -394,7 +544,19 @@ mode - mode to unpickle (default: rb)</p>
 
         </details>
 
-    
+            <div class="docstring"><h2 id="parameters">Parameters</h2>
+
+<pre><code>filename: HDF5 filename to read from
+variable_name: name of the variable to read from file
+**kwargs: additional arguments to pandas.read_hdf()
+</code></pre>
+
+<h2 id="return">Return</h2>
+
+<pre><code>data: data read from filename for variable_name
+</code></pre>
+</div>
+
 
                 </section>
                 <section id="EmptyDataFrame">
@@ -409,12 +571,14 @@ mode - mode to unpickle (default: rb)</p>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">EmptyDataFrame</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Create an empty Multi-index DataFrame</span>
-<span class="sd">        Input:</span>
-<span class="sd">            columns = &#39;name of all columns; including indices&#39;</span>
-<span class="sd">            names = &#39;name of index columns&#39;</span>
-<span class="sd">        Output:</span>
-<span class="sd">            df = Multi-index DataFrame object</span>
+<span class="sd">    Create an empty Multi-index DataFrame</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        columns: name of all columns; including indices</span>
+<span class="sd">        names: name of index columns</span>
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        df = Multi-index DataFrame object</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">levels</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">))]</span>
@@ -427,12 +591,18 @@ mode - mode to unpickle (default: rb)</p>
 
         </details>
 
-            <div class="docstring"><p>Create an empty Multi-index DataFrame
-Input:
-    columns = 'name of all columns; including indices'
-    names = 'name of index columns'
-Output:
-    df = Multi-index DataFrame object</p>
+            <div class="docstring"><p>Create an empty Multi-index DataFrame</p>
+
+<h2 id="parameters">Parameters</h2>
+
+<pre><code>columns: name of all columns; including indices
+names: name of index columns
+</code></pre>
+
+<h2 id="return">Return</h2>
+
+<pre><code>df = Multi-index DataFrame object
+</code></pre>
 </div>
 
 
@@ -449,7 +619,11 @@ Output:
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">printcolour</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Print the stdout in color</span>
+<span class="sd">    Print the input text to stdout in color</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        text: ascii text</span>
+<span class="sd">        color: choice of color for text (default: red)</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">colours</span> <span class="o">=</span> <span class="p">{</span>
@@ -470,7 +644,13 @@ Output:
 
         </details>
 
-            <div class="docstring"><p>Print the stdout in color</p>
+            <div class="docstring"><p>Print the input text to stdout in color</p>
+
+<h2 id="parameters">Parameters</h2>
+
+<pre><code>text: ascii text
+color: choice of color for text (default: red)
+</code></pre>
 </div>
 
 

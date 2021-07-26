@@ -74,13 +74,11 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    `filename` : netCDF filename</span>
-
-<span class="sd">    `variable_name` : variable name to check within `filename`</span>
-
+<span class="sd">        filename : netCDF filename</span>
+<span class="sd">        variable_name : variable name to check within filename</span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    `result` : `True` or `False` if variable is present</span>
+<span class="sd">        result : True or False if variable is present</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">result</span> <span class="o">=</span> <span class="bp">False</span>
@@ -107,19 +105,14 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    `filename` : netCDF filename</span>
-
-<span class="sd">    `variable_name` : variable name to check within `filename`</span>
-
-<span class="sd">    `oneD` : Is `variable_name` a one-dimensional variable?</span>
-
-<span class="sd">    `ftime` : time index range to retrieve data for</span>
-<span class="sd">    `flevel` : level index range to retrieve data for</span>
-
+<span class="sd">        filename : netCDF filename</span>
+<span class="sd">        variable_name : variable name to check within filename</span>
+<span class="sd">        oneD : Is variable_name a one-dimensional variable?</span>
+<span class="sd">        ftime : time index range to retrieve data for</span>
+<span class="sd">        flevel : level index range to retrieve data for</span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    `result` : data for `variable_name`</span>
-
+<span class="sd">        result : data for variable_name</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">nc</span> <span class="o">=</span> <span class="n">_Dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -169,13 +162,11 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    `filename` : netCDF filename</span>
-
-<span class="sd">    `variable_name` : variable name to check within `filename`</span>
-
+<span class="sd">        filename : netCDF filename</span>
+<span class="sd">        variable_name : variable name to check within filename</span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    `result` : `True` or `False` if variable is present</span>
+<span class="sd">        result : True or False if variable is present</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">result</span> <span class="o">=</span> <span class="bp">False</span>
@@ -202,13 +193,14 @@
 
 <h2 id="parameters">Parameters</h2>
 
-<p><code>filename</code> : netCDF filename</p>
-
-<p><code>variable_name</code> : variable name to check within <code>filename</code></p>
+<pre><code>filename : netCDF filename
+variable_name : variable name to check within filename
+</code></pre>
 
 <h2 id="returns">Returns</h2>
 
-<p><code>result</code> : <code>True</code> or <code>False</code> if variable is present</p>
+<pre><code>result : True or False if variable is present
+</code></pre>
 </div>
 
 
@@ -229,19 +221,14 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    `filename` : netCDF filename</span>
-
-<span class="sd">    `variable_name` : variable name to check within `filename`</span>
-
-<span class="sd">    `oneD` : Is `variable_name` a one-dimensional variable?</span>
-
-<span class="sd">    `ftime` : time index range to retrieve data for</span>
-<span class="sd">    `flevel` : level index range to retrieve data for</span>
-
+<span class="sd">        filename : netCDF filename</span>
+<span class="sd">        variable_name : variable name to check within filename</span>
+<span class="sd">        oneD : Is variable_name a one-dimensional variable?</span>
+<span class="sd">        ftime : time index range to retrieve data for</span>
+<span class="sd">        flevel : level index range to retrieve data for</span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    `result` : data for `variable_name`</span>
-
+<span class="sd">        result : data for variable_name</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">nc</span> <span class="o">=</span> <span class="n">_Dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -278,18 +265,17 @@
 
 <h2 id="parameters">Parameters</h2>
 
-<p><code>filename</code> : netCDF filename</p>
-
-<p><code>variable_name</code> : variable name to check within <code>filename</code></p>
-
-<p><code>oneD</code> : Is <code>variable_name</code> a one-dimensional variable?</p>
-
-<p><code>ftime</code> : time index range to retrieve data for
-<code>flevel</code> : level index range to retrieve data for</p>
+<pre><code>filename : netCDF filename
+variable_name : variable name to check within filename
+oneD : Is variable_name a one-dimensional variable?
+ftime : time index range to retrieve data for
+flevel : level index range to retrieve data for
+</code></pre>
 
 <h2 id="returns">Returns</h2>
 
-<p><code>result</code> : data for <code>variable_name</code></p>
+<pre><code>result : data for variable_name
+</code></pre>
 </div>
 
 

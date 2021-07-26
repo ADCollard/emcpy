@@ -79,13 +79,14 @@
 
 <span class="k">def</span> <span class="nf">mstats</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    mstats : function that computes and displays</span>
-<span class="sd">             various statistics of a variable</span>
-<span class="sd">             A better alternative is scipy.stats.describe()</span>
+<span class="sd">    Function that computes and displays</span>
+<span class="sd">    various statistics of a variable.</span>
 
-<span class="sd">    mstats(x)</span>
+<span class="sd">    A better alternative is `scipy.stats.describe()`</span>
 
-<span class="sd">        x - variable whose statistics are to be computed and displayed</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        x : numpy variable whose statistics are to be computed and displayed</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">OUT</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">(),</span> <span class="p">{})</span>
@@ -146,19 +147,21 @@
 
 <span class="k">def</span> <span class="nf">lregress</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="mf">95.0</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    lregress : function that computes the linear regression between</span>
-<span class="sd">               two variables and returns the regression coefficient and</span>
-<span class="sd">               statistical significance for a t-value at a desired</span>
-<span class="sd">               confidence interval.</span>
+<span class="sd">    Function that computes the linear regression between two variables and</span>
+<span class="sd">    returns the regression coefficient and statistical significance</span>
+<span class="sd">    for a t-value at a desired confidence interval.</span>
 
-<span class="sd">    [rc, sb, ssig] = lregress(x, y, tcrit=0.0)</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        x : independent variable</span>
+<span class="sd">        y : dependent variable</span>
+<span class="sd">        ci : confidence interval (default: 95%)</span>
 
-<span class="sd">        x - independent variable</span>
-<span class="sd">        y - dependent variable</span>
-<span class="sd">       ci - confidence interval (default: 95%)</span>
-<span class="sd">       rc - linear regression coefficient</span>
-<span class="sd">       sb - standard error on the linear regression coefficient</span>
-<span class="sd">     ssig - statistical significance of the linear regression coefficient</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        rc : linear regression coefficient</span>
+<span class="sd">        sb : standard error on the linear regression coefficient</span>
+<span class="sd">        ssig : statistical significance of the linear regression coefficient</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="c1"># make sure the two samples are of the same size</span>
@@ -184,30 +187,28 @@
     <span class="c1"># error bar on rc</span>
     <span class="n">eb</span> <span class="o">=</span> <span class="n">tcrit</span> <span class="o">*</span> <span class="n">sb</span>
 
-    <span class="k">if</span> <span class="p">((</span><span class="n">_np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">rc</span><span class="p">)</span> <span class="o">-</span> <span class="n">_np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">eb</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">):</span>
-        <span class="n">ssig</span> <span class="o">=</span> <span class="bp">True</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">ssig</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">ssig</span> <span class="o">=</span> <span class="bp">True</span> <span class="k">if</span> <span class="p">(</span><span class="n">_np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">rc</span><span class="p">)</span> <span class="o">-</span> <span class="n">_np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">eb</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mf">0.0</span> <span class="k">else</span> <span class="bp">False</span>
 
-    <span class="k">return</span> <span class="p">[</span><span class="n">rc</span><span class="p">,</span> <span class="n">sb</span><span class="p">,</span> <span class="n">ssig</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">rc</span><span class="p">,</span> <span class="n">sb</span><span class="p">,</span> <span class="n">ssig</span>
 
 
 <span class="k">def</span> <span class="nf">ttest</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="mf">95.0</span><span class="p">,</span> <span class="n">paired</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Given two samples, perform the Student&#39;s t-test and return the errorbar</span>
-<span class="sd">    The test assumes the sample size be the same between x and y.</span>
-<span class="sd">    INPUT:</span>
-<span class="sd">        x - control</span>
-<span class="sd">        y - experiment (default: x)</span>
-<span class="sd">       ci - confidence interval (default: 95%)</span>
-<span class="sd">   paired - paired t-test (default: True)</span>
-<span class="sd">    scale - normalize with mean(x) and return as a percentage (default: False)</span>
-<span class="sd">   OUTPUT:</span>
-<span class="sd"> diffmean - (normalized) difference in the sample means</span>
-<span class="sd"> errorbar - (normalized) errorbar with respect to control</span>
+<span class="sd">    Given two samples, perform the Student&#39;s t-test and return the errorbar.  The test assumes the sample size be the same between x and y.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        x: control</span>
+<span class="sd">        y: experiment (default: x)</span>
+<span class="sd">        ci: confidence interval (default: 95%)</span>
+<span class="sd">        paired: paired t-test (default: True)</span>
+<span class="sd">        scale: normalize with mean(x) and return as a percentage (default: False)</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        diffmean: (normalized) difference in the sample means</span>
+<span class="sd">        errorbar: (normalized) errorbar with respect to control</span>
 
-<span class="sd">    To mask out statistically significant values</span>
-<span class="sd">    diffmask = numpy.ma.masked_where(numpy.abs(diffmean)&lt;=errorbar,diffmean).mask</span>
+<span class="sd">    To mask out statistically significant values:\n</span>
+<span class="sd">    `diffmask = numpy.ma.masked_where(numpy.abs(diffmean)&lt;=errorbar,diffmean).mask`</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">nsamp</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -245,6 +246,12 @@
 <span class="k">def</span> <span class="nf">get_weights</span><span class="p">(</span><span class="n">lats</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Get weights for latitudes to do weighted mean</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        lats: Latitudes</span>
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        weights: weights for latitudes</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">cos</span><span class="p">((</span><span class="n">_np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">lats</span><span class="p">)</span>
 
@@ -253,8 +260,16 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Given the weights for latitudes, compute weighted mean</span>
 <span class="sd">    of data in that direction</span>
-<span class="sd">    Note, data and wght must be same dimension</span>
-<span class="sd">    Uses numpy.average</span>
+<span class="sd">    Note, `data` and `weights` must be same dimension</span>
+<span class="sd">    Uses `numpy.average`</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        data: input data array</span>
+<span class="sd">        weights: input weights</span>
+<span class="sd">        axis: direction to compute weighted average</span>
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        weighted average: data weighted mean by weights</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">assert</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="p">(</span>
         <span class="s1">&#39;data and weights mis-match array size&#39;</span><span class="p">)</span>
@@ -277,13 +292,14 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">mstats</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    mstats : function that computes and displays</span>
-<span class="sd">             various statistics of a variable</span>
-<span class="sd">             A better alternative is scipy.stats.describe()</span>
+<span class="sd">    Function that computes and displays</span>
+<span class="sd">    various statistics of a variable.</span>
 
-<span class="sd">    mstats(x)</span>
+<span class="sd">    A better alternative is `scipy.stats.describe()`</span>
 
-<span class="sd">        x - variable whose statistics are to be computed and displayed</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        x : numpy variable whose statistics are to be computed and displayed</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">OUT</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">(),</span> <span class="p">{})</span>
@@ -344,13 +360,14 @@
 
         </details>
 
-            <div class="docstring"><p>mstats : function that computes and displays
-         various statistics of a variable
-         A better alternative is scipy.stats.describe()</p>
+            <div class="docstring"><p>Function that computes and displays
+various statistics of a variable.</p>
 
-<p>mstats(x)</p>
+<p>A better alternative is <code>scipy.stats.describe()</code></p>
 
-<pre><code>x - variable whose statistics are to be computed and displayed
+<h2 id="parameters">Parameters</h2>
+
+<pre><code>x : numpy variable whose statistics are to be computed and displayed
 </code></pre>
 </div>
 
@@ -368,19 +385,21 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">lregress</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="mf">95.0</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    lregress : function that computes the linear regression between</span>
-<span class="sd">               two variables and returns the regression coefficient and</span>
-<span class="sd">               statistical significance for a t-value at a desired</span>
-<span class="sd">               confidence interval.</span>
+<span class="sd">    Function that computes the linear regression between two variables and</span>
+<span class="sd">    returns the regression coefficient and statistical significance</span>
+<span class="sd">    for a t-value at a desired confidence interval.</span>
 
-<span class="sd">    [rc, sb, ssig] = lregress(x, y, tcrit=0.0)</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        x : independent variable</span>
+<span class="sd">        y : dependent variable</span>
+<span class="sd">        ci : confidence interval (default: 95%)</span>
 
-<span class="sd">        x - independent variable</span>
-<span class="sd">        y - dependent variable</span>
-<span class="sd">       ci - confidence interval (default: 95%)</span>
-<span class="sd">       rc - linear regression coefficient</span>
-<span class="sd">       sb - standard error on the linear regression coefficient</span>
-<span class="sd">     ssig - statistical significance of the linear regression coefficient</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        rc : linear regression coefficient</span>
+<span class="sd">        sb : standard error on the linear regression coefficient</span>
+<span class="sd">        ssig : statistical significance of the linear regression coefficient</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="c1"># make sure the two samples are of the same size</span>
@@ -406,31 +425,30 @@
     <span class="c1"># error bar on rc</span>
     <span class="n">eb</span> <span class="o">=</span> <span class="n">tcrit</span> <span class="o">*</span> <span class="n">sb</span>
 
-    <span class="k">if</span> <span class="p">((</span><span class="n">_np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">rc</span><span class="p">)</span> <span class="o">-</span> <span class="n">_np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">eb</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">):</span>
-        <span class="n">ssig</span> <span class="o">=</span> <span class="bp">True</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">ssig</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">ssig</span> <span class="o">=</span> <span class="bp">True</span> <span class="k">if</span> <span class="p">(</span><span class="n">_np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">rc</span><span class="p">)</span> <span class="o">-</span> <span class="n">_np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">eb</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mf">0.0</span> <span class="k">else</span> <span class="bp">False</span>
 
-    <span class="k">return</span> <span class="p">[</span><span class="n">rc</span><span class="p">,</span> <span class="n">sb</span><span class="p">,</span> <span class="n">ssig</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">rc</span><span class="p">,</span> <span class="n">sb</span><span class="p">,</span> <span class="n">ssig</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>lregress : function that computes the linear regression between
-           two variables and returns the regression coefficient and
-           statistical significance for a t-value at a desired
-           confidence interval.</p>
+            <div class="docstring"><p>Function that computes the linear regression between two variables and
+returns the regression coefficient and statistical significance
+for a t-value at a desired confidence interval.</p>
 
-<p>[rc, sb, ssig] = lregress(x, y, tcrit=0.0)</p>
+<h2 id="parameters">Parameters</h2>
 
-<pre><code>x - independent variable
-y - dependent variable
+<pre><code>x : independent variable
+y : dependent variable
+ci : confidence interval (default: 95%)
 </code></pre>
 
-<p>ci - confidence interval (default: 95%)
-   rc - linear regression coefficient
-   sb - standard error on the linear regression coefficient
- ssig - statistical significance of the linear regression coefficient</p>
+<h2 id="returns">Returns</h2>
+
+<pre><code>rc : linear regression coefficient
+sb : standard error on the linear regression coefficient
+ssig : statistical significance of the linear regression coefficient
+</code></pre>
 </div>
 
 
@@ -447,20 +465,21 @@ y - dependent variable
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ttest</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="mf">95.0</span><span class="p">,</span> <span class="n">paired</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Given two samples, perform the Student&#39;s t-test and return the errorbar</span>
-<span class="sd">    The test assumes the sample size be the same between x and y.</span>
-<span class="sd">    INPUT:</span>
-<span class="sd">        x - control</span>
-<span class="sd">        y - experiment (default: x)</span>
-<span class="sd">       ci - confidence interval (default: 95%)</span>
-<span class="sd">   paired - paired t-test (default: True)</span>
-<span class="sd">    scale - normalize with mean(x) and return as a percentage (default: False)</span>
-<span class="sd">   OUTPUT:</span>
-<span class="sd"> diffmean - (normalized) difference in the sample means</span>
-<span class="sd"> errorbar - (normalized) errorbar with respect to control</span>
+<span class="sd">    Given two samples, perform the Student&#39;s t-test and return the errorbar.  The test assumes the sample size be the same between x and y.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        x: control</span>
+<span class="sd">        y: experiment (default: x)</span>
+<span class="sd">        ci: confidence interval (default: 95%)</span>
+<span class="sd">        paired: paired t-test (default: True)</span>
+<span class="sd">        scale: normalize with mean(x) and return as a percentage (default: False)</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        diffmean: (normalized) difference in the sample means</span>
+<span class="sd">        errorbar: (normalized) errorbar with respect to control</span>
 
-<span class="sd">    To mask out statistically significant values</span>
-<span class="sd">    diffmask = numpy.ma.masked_where(numpy.abs(diffmean)&lt;=errorbar,diffmean).mask</span>
+<span class="sd">    To mask out statistically significant values:\n</span>
+<span class="sd">    `diffmask = numpy.ma.masked_where(numpy.abs(diffmean)&lt;=errorbar,diffmean).mask`</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">nsamp</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -497,20 +516,26 @@ y - dependent variable
 
         </details>
 
-            <div class="docstring"><p>Given two samples, perform the Student's t-test and return the errorbar
-   The test assumes the sample size be the same between x and y.
-   INPUT:
-       x - control
-       y - experiment (default: x)
-      ci - confidence interval (default: 95%)
-  paired - paired t-test (default: True)
-   scale - normalize with mean(x) and return as a percentage (default: False)
-  OUTPUT:
-diffmean - (normalized) difference in the sample means
-errorbar - (normalized) errorbar with respect to control</p>
+            <div class="docstring"><p>Given two samples, perform the Student's t-test and return the errorbar.  The test assumes the sample size be the same between x and y.</p>
 
-<p>To mask out statistically significant values
-   diffmask = numpy.ma.masked_where(numpy.abs(diffmean)&lt;=errorbar,diffmean).mask</p>
+<h2 id="parameters">Parameters</h2>
+
+<pre><code>x: control
+y: experiment (default: x)
+ci: confidence interval (default: 95%)
+paired: paired t-test (default: True)
+scale: normalize with mean(x) and return as a percentage (default: False)
+</code></pre>
+
+<h2 id="returns">Returns</h2>
+
+<pre><code>diffmean: (normalized) difference in the sample means
+errorbar: (normalized) errorbar with respect to control
+</code></pre>
+
+<p>To mask out statistically significant values:</p>
+
+<p><code>diffmask = numpy.ma.masked_where(numpy.abs(diffmean)&lt;=errorbar,diffmean).mask</code></p>
 </div>
 
 
@@ -528,6 +553,12 @@ errorbar - (normalized) errorbar with respect to control</p>
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">get_weights</span><span class="p">(</span><span class="n">lats</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Get weights for latitudes to do weighted mean</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        lats: Latitudes</span>
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        weights: weights for latitudes</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">cos</span><span class="p">((</span><span class="n">_np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">lats</span><span class="p">)</span>
 </pre></div>
@@ -535,6 +566,16 @@ errorbar - (normalized) errorbar with respect to control</p>
         </details>
 
             <div class="docstring"><p>Get weights for latitudes to do weighted mean</p>
+
+<h2 id="parameters">Parameters</h2>
+
+<pre><code>lats: Latitudes
+</code></pre>
+
+<h2 id="return">Return</h2>
+
+<pre><code>weights: weights for latitudes
+</code></pre>
 </div>
 
 
@@ -553,8 +594,16 @@ errorbar - (normalized) errorbar with respect to control</p>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Given the weights for latitudes, compute weighted mean</span>
 <span class="sd">    of data in that direction</span>
-<span class="sd">    Note, data and wght must be same dimension</span>
-<span class="sd">    Uses numpy.average</span>
+<span class="sd">    Note, `data` and `weights` must be same dimension</span>
+<span class="sd">    Uses `numpy.average`</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">        data: input data array</span>
+<span class="sd">        weights: input weights</span>
+<span class="sd">        axis: direction to compute weighted average</span>
+<span class="sd">    Return</span>
+<span class="sd">    ------</span>
+<span class="sd">        weighted average: data weighted mean by weights</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">assert</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="p">(</span>
         <span class="s1">&#39;data and weights mis-match array size&#39;</span><span class="p">)</span>
@@ -566,8 +615,20 @@ errorbar - (normalized) errorbar with respect to control</p>
 
             <div class="docstring"><p>Given the weights for latitudes, compute weighted mean
 of data in that direction
-Note, data and wght must be same dimension
-Uses numpy.average</p>
+Note, <code>data</code> and <code>weights</code> must be same dimension
+Uses <code>numpy.average</code></p>
+
+<h2 id="parameters">Parameters</h2>
+
+<pre><code>data: input data array
+weights: input weights
+axis: direction to compute weighted average
+</code></pre>
+
+<h2 id="return">Return</h2>
+
+<pre><code>weighted average: data weighted mean by weights
+</code></pre>
 </div>
 
 
