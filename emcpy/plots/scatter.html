@@ -116,35 +116,22 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a figure of a scatter plot given x and y.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    x, y : array type</span>
-<span class="sd">        The data required to create scatter plot</span>
-<span class="sd">    linear_regression : bool, optional</span>
-<span class="sd">        (default is True)</span>
-<span class="sd">    density : bool, optional</span>
-<span class="sd">        Plot a density scatter plot if True (default is False)</span>
-<span class="sd">    color : str, optional</span>
-<span class="sd">        Color of scatter plot dots (default is &#39;darkgray&#39;)</span>
-<span class="sd">    cmap : str, optional</span>
-<span class="sd">        Color map of density scatter plot (default is &#39;magma&#39;)</span>
-<span class="sd">    r_color : str, optional</span>
-<span class="sd">        Color of regression line (default is &#39;black&#39;)</span>
-<span class="sd">    grid : bool, optional</span>
-<span class="sd">        Plot grid on scatter plot (default is False)</span>
-<span class="sd">    title : str, optional</span>
-<span class="sd">        Plot title (default is &#39;EMCPy Scatter Plot&#39;)</span>
-<span class="sd">    time_title : str, optional</span>
-<span class="sd">        Data date/cycle to be used as title (default is None)</span>
-<span class="sd">    xlabel : str, optional</span>
-<span class="sd">        X label on plot (default is None)</span>
-<span class="sd">    ylabel : str, optional</span>
-<span class="sd">        Y label on plot (default is None)</span>
+<span class="sd">    Args:</span>
+<span class="sd">        x, y : (array type) The data required to create scatter plot</span>
+<span class="sd">        linear_regression : (bool, optional, default=True) To perform a linear regression and plot the line on the figure</span>
+<span class="sd">        density : (bool, optional, default=False) Plot a density scatter plot</span>
+<span class="sd">        color : (str, optional, default=&#39;darkgray&#39;) Color of scatter plot dots</span>
+<span class="sd">        cmap : (str, optional, default=&#39;magma&#39;) Color map of density scatter plot</span>
+<span class="sd">        r_color : (str, optional, default=&#39;black&#39;) Color of regression line when linear_regression=True</span>
+<span class="sd">        grid : (bool, optional, default=False) Plot grid on scatter plot</span>
+<span class="sd">        title : (str, optional, default=&#39;EmcPy Scatter Plot&#39;) Title to add to plot</span>
+<span class="sd">        time_title : (str, optional, default=None) Secondary title for date/cycle to add to plot</span>
+<span class="sd">        xlabel : (str, optional, default=None) X label on plot</span>
+<span class="sd">        ylabel : (str, optional, default=None) Y label on plot</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    fig</span>
-<span class="sd">        Figure of the scatter plot</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        A matplotlib figure object of the scatter plot</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">plotopts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;linear_regression&#39;</span><span class="p">:</span> <span class="n">linear_regression</span><span class="p">,</span> <span class="s1">&#39;density&#39;</span><span class="p">:</span> <span class="n">density</span><span class="p">,</span>
@@ -190,35 +177,22 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a figure of a scatter plot given x and y.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    x, y : array type</span>
-<span class="sd">        The data required to create scatter plot</span>
-<span class="sd">    linear_regression : bool, optional</span>
-<span class="sd">        (default is True)</span>
-<span class="sd">    density : bool, optional</span>
-<span class="sd">        Plot a density scatter plot if True (default is False)</span>
-<span class="sd">    color : str, optional</span>
-<span class="sd">        Color of scatter plot dots (default is &#39;darkgray&#39;)</span>
-<span class="sd">    cmap : str, optional</span>
-<span class="sd">        Color map of density scatter plot (default is &#39;magma&#39;)</span>
-<span class="sd">    r_color : str, optional</span>
-<span class="sd">        Color of regression line (default is &#39;black&#39;)</span>
-<span class="sd">    grid : bool, optional</span>
-<span class="sd">        Plot grid on scatter plot (default is False)</span>
-<span class="sd">    title : str, optional</span>
-<span class="sd">        Plot title (default is &#39;EMCPy Scatter Plot&#39;)</span>
-<span class="sd">    time_title : str, optional</span>
-<span class="sd">        Data date/cycle to be used as title (default is None)</span>
-<span class="sd">    xlabel : str, optional</span>
-<span class="sd">        X label on plot (default is None)</span>
-<span class="sd">    ylabel : str, optional</span>
-<span class="sd">        Y label on plot (default is None)</span>
+<span class="sd">    Args:</span>
+<span class="sd">        x, y : (array type) The data required to create scatter plot</span>
+<span class="sd">        linear_regression : (bool, optional, default=True) To perform a linear regression and plot the line on the figure</span>
+<span class="sd">        density : (bool, optional, default=False) Plot a density scatter plot</span>
+<span class="sd">        color : (str, optional, default=&#39;darkgray&#39;) Color of scatter plot dots</span>
+<span class="sd">        cmap : (str, optional, default=&#39;magma&#39;) Color map of density scatter plot</span>
+<span class="sd">        r_color : (str, optional, default=&#39;black&#39;) Color of regression line when linear_regression=True</span>
+<span class="sd">        grid : (bool, optional, default=False) Plot grid on scatter plot</span>
+<span class="sd">        title : (str, optional, default=&#39;EmcPy Scatter Plot&#39;) Title to add to plot</span>
+<span class="sd">        time_title : (str, optional, default=None) Secondary title for date/cycle to add to plot</span>
+<span class="sd">        xlabel : (str, optional, default=None) X label on plot</span>
+<span class="sd">        ylabel : (str, optional, default=None) Y label on plot</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    fig</span>
-<span class="sd">        Figure of the scatter plot</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        A matplotlib figure object of the scatter plot</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">plotopts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;linear_regression&#39;</span><span class="p">:</span> <span class="n">linear_regression</span><span class="p">,</span> <span class="s1">&#39;density&#39;</span><span class="p">:</span> <span class="n">density</span><span class="p">,</span>
@@ -235,35 +209,27 @@
 
             <div class="docstring"><p>Returns a figure of a scatter plot given x and y.</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<p>x, y : array type
-    The data required to create scatter plot
-linear_regression : bool, optional
-    (default is True)
-density : bool, optional
-    Plot a density scatter plot if True (default is False)
-color : str, optional
-    Color of scatter plot dots (default is 'darkgray')
-cmap : str, optional
-    Color map of density scatter plot (default is 'magma')
-r_color : str, optional
-    Color of regression line (default is 'black')
-grid : bool, optional
-    Plot grid on scatter plot (default is False)
-title : str, optional
-    Plot title (default is 'EMCPy Scatter Plot')
-time_title : str, optional
-    Data date/cycle to be used as title (default is None)
-xlabel : str, optional
-    X label on plot (default is None)
-ylabel : str, optional
-    Y label on plot (default is None)</p>
+<ul>
+<li><strong>x, y :</strong>  (array type) The data required to create scatter plot</li>
+<li><strong>linear_regression :</strong>  (bool, optional, default=True) To perform a linear regression and plot the line on the figure</li>
+<li><strong>density :</strong>  (bool, optional, default=False) Plot a density scatter plot</li>
+<li><strong>color :</strong>  (str, optional, default='darkgray') Color of scatter plot dots</li>
+<li><strong>cmap :</strong>  (str, optional, default='magma') Color map of density scatter plot</li>
+<li><strong>r_color :</strong>  (str, optional, default='black') Color of regression line when linear_regression=True</li>
+<li><strong>grid :</strong>  (bool, optional, default=False) Plot grid on scatter plot</li>
+<li><strong>title :</strong>  (str, optional, default='EmcPy Scatter Plot') Title to add to plot</li>
+<li><strong>time_title :</strong>  (str, optional, default=None) Secondary title for date/cycle to add to plot</li>
+<li><strong>xlabel :</strong>  (str, optional, default=None) X label on plot</li>
+<li><strong>ylabel :</strong>  (str, optional, default=None) Y label on plot</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<p>fig
-    Figure of the scatter plot</p>
+<blockquote>
+  <p>A matplotlib figure object of the scatter plot</p>
+</blockquote>
 </div>
 
 

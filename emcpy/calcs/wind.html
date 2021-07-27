@@ -67,14 +67,12 @@
 <span class="sd">    Takes into account the wind direction coordinates is different than</span>
 <span class="sd">    the trig unit circle coordinate. If the wind direction is 360,</span>
 <span class="sd">    then return zero.</span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        u, v: array_like</span>
-<span class="sd">        u (easterly) and v (northerly) wind component.</span>
-<span class="sd">        direction: boolean (optional)</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        Wind speed (and direction if direction=True)</span>
+<span class="sd">    Args:</span>
+<span class="sd">        u : (array like) u (easterly) wind component</span>
+<span class="sd">        v : (array like) v (northerly) wind component</span>
+<span class="sd">        direction: (bool, optional, default=False)</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        An array of wind speed (and an array of wind direction if direction=True)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
     <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
@@ -88,13 +86,11 @@
 <span class="k">def</span> <span class="nf">spddir_to_uv</span><span class="p">(</span><span class="n">wspd</span><span class="p">,</span> <span class="n">wdir</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the u and v wind components from wind speed and direction.</span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        wspd, wdir : array_like</span>
-<span class="sd">        Arrays of wind speed and wind direction (in degrees)</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        u and v wind components</span>
+<span class="sd">    Args:</span>
+<span class="sd">        wspd : (array like) wind speed</span>
+<span class="sd">        wdir : (array like) wind direction in degrees</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The u,v wind vector components.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">wspd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">wspd</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">wdir</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">wdir</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
@@ -132,14 +128,12 @@
 <span class="sd">    Takes into account the wind direction coordinates is different than</span>
 <span class="sd">    the trig unit circle coordinate. If the wind direction is 360,</span>
 <span class="sd">    then return zero.</span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        u, v: array_like</span>
-<span class="sd">        u (easterly) and v (northerly) wind component.</span>
-<span class="sd">        direction: boolean (optional)</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        Wind speed (and direction if direction=True)</span>
+<span class="sd">    Args:</span>
+<span class="sd">        u : (array like) u (easterly) wind component</span>
+<span class="sd">        v : (array like) v (northerly) wind component</span>
+<span class="sd">        direction: (bool, optional, default=False)</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        An array of wind speed (and an array of wind direction if direction=True)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
     <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
@@ -159,17 +153,19 @@ Will calculate direction as well if parameter direction = True.</p>
 the trig unit circle coordinate. If the wind direction is 360,
 then return zero.</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>u, v: array_like
-u (easterly) and v (northerly) wind component.
-direction: boolean (optional)
-</code></pre>
+<ul>
+<li><strong>u :</strong>  (array like) u (easterly) wind component</li>
+<li><strong>v :</strong>  (array like) v (northerly) wind component</li>
+<li><strong>direction:</strong>  (bool, optional, default=False)</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>Wind speed (and direction if direction=True)
-</code></pre>
+<blockquote>
+  <p>An array of wind speed (and an array of wind direction if direction=True)</p>
+</blockquote>
 </div>
 
 
@@ -187,13 +183,11 @@ direction: boolean (optional)
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">spddir_to_uv</span><span class="p">(</span><span class="n">wspd</span><span class="p">,</span> <span class="n">wdir</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Calculate the u and v wind components from wind speed and direction.</span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        wspd, wdir : array_like</span>
-<span class="sd">        Arrays of wind speed and wind direction (in degrees)</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        u and v wind components</span>
+<span class="sd">    Args:</span>
+<span class="sd">        wspd : (array like) wind speed</span>
+<span class="sd">        wdir : (array like) wind direction in degrees</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The u,v wind vector components.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">wspd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">wspd</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
     <span class="n">wdir</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">wdir</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
@@ -214,16 +208,18 @@ direction: boolean (optional)
 
             <div class="docstring"><p>Calculate the u and v wind components from wind speed and direction.</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>wspd, wdir : array_like
-Arrays of wind speed and wind direction (in degrees)
-</code></pre>
+<ul>
+<li><strong>wspd :</strong>  (array like) wind speed</li>
+<li><strong>wdir :</strong>  (array like) wind direction in degrees</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>u and v wind components
-</code></pre>
+<blockquote>
+  <p>The u,v wind vector components.</p>
+</blockquote>
 </div>
 
 

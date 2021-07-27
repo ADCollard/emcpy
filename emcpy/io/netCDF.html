@@ -72,13 +72,11 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Check if a variable exists in a netCDF file</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        filename : netCDF filename</span>
-<span class="sd">        variable_name : variable name to check within filename</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        result : True or False if variable is present</span>
+<span class="sd">    Args:</span>
+<span class="sd">        filename : (str) netCDF filename</span>
+<span class="sd">        variable_name : (str) variable name to check within filename</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        True or False if variable is present</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">result</span> <span class="o">=</span> <span class="bp">False</span>
@@ -103,16 +101,14 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Read a variable from a netCDF file</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        filename : netCDF filename</span>
-<span class="sd">        variable_name : variable name to check within filename</span>
-<span class="sd">        oneD : Is variable_name a one-dimensional variable?</span>
-<span class="sd">        ftime : time index range to retrieve data for</span>
-<span class="sd">        flevel : level index range to retrieve data for</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        result : data for variable_name</span>
+<span class="sd">    Args:</span>
+<span class="sd">        filename : (str) netCDF filename</span>
+<span class="sd">        variable_name : (str) variable name to check within filename</span>
+<span class="sd">        oneD : (bool, optional, default=False) Is variable_name a one-dimensional variable?</span>
+<span class="sd">        ftime : (int, optional, default=-1) time index range to retrieve data for</span>
+<span class="sd">        flevel : (int, optional, default=-1) level index range to retrieve data for</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        An array of data for variable_name</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">nc</span> <span class="o">=</span> <span class="n">_Dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -160,13 +156,11 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Check if a variable exists in a netCDF file</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        filename : netCDF filename</span>
-<span class="sd">        variable_name : variable name to check within filename</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        result : True or False if variable is present</span>
+<span class="sd">    Args:</span>
+<span class="sd">        filename : (str) netCDF filename</span>
+<span class="sd">        variable_name : (str) variable name to check within filename</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        True or False if variable is present</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">result</span> <span class="o">=</span> <span class="bp">False</span>
@@ -191,16 +185,18 @@
 
             <div class="docstring"><p>Check if a variable exists in a netCDF file</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>filename : netCDF filename
-variable_name : variable name to check within filename
-</code></pre>
+<ul>
+<li><strong>filename :</strong>  (str) netCDF filename</li>
+<li><strong>variable_name :</strong>  (str) variable name to check within filename</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>result : True or False if variable is present
-</code></pre>
+<blockquote>
+  <p>True or False if variable is present</p>
+</blockquote>
 </div>
 
 
@@ -219,16 +215,14 @@ variable_name : variable name to check within filename
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Read a variable from a netCDF file</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        filename : netCDF filename</span>
-<span class="sd">        variable_name : variable name to check within filename</span>
-<span class="sd">        oneD : Is variable_name a one-dimensional variable?</span>
-<span class="sd">        ftime : time index range to retrieve data for</span>
-<span class="sd">        flevel : level index range to retrieve data for</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        result : data for variable_name</span>
+<span class="sd">    Args:</span>
+<span class="sd">        filename : (str) netCDF filename</span>
+<span class="sd">        variable_name : (str) variable name to check within filename</span>
+<span class="sd">        oneD : (bool, optional, default=False) Is variable_name a one-dimensional variable?</span>
+<span class="sd">        ftime : (int, optional, default=-1) time index range to retrieve data for</span>
+<span class="sd">        flevel : (int, optional, default=-1) level index range to retrieve data for</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        An array of data for variable_name</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">nc</span> <span class="o">=</span> <span class="n">_Dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -263,19 +257,21 @@ variable_name : variable name to check within filename
 
             <div class="docstring"><p>Read a variable from a netCDF file</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>filename : netCDF filename
-variable_name : variable name to check within filename
-oneD : Is variable_name a one-dimensional variable?
-ftime : time index range to retrieve data for
-flevel : level index range to retrieve data for
-</code></pre>
+<ul>
+<li><strong>filename :</strong>  (str) netCDF filename</li>
+<li><strong>variable_name :</strong>  (str) variable name to check within filename</li>
+<li><strong>oneD :</strong>  (bool, optional, default=False) Is variable_name a one-dimensional variable?</li>
+<li><strong>ftime :</strong>  (int, optional, default=-1) time index range to retrieve data for</li>
+<li><strong>flevel :</strong>  (int, optional, default=-1) level index range to retrieve data for</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>result : data for variable_name
-</code></pre>
+<blockquote>
+  <p>An array of data for variable_name</p>
+</blockquote>
 </div>
 
 

@@ -89,9 +89,8 @@
 
 <span class="sd">    A better alternative is `scipy.stats.describe()`</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        x : numpy variable whose statistics are to be computed and displayed</span>
+<span class="sd">    Args:</span>
+<span class="sd">        x : (numpy array) numpy variable whose statistics are to be computed and displayed</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">OUT</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">(),</span> <span class="p">{})</span>
@@ -156,17 +155,15 @@
 <span class="sd">    returns the regression coefficient and statistical significance</span>
 <span class="sd">    for a t-value at a desired confidence interval.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        x : independent variable</span>
-<span class="sd">        y : dependent variable</span>
-<span class="sd">        ci : confidence interval (default: 95%)</span>
+<span class="sd">    Args:</span>
+<span class="sd">        x : (array like) independent variable</span>
+<span class="sd">        y : (array like) dependent variable</span>
+<span class="sd">        ci : (float, optional, default=95) confidence interval percentage</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        rc : linear regression coefficient</span>
-<span class="sd">        sb : standard error on the linear regression coefficient</span>
-<span class="sd">        ssig : statistical significance of the linear regression coefficient</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The linear regression coefficient (float),</span>
+<span class="sd">        the standard error on the linear regression coefficient (float),</span>
+<span class="sd">        and the statistical signficance of the linear regression coefficient (bool).</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="c1"># make sure the two samples are of the same size</span>
@@ -200,17 +197,15 @@
 <span class="k">def</span> <span class="nf">ttest</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="mf">95.0</span><span class="p">,</span> <span class="n">paired</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Given two samples, perform the Student&#39;s t-test and return the errorbar.  The test assumes the sample size be the same between x and y.</span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        x: control</span>
-<span class="sd">        y: experiment (default: x)</span>
-<span class="sd">        ci: confidence interval (default: 95%)</span>
-<span class="sd">        paired: paired t-test (default: True)</span>
-<span class="sd">        scale: normalize with mean(x) and return as a percentage (default: False)</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        diffmean: (normalized) difference in the sample means</span>
-<span class="sd">        errorbar: (normalized) errorbar with respect to control</span>
+<span class="sd">    Args:</span>
+<span class="sd">        x: (numpy array) control</span>
+<span class="sd">        y: (numpy array, optional, default=x )experiment</span>
+<span class="sd">        ci: (float, optional, default=95) confidence interval percentage</span>
+<span class="sd">        paired: (bool, optional, default=True) paired t-test</span>
+<span class="sd">        scale: (bool, optional, default=False) normalize with mean(x) and return as a percentage</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The (normalized) difference in the sample means and</span>
+<span class="sd">        the (normalized) errorbar with respect to control.</span>
 
 <span class="sd">    To mask out statistically significant values:\n</span>
 <span class="sd">    `diffmask = numpy.ma.masked_where(numpy.abs(diffmean)&lt;=errorbar,diffmean).mask`</span>
@@ -251,12 +246,10 @@
 <span class="k">def</span> <span class="nf">get_weights</span><span class="p">(</span><span class="n">lats</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Get weights for latitudes to do weighted mean</span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        lats: Latitudes</span>
-<span class="sd">    Return</span>
-<span class="sd">    ------</span>
-<span class="sd">        weights: weights for latitudes</span>
+<span class="sd">    Args:</span>
+<span class="sd">        lats: (array like) Latitudes</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        An array of weights for latitudes</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">cos</span><span class="p">((</span><span class="n">_np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">lats</span><span class="p">)</span>
 
@@ -267,14 +260,12 @@
 <span class="sd">    of data in that direction</span>
 <span class="sd">    Note, `data` and `weights` must be same dimension</span>
 <span class="sd">    Uses `numpy.average`</span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        data: input data array</span>
-<span class="sd">        weights: input weights</span>
-<span class="sd">        axis: direction to compute weighted average</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        weighted average: data weighted mean by weights</span>
+<span class="sd">    Args:</span>
+<span class="sd">        data: (numpy array) input data array</span>
+<span class="sd">        weights: (numpy array) input weights</span>
+<span class="sd">        axis: (int) direction to compute weighted average</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        An array of data weighted mean by weights</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">assert</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="p">(</span>
         <span class="s1">&#39;data and weights mis-match array size&#39;</span><span class="p">)</span>
@@ -290,16 +281,13 @@
 <span class="sd">    in the dataset, and the targets predicted by the linear</span>
 <span class="sd">    approximation.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        y, x : array like, Data to calculate linear regression</span>
+<span class="sd">    Args:</span>
+<span class="sd">        y, x : (array like) Data to calculate linear regression</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        y_pred : float, Predicted y values of from calculation</span>
-<span class="sd">        r_sq : float, R squared value</span>
-<span class="sd">        intercept : float, Intercept from slope intercept equation for y_pred</span>
-<span class="sd">        slope : float, Slope from slope intercept equation for y_pred</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The predicted y values from calculation,</span>
+<span class="sd">        the R squared value, the intercept of the line, and the slope of the line</span>
+<span class="sd">        from the equation for the predicted y values.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -332,9 +320,8 @@
 
 <span class="sd">    A better alternative is `scipy.stats.describe()`</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        x : numpy variable whose statistics are to be computed and displayed</span>
+<span class="sd">    Args:</span>
+<span class="sd">        x : (numpy array) numpy variable whose statistics are to be computed and displayed</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">OUT</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">(),</span> <span class="p">{})</span>
@@ -400,10 +387,11 @@ various statistics of a variable.</p>
 
 <p>A better alternative is <code>scipy.stats.describe()</code></p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>x : numpy variable whose statistics are to be computed and displayed
-</code></pre>
+<ul>
+<li><strong>x :</strong>  (numpy array) numpy variable whose statistics are to be computed and displayed</li>
+</ul>
 </div>
 
 
@@ -424,17 +412,15 @@ various statistics of a variable.</p>
 <span class="sd">    returns the regression coefficient and statistical significance</span>
 <span class="sd">    for a t-value at a desired confidence interval.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        x : independent variable</span>
-<span class="sd">        y : dependent variable</span>
-<span class="sd">        ci : confidence interval (default: 95%)</span>
+<span class="sd">    Args:</span>
+<span class="sd">        x : (array like) independent variable</span>
+<span class="sd">        y : (array like) dependent variable</span>
+<span class="sd">        ci : (float, optional, default=95) confidence interval percentage</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        rc : linear regression coefficient</span>
-<span class="sd">        sb : standard error on the linear regression coefficient</span>
-<span class="sd">        ssig : statistical significance of the linear regression coefficient</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The linear regression coefficient (float),</span>
+<span class="sd">        the standard error on the linear regression coefficient (float),</span>
+<span class="sd">        and the statistical signficance of the linear regression coefficient (bool).</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="c1"># make sure the two samples are of the same size</span>
@@ -471,19 +457,21 @@ various statistics of a variable.</p>
 returns the regression coefficient and statistical significance
 for a t-value at a desired confidence interval.</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>x : independent variable
-y : dependent variable
-ci : confidence interval (default: 95%)
-</code></pre>
+<ul>
+<li><strong>x :</strong>  (array like) independent variable</li>
+<li><strong>y :</strong>  (array like) dependent variable</li>
+<li><strong>ci :</strong>  (float, optional, default=95) confidence interval percentage</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>rc : linear regression coefficient
-sb : standard error on the linear regression coefficient
-ssig : statistical significance of the linear regression coefficient
-</code></pre>
+<blockquote>
+  <p>The linear regression coefficient (float),
+  the standard error on the linear regression coefficient (float),
+  and the statistical signficance of the linear regression coefficient (bool).</p>
+</blockquote>
 </div>
 
 
@@ -501,17 +489,15 @@ ssig : statistical significance of the linear regression coefficient
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ttest</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="mf">95.0</span><span class="p">,</span> <span class="n">paired</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Given two samples, perform the Student&#39;s t-test and return the errorbar.  The test assumes the sample size be the same between x and y.</span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        x: control</span>
-<span class="sd">        y: experiment (default: x)</span>
-<span class="sd">        ci: confidence interval (default: 95%)</span>
-<span class="sd">        paired: paired t-test (default: True)</span>
-<span class="sd">        scale: normalize with mean(x) and return as a percentage (default: False)</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        diffmean: (normalized) difference in the sample means</span>
-<span class="sd">        errorbar: (normalized) errorbar with respect to control</span>
+<span class="sd">    Args:</span>
+<span class="sd">        x: (numpy array) control</span>
+<span class="sd">        y: (numpy array, optional, default=x )experiment</span>
+<span class="sd">        ci: (float, optional, default=95) confidence interval percentage</span>
+<span class="sd">        paired: (bool, optional, default=True) paired t-test</span>
+<span class="sd">        scale: (bool, optional, default=False) normalize with mean(x) and return as a percentage</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The (normalized) difference in the sample means and</span>
+<span class="sd">        the (normalized) errorbar with respect to control.</span>
 
 <span class="sd">    To mask out statistically significant values:\n</span>
 <span class="sd">    `diffmask = numpy.ma.masked_where(numpy.abs(diffmean)&lt;=errorbar,diffmean).mask`</span>
@@ -553,20 +539,22 @@ ssig : statistical significance of the linear regression coefficient
 
             <div class="docstring"><p>Given two samples, perform the Student's t-test and return the errorbar.  The test assumes the sample size be the same between x and y.</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>x: control
-y: experiment (default: x)
-ci: confidence interval (default: 95%)
-paired: paired t-test (default: True)
-scale: normalize with mean(x) and return as a percentage (default: False)
-</code></pre>
+<ul>
+<li><strong>x:</strong>  (numpy array) control</li>
+<li><strong>y:</strong>  (numpy array, optional, default=x )experiment</li>
+<li><strong>ci:</strong>  (float, optional, default=95) confidence interval percentage</li>
+<li><strong>paired:</strong>  (bool, optional, default=True) paired t-test</li>
+<li><strong>scale:</strong>  (bool, optional, default=False) normalize with mean(x) and return as a percentage</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>diffmean: (normalized) difference in the sample means
-errorbar: (normalized) errorbar with respect to control
-</code></pre>
+<blockquote>
+  <p>The (normalized) difference in the sample means and
+  the (normalized) errorbar with respect to control.</p>
+</blockquote>
 
 <p>To mask out statistically significant values:</p>
 
@@ -588,12 +576,10 @@ errorbar: (normalized) errorbar with respect to control
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">get_weights</span><span class="p">(</span><span class="n">lats</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Get weights for latitudes to do weighted mean</span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        lats: Latitudes</span>
-<span class="sd">    Return</span>
-<span class="sd">    ------</span>
-<span class="sd">        weights: weights for latitudes</span>
+<span class="sd">    Args:</span>
+<span class="sd">        lats: (array like) Latitudes</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        An array of weights for latitudes</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="n">_np</span><span class="o">.</span><span class="n">cos</span><span class="p">((</span><span class="n">_np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">lats</span><span class="p">)</span>
 </pre></div>
@@ -602,15 +588,17 @@ errorbar: (normalized) errorbar with respect to control
 
             <div class="docstring"><p>Get weights for latitudes to do weighted mean</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>lats: Latitudes
-</code></pre>
+<ul>
+<li><strong>lats:</strong>  (array like) Latitudes</li>
+</ul>
 
-<h2 id="return">Return</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>weights: weights for latitudes
-</code></pre>
+<blockquote>
+  <p>An array of weights for latitudes</p>
+</blockquote>
 </div>
 
 
@@ -631,14 +619,12 @@ errorbar: (normalized) errorbar with respect to control
 <span class="sd">    of data in that direction</span>
 <span class="sd">    Note, `data` and `weights` must be same dimension</span>
 <span class="sd">    Uses `numpy.average`</span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        data: input data array</span>
-<span class="sd">        weights: input weights</span>
-<span class="sd">        axis: direction to compute weighted average</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        weighted average: data weighted mean by weights</span>
+<span class="sd">    Args:</span>
+<span class="sd">        data: (numpy array) input data array</span>
+<span class="sd">        weights: (numpy array) input weights</span>
+<span class="sd">        axis: (int) direction to compute weighted average</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        An array of data weighted mean by weights</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">assert</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">weights</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="p">(</span>
         <span class="s1">&#39;data and weights mis-match array size&#39;</span><span class="p">)</span>
@@ -653,17 +639,19 @@ of data in that direction
 Note, <code>data</code> and <code>weights</code> must be same dimension
 Uses <code>numpy.average</code></p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>data: input data array
-weights: input weights
-axis: direction to compute weighted average
-</code></pre>
+<ul>
+<li><strong>data:</strong>  (numpy array) input data array</li>
+<li><strong>weights:</strong>  (numpy array) input weights</li>
+<li><strong>axis:</strong>  (int) direction to compute weighted average</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>weighted average: data weighted mean by weights
-</code></pre>
+<blockquote>
+  <p>An array of data weighted mean by weights</p>
+</blockquote>
 </div>
 
 
@@ -686,16 +674,13 @@ axis: direction to compute weighted average
 <span class="sd">    in the dataset, and the targets predicted by the linear</span>
 <span class="sd">    approximation.</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        y, x : array like, Data to calculate linear regression</span>
+<span class="sd">    Args:</span>
+<span class="sd">        y, x : (array like) Data to calculate linear regression</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        y_pred : float, Predicted y values of from calculation</span>
-<span class="sd">        r_sq : float, R squared value</span>
-<span class="sd">        intercept : float, Intercept from slope intercept equation for y_pred</span>
-<span class="sd">        slope : float, Slope from slope intercept equation for y_pred</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The predicted y values from calculation,</span>
+<span class="sd">        the R squared value, the intercept of the line, and the slope of the line</span>
+<span class="sd">        from the equation for the predicted y values.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -716,18 +701,19 @@ residual sum of squares between the observed targets
 in the dataset, and the targets predicted by the linear
 approximation.</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>y, x : array like, Data to calculate linear regression
-</code></pre>
+<ul>
+<li><strong>y, x :</strong>  (array like) Data to calculate linear regression</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>y_pred : float, Predicted y values of from calculation
-r_sq : float, R squared value
-intercept : float, Intercept from slope intercept equation for y_pred
-slope : float, Slope from slope intercept equation for y_pred
-</code></pre>
+<blockquote>
+  <p>The predicted y values from calculation,
+  the R squared value, the intercept of the line, and the slope of the line
+  from the equation for the predicted y values.</p>
+</blockquote>
 </div>
 
 

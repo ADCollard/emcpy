@@ -84,12 +84,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert Kelvin to Celsius</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        K : temperature in kelvin</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        C : temperature in degrees celsius</span>
+<span class="sd">    Args:</span>
+<span class="sd">        K : (float, or array of floats) temperature in kelvin</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input temperature in degrees celsius</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">K</span> <span class="o">-</span> <span class="mf">273.15</span>
 
@@ -98,12 +96,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert Kelvin to Fahrenheit</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        K : temperature in kelvin</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        F : temperature in degrees fahrenheit</span>
+<span class="sd">    Args:</span>
+<span class="sd">        K : (float, or array of floats) temperature in kelvin</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input temperature in degrees fahrenheit</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">K</span><span class="o">-</span><span class="mf">273.15</span><span class="p">)</span><span class="o">*</span><span class="mi">9</span><span class="o">/</span><span class="mf">5.</span><span class="o">+</span><span class="mi">32</span>
 
@@ -112,12 +108,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert Celsius to Kelvin</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        T_C : temperature in degrees celsius</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        K : temperature in kelvin</span>
+<span class="sd">    Args:</span>
+<span class="sd">        T_C : (float, or array of floats) temperature in degrees celsius</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input temperature in kelvin</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">T_C</span> <span class="o">+</span> <span class="mf">273.15</span>
 
@@ -126,12 +120,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert Celsius to Fahrenheit</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        C : temperature in degrees celsius</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        F : temperature in degrees fahrenheit</span>
+<span class="sd">    Args:</span>
+<span class="sd">        C : (float, or array of floats) temperature in degrees celsius</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input temperature in degrees fahrenheit</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">C</span><span class="o">*</span><span class="mi">9</span><span class="o">/</span><span class="mf">5.</span><span class="o">+</span><span class="mi">32</span>
 
@@ -140,12 +132,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert Fahrenheit to Celsius</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        F : temperature in degrees fahrenheit</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        C : temperature in degrees celsius</span>
+<span class="sd">    Args:</span>
+<span class="sd">        F : (float, or array of floats) temperature in degrees fahrenheit</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input temperature in degrees celsius</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="o">/</span><span class="mi">9</span>
 
@@ -155,12 +145,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert meters per second to miles per hour</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        mps : speed in meters per second</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        MPH : speed in miles per hour</span>
+<span class="sd">    Args:</span>
+<span class="sd">        mps : (float, or array of floats) speed in meters per second</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input speed in miles per hour</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">mps</span> <span class="o">*</span> <span class="mf">2.2369</span>
 
@@ -169,12 +157,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert miles per hour to meters per second</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        MPH : speed in miles per hour</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        mps : speed in meters per second</span>
+<span class="sd">    Args:</span>
+<span class="sd">        MPH : (float, or array of floats) speed in miles per hour</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input speed in meters per second</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">MPH</span> <span class="o">/</span> <span class="mf">2.2369</span>
 
@@ -184,12 +170,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert millimeters to inches</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        mm : length in millimeters</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        inches : length in inches</span>
+<span class="sd">    Args:</span>
+<span class="sd">        mm : (float, or array of floats) length in millimeters</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input length in inches</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">mm</span> <span class="o">*</span> <span class="mf">0.0394</span>
 
@@ -198,12 +182,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert inches to millimeters</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        inches : length in inches</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        mm : length in millimeters</span>
+<span class="sd">    Args:</span>
+<span class="sd">        inches : (float, or array of floats) length in inches</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input length in millimeters</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">inches</span> <span class="o">/</span> <span class="mf">0.0394</span>
 </pre></div>
@@ -225,12 +207,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert Kelvin to Celsius</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        K : temperature in kelvin</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        C : temperature in degrees celsius</span>
+<span class="sd">    Args:</span>
+<span class="sd">        K : (float, or array of floats) temperature in kelvin</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input temperature in degrees celsius</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">K</span> <span class="o">-</span> <span class="mf">273.15</span>
 </pre></div>
@@ -239,15 +219,17 @@
 
             <div class="docstring"><p>Convert Kelvin to Celsius</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>K : temperature in kelvin
-</code></pre>
+<ul>
+<li><strong>K :</strong>  (float, or array of floats) temperature in kelvin</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>C : temperature in degrees celsius
-</code></pre>
+<blockquote>
+  <p>The input temperature in degrees celsius</p>
+</blockquote>
 </div>
 
 
@@ -266,12 +248,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert Kelvin to Fahrenheit</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        K : temperature in kelvin</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        F : temperature in degrees fahrenheit</span>
+<span class="sd">    Args:</span>
+<span class="sd">        K : (float, or array of floats) temperature in kelvin</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input temperature in degrees fahrenheit</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">K</span><span class="o">-</span><span class="mf">273.15</span><span class="p">)</span><span class="o">*</span><span class="mi">9</span><span class="o">/</span><span class="mf">5.</span><span class="o">+</span><span class="mi">32</span>
 </pre></div>
@@ -280,15 +260,17 @@
 
             <div class="docstring"><p>Convert Kelvin to Fahrenheit</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>K : temperature in kelvin
-</code></pre>
+<ul>
+<li><strong>K :</strong>  (float, or array of floats) temperature in kelvin</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>F : temperature in degrees fahrenheit
-</code></pre>
+<blockquote>
+  <p>The input temperature in degrees fahrenheit</p>
+</blockquote>
 </div>
 
 
@@ -307,12 +289,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert Celsius to Kelvin</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        T_C : temperature in degrees celsius</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        K : temperature in kelvin</span>
+<span class="sd">    Args:</span>
+<span class="sd">        T_C : (float, or array of floats) temperature in degrees celsius</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input temperature in kelvin</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">T_C</span> <span class="o">+</span> <span class="mf">273.15</span>
 </pre></div>
@@ -321,15 +301,17 @@
 
             <div class="docstring"><p>Convert Celsius to Kelvin</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>T_C : temperature in degrees celsius
-</code></pre>
+<ul>
+<li><strong>T_C :</strong>  (float, or array of floats) temperature in degrees celsius</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>K : temperature in kelvin
-</code></pre>
+<blockquote>
+  <p>The input temperature in kelvin</p>
+</blockquote>
 </div>
 
 
@@ -348,12 +330,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert Celsius to Fahrenheit</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        C : temperature in degrees celsius</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        F : temperature in degrees fahrenheit</span>
+<span class="sd">    Args:</span>
+<span class="sd">        C : (float, or array of floats) temperature in degrees celsius</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input temperature in degrees fahrenheit</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">C</span><span class="o">*</span><span class="mi">9</span><span class="o">/</span><span class="mf">5.</span><span class="o">+</span><span class="mi">32</span>
 </pre></div>
@@ -362,15 +342,17 @@
 
             <div class="docstring"><p>Convert Celsius to Fahrenheit</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>C : temperature in degrees celsius
-</code></pre>
+<ul>
+<li><strong>C :</strong>  (float, or array of floats) temperature in degrees celsius</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>F : temperature in degrees fahrenheit
-</code></pre>
+<blockquote>
+  <p>The input temperature in degrees fahrenheit</p>
+</blockquote>
 </div>
 
 
@@ -389,12 +371,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert Fahrenheit to Celsius</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        F : temperature in degrees fahrenheit</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        C : temperature in degrees celsius</span>
+<span class="sd">    Args:</span>
+<span class="sd">        F : (float, or array of floats) temperature in degrees fahrenheit</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input temperature in degrees celsius</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="o">/</span><span class="mi">9</span>
 </pre></div>
@@ -403,15 +383,17 @@
 
             <div class="docstring"><p>Convert Fahrenheit to Celsius</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>F : temperature in degrees fahrenheit
-</code></pre>
+<ul>
+<li><strong>F :</strong>  (float, or array of floats) temperature in degrees fahrenheit</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>C : temperature in degrees celsius
-</code></pre>
+<blockquote>
+  <p>The input temperature in degrees celsius</p>
+</blockquote>
 </div>
 
 
@@ -430,12 +412,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert meters per second to miles per hour</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        mps : speed in meters per second</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        MPH : speed in miles per hour</span>
+<span class="sd">    Args:</span>
+<span class="sd">        mps : (float, or array of floats) speed in meters per second</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input speed in miles per hour</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">mps</span> <span class="o">*</span> <span class="mf">2.2369</span>
 </pre></div>
@@ -444,15 +424,17 @@
 
             <div class="docstring"><p>Convert meters per second to miles per hour</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>mps : speed in meters per second
-</code></pre>
+<ul>
+<li><strong>mps :</strong>  (float, or array of floats) speed in meters per second</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>MPH : speed in miles per hour
-</code></pre>
+<blockquote>
+  <p>The input speed in miles per hour</p>
+</blockquote>
 </div>
 
 
@@ -471,12 +453,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert miles per hour to meters per second</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        MPH : speed in miles per hour</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        mps : speed in meters per second</span>
+<span class="sd">    Args:</span>
+<span class="sd">        MPH : (float, or array of floats) speed in miles per hour</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input speed in meters per second</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">MPH</span> <span class="o">/</span> <span class="mf">2.2369</span>
 </pre></div>
@@ -485,15 +465,17 @@
 
             <div class="docstring"><p>Convert miles per hour to meters per second</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>MPH : speed in miles per hour
-</code></pre>
+<ul>
+<li><strong>MPH :</strong>  (float, or array of floats) speed in miles per hour</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>mps : speed in meters per second
-</code></pre>
+<blockquote>
+  <p>The input speed in meters per second</p>
+</blockquote>
 </div>
 
 
@@ -512,12 +494,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert millimeters to inches</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        mm : length in millimeters</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        inches : length in inches</span>
+<span class="sd">    Args:</span>
+<span class="sd">        mm : (float, or array of floats) length in millimeters</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input length in inches</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">mm</span> <span class="o">*</span> <span class="mf">0.0394</span>
 </pre></div>
@@ -526,15 +506,17 @@
 
             <div class="docstring"><p>Convert millimeters to inches</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>mm : length in millimeters
-</code></pre>
+<ul>
+<li><strong>mm :</strong>  (float, or array of floats) length in millimeters</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>inches : length in inches
-</code></pre>
+<blockquote>
+  <p>The input length in inches</p>
+</blockquote>
 </div>
 
 
@@ -553,12 +535,10 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert inches to millimeters</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">        inches : length in inches</span>
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">        mm : length in millimeters</span>
+<span class="sd">    Args:</span>
+<span class="sd">        inches : (float, or array of floats) length in inches</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        The input length in millimeters</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">inches</span> <span class="o">/</span> <span class="mf">0.0394</span>
 </pre></div>
@@ -567,15 +547,17 @@
 
             <div class="docstring"><p>Convert inches to millimeters</p>
 
-<h2 id="parameters">Parameters</h2>
+<h6 id="args">Args</h6>
 
-<pre><code>inches : length in inches
-</code></pre>
+<ul>
+<li><strong>inches :</strong>  (float, or array of floats) length in inches</li>
+</ul>
 
-<h2 id="returns">Returns</h2>
+<h6 id="returns">Returns</h6>
 
-<pre><code>mm : length in millimeters
-</code></pre>
+<blockquote>
+  <p>The input length in millimeters</p>
+</blockquote>
 </div>
 
 
