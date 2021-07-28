@@ -31,7 +31,7 @@
                     <h2>API Documentation</h2>
                         <ul class="memberlist">
             <li>
-                    <a class="variable" href="#spatial">spatial</a>
+                    <a class="function" href="#map2d">map2d</a>
             </li>
     </ul>
 
@@ -57,7 +57,7 @@
 <span class="kn">from</span> <span class="nn">emcpy.utils</span> <span class="kn">import</span> <span class="n">roundNumber</span>
 <span class="kn">from</span> <span class="nn">emcpy.plots</span> <span class="kn">import</span> <span class="n">domains</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;spatial&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;map2d&#39;</span><span class="p">]</span>
 
 
 <span class="k">def</span> <span class="nf">_map_scatter</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">plotmap</span><span class="p">,</span> <span class="n">plotopts</span><span class="p">):</span>
@@ -186,13 +186,117 @@
         </details>
 
             </section>
-                <section id="spatial">
-                                <div class="attr variable"><a class="headerlink" href="#spatial">#&nbsp;&nbsp</a>
+                <section id="map2d">
+                            <div class="attr function"><a class="headerlink" href="#map2d">#&nbsp;&nbsp</a>
 
-        <span class="name">spatial</span>
+        
+            <span class="def">def</span>
+            <span class="name">map2d</span><span class="signature">(
+    latitude,
+    longitude,
+    data,
+    domain=&#39;global&#39;,
+    plotmap=True,
+    figsize=(10, 8),
+    cmap=&#39;viridis&#39;,
+    markersize=10,
+    grid=False,
+    vmin=None,
+    vmax=None,
+    title=&#39;EMCPy Map Plot&#39;,
+    time_title=None,
+    cbar_label=None
+)</span>:
     </div>
 
-    
+                <details>
+            <summary>View Source</summary>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">map2d</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s1">&#39;global&#39;</span><span class="p">,</span> <span class="n">plotmap</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+          <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+          <span class="n">vmin</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;EMCPy Map Plot&#39;</span><span class="p">,</span> <span class="n">time_title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+          <span class="n">cbar_label</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot a spatial map of desired data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        latitude : (array type) Latitude array for spatial data</span>
+<span class="sd">        longitude : (array type) Longitude array for spatial data</span>
+<span class="sd">        data : (array type) Spatial data to be plotted</span>
+<span class="sd">        domain : (str, default=&#39;global&#39;) Map domain for plot</span>
+<span class="sd">        plotmap : (bool, default=True) Plots data with a background map</span>
+<span class="sd">        figsize : (tuple, default=(10,8)) Figure size</span>
+<span class="sd">        cmap : (str, optional, default=&#39;viridis&#39;) Color map of data</span>
+<span class="sd">        markersize : (int, optional, default=10) Marker size for 1D data types</span>
+<span class="sd">        grid : (bool, optional, default=False) Plot grid on spatial plot</span>
+<span class="sd">        vmin : (int, optional, default=None) Minimum value displayed on plot</span>
+<span class="sd">        vmax : (int, optional, default=None) Maximum value displayed on plot</span>
+<span class="sd">        title : (str, optional, default=&#39;EMCPy Map Plot&#39;) Plot title</span>
+<span class="sd">        time_title : (str, optional, default=None) Secondary title for</span>
+<span class="sd">                     date/cycle to add to plot</span>
+<span class="sd">        cbar_label : (str, optional, deafult=None) Colorbar label</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A matplotlib figure object of the 2d plot</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># If no vmin/vmax given, make the min/max of data</span>
+    <span class="k">if</span> <span class="n">vmin</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">vmax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># Dictionary of plot options</span>
+    <span class="n">plotopts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;figsize&#39;</span><span class="p">:</span> <span class="n">figsize</span><span class="p">,</span> <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="n">cmap</span><span class="p">,</span> <span class="s1">&#39;marker size&#39;</span><span class="p">:</span> <span class="n">markersize</span><span class="p">,</span>
+                <span class="s1">&#39;vmin&#39;</span><span class="p">:</span> <span class="n">roundNumber</span><span class="p">(</span><span class="n">vmin</span><span class="p">),</span> <span class="s1">&#39;vmax&#39;</span><span class="p">:</span> <span class="n">roundNumber</span><span class="p">(</span><span class="n">vmax</span><span class="p">),</span>
+                <span class="s1">&#39;grid&#39;</span><span class="p">:</span> <span class="n">grid</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span> <span class="s1">&#39;time title&#39;</span><span class="p">:</span> <span class="n">time_title</span><span class="p">,</span>
+                <span class="s1">&#39;cbar label&#39;</span><span class="p">:</span> <span class="n">cbar_label</span><span class="p">}</span>
+
+    <span class="c1"># Plot scatter for 1D data; pcolormesh for 2D data</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">_map_scatter</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span>
+                           <span class="n">plotmap</span><span class="p">,</span> <span class="n">plotopts</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">_map_pcolormesh</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span>
+                              <span class="n">plotmap</span><span class="p">,</span> <span class="n">plotopts</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Data is not 1D or 2D. Please enter correct &#39;</span> <span class="o">+</span>
+                        <span class="s1">&#39;dimension data.&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+
+        </details>
+
+            <div class="docstring"><p>Plot a spatial map of desired data.</p>
+
+<h6 id="args">Args</h6>
+
+<ul>
+<li><strong>latitude :</strong>  (array type) Latitude array for spatial data</li>
+<li><strong>longitude :</strong>  (array type) Longitude array for spatial data</li>
+<li><strong>data :</strong>  (array type) Spatial data to be plotted</li>
+<li><strong>domain :</strong>  (str, default='global') Map domain for plot</li>
+<li><strong>plotmap :</strong>  (bool, default=True) Plots data with a background map</li>
+<li><strong>figsize :</strong>  (tuple, default=(10,8)) Figure size</li>
+<li><strong>cmap :</strong>  (str, optional, default='viridis') Color map of data</li>
+<li><strong>markersize :</strong>  (int, optional, default=10) Marker size for 1D data types</li>
+<li><strong>grid :</strong>  (bool, optional, default=False) Plot grid on spatial plot</li>
+<li><strong>vmin :</strong>  (int, optional, default=None) Minimum value displayed on plot</li>
+<li><strong>vmax :</strong>  (int, optional, default=None) Maximum value displayed on plot</li>
+<li><strong>title :</strong>  (str, optional, default='EMCPy Map Plot') Plot title</li>
+<li><strong>time_title :</strong>  (str, optional, default=None) Secondary title for
+date/cycle to add to plot</li>
+<li><strong>cbar_label :</strong>  (str, optional, deafult=None) Colorbar label</li>
+</ul>
+
+<h6 id="returns">Returns</h6>
+
+<blockquote>
+  <p>A matplotlib figure object of the 2d plot</p>
+</blockquote>
+</div>
+
 
                 </section>
     </main>
