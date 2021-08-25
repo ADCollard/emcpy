@@ -83,7 +83,7 @@
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 
 
-<span class="k">def</span> <span class="nf">mstats</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">mstats</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Function that computes and displays</span>
 <span class="sd">    various statistics of a variable.</span>
@@ -91,7 +91,12 @@
 <span class="sd">    A better alternative is `scipy.stats.describe()`</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        x : (numpy array) numpy variable whose statistics are to be computed and displayed</span>
+<span class="sd">        x : (numpy array) numpy variable whose statistics are to</span>
+<span class="sd">            be computed and displayed</span>
+<span class="sd">        verbose : (boolean, default=True) Prints statistics if True</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        OUT : (object) returns if verbose=False</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">OUT</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">(),</span> <span class="p">{})</span>
@@ -117,37 +122,45 @@
     <span class="n">OUT</span><span class="o">.</span><span class="n">FracZero</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">xf</span><span class="p">[</span><span class="n">xf</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">])</span> <span class="o">/</span> <span class="n">OUT</span><span class="o">.</span><span class="n">NAnalyzedElements</span>
     <span class="n">OUT</span><span class="o">.</span><span class="n">FracNan</span> <span class="o">=</span> <span class="n">OUT</span><span class="o">.</span><span class="n">Nnans</span> <span class="o">/</span> <span class="n">OUT</span><span class="o">.</span><span class="n">NElements</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;================= m s t a t s ==================&#39;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;        MatrixSize: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MatrixSize</span><span class="p">)))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;         NElements: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">NElements</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39; NAnalyzedElements: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">NAnalyzedElements</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">datatype</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;int8&#39;</span><span class="p">,</span> <span class="s1">&#39;int16&#39;</span><span class="p">,</span> <span class="s1">&#39;int32&#39;</span><span class="p">,</span> <span class="s1">&#39;int64&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="s1">&#39;uint32&#39;</span><span class="p">,</span> <span class="s1">&#39;uint64&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;float16&#39;</span><span class="p">,</span> <span class="s1">&#39;float32&#39;</span><span class="p">,</span> <span class="s1">&#39;float64&#39;</span><span class="p">]:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;              Mean: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Mean</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;               Max: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Max</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;               Min: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Min</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;            Median: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Median</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;             StDev: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">StDev</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;           MeanAbs: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MeanAbs</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;            MinAbs: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MinAbs</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">datatype</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;complex&#39;</span><span class="p">,</span> <span class="s1">&#39;complex64&#39;</span><span class="p">,</span> <span class="s1">&#39;complex128&#39;</span><span class="p">]:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;              Mean: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Mean</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">Mean</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;               Max: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Max</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">Max</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;               Min: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Min</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">Min</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;            Median: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span>
-              <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Median</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">Median</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;             StDev: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span>
-              <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">StDev</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">StDev</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;           MeanAbs: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span>
-              <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MeanAbs</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">MeanAbs</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;            MinAbs: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span>
-              <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MinAbs</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">MinAbs</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;          FracZero: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">FracZero</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;           FracNaN: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">FracNan</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;================================================&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;================= m s t a t s ==================&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;        MatrixSize: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MatrixSize</span><span class="p">)))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;         NElements: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">NElements</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39; NAnalyzedElements: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">NAnalyzedElements</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">datatype</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;int8&#39;</span><span class="p">,</span> <span class="s1">&#39;int16&#39;</span><span class="p">,</span> <span class="s1">&#39;int32&#39;</span><span class="p">,</span> <span class="s1">&#39;int64&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="s1">&#39;uint32&#39;</span><span class="p">,</span> <span class="s1">&#39;uint64&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;float16&#39;</span><span class="p">,</span> <span class="s1">&#39;float32&#39;</span><span class="p">,</span> <span class="s1">&#39;float64&#39;</span><span class="p">]:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;              Mean: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Mean</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;               Max: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Max</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;               Min: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Min</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;            Median: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Median</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;             StDev: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">StDev</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;           MeanAbs: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MeanAbs</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;            MinAbs: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MinAbs</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">datatype</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;complex&#39;</span><span class="p">,</span> <span class="s1">&#39;complex64&#39;</span><span class="p">,</span> <span class="s1">&#39;complex128&#39;</span><span class="p">]:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;              Mean: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Mean</span><span class="o">.</span><span class="n">real</span><span class="p">,</span>
+                                                    <span class="n">OUT</span><span class="o">.</span><span class="n">Mean</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;               Max: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Max</span><span class="o">.</span><span class="n">real</span><span class="p">,</span>
+                                                    <span class="n">OUT</span><span class="o">.</span><span class="n">Max</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;               Min: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Min</span><span class="o">.</span><span class="n">real</span><span class="p">,</span>
+                                                    <span class="n">OUT</span><span class="o">.</span><span class="n">Min</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;            Median: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span>
+                  <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Median</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">Median</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;             StDev: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span>
+                  <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">StDev</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">StDev</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;           MeanAbs: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span>
+                  <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MeanAbs</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">MeanAbs</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;            MinAbs: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span>
+                  <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MinAbs</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">MinAbs</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;          FracZero: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">FracZero</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;           FracNaN: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">FracNan</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;================================================&#39;</span><span class="p">)</span>
 
-    <span class="k">return</span>
+        <span class="k">return</span>
+
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="n">OUT</span>
 
 
 <span class="k">def</span> <span class="nf">lregress</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="mf">95.0</span><span class="p">):</span>
@@ -164,7 +177,8 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        The linear regression coefficient (float),</span>
 <span class="sd">        the standard error on the linear regression coefficient (float),</span>
-<span class="sd">        and the statistical signficance of the linear regression coefficient (bool).</span>
+<span class="sd">        and the statistical signficance of the linear regression</span>
+<span class="sd">        coefficient (bool).</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="c1"># make sure the two samples are of the same size</span>
@@ -197,19 +211,23 @@
 
 <span class="k">def</span> <span class="nf">ttest</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="mf">95.0</span><span class="p">,</span> <span class="n">paired</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Given two samples, perform the Student&#39;s t-test and return the errorbar.  The test assumes the sample size be the same between x and y.</span>
+<span class="sd">    Given two samples, perform the Student&#39;s t-test and return the errorbar.</span>
+<span class="sd">    The test assumes the sample size be the same between x and y.</span>
 <span class="sd">    Args:</span>
 <span class="sd">        x: (numpy array) control</span>
 <span class="sd">        y: (numpy array, optional, default=x )experiment</span>
 <span class="sd">        ci: (float, optional, default=95) confidence interval percentage</span>
 <span class="sd">        paired: (bool, optional, default=True) paired t-test</span>
-<span class="sd">        scale: (bool, optional, default=False) normalize with mean(x) and return as a percentage</span>
+<span class="sd">        scale: (bool, optional, default=False) normalize with mean(x) and</span>
+<span class="sd">               return as a percentage</span>
+
 <span class="sd">    Returns:</span>
 <span class="sd">        The (normalized) difference in the sample means and</span>
 <span class="sd">        the (normalized) errorbar with respect to control.</span>
 
 <span class="sd">    To mask out statistically significant values:\n</span>
-<span class="sd">    `diffmask = numpy.ma.masked_where(numpy.abs(diffmean)&lt;=errorbar,diffmean).mask`</span>
+<span class="sd">    `diffmask = numpy.ma.masked_where(numpy.abs(diffmean)</span>
+<span class="sd">                                      &lt;=errorbar,diffmean).mask`</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">nsamp</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -287,8 +305,9 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        The predicted y values from calculation,</span>
-<span class="sd">        the R squared value, the intercept of the line, and the slope of the line</span>
-<span class="sd">        from the equation for the predicted y values.</span>
+<span class="sd">        the R squared value, the intercept of the line, and the</span>
+<span class="sd">        slope of the line from the equation for the predicted</span>
+<span class="sd">        y values.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -309,12 +328,12 @@
 
         
             <span class="def">def</span>
-            <span class="name">mstats</span><span class="signature">(x)</span>:
+            <span class="name">mstats</span><span class="signature">(x, verbose=True)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">mstats</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">mstats</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Function that computes and displays</span>
 <span class="sd">    various statistics of a variable.</span>
@@ -322,7 +341,12 @@
 <span class="sd">    A better alternative is `scipy.stats.describe()`</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        x : (numpy array) numpy variable whose statistics are to be computed and displayed</span>
+<span class="sd">        x : (numpy array) numpy variable whose statistics are to</span>
+<span class="sd">            be computed and displayed</span>
+<span class="sd">        verbose : (boolean, default=True) Prints statistics if True</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        OUT : (object) returns if verbose=False</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">OUT</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="p">(),</span> <span class="p">{})</span>
@@ -348,37 +372,45 @@
     <span class="n">OUT</span><span class="o">.</span><span class="n">FracZero</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">xf</span><span class="p">[</span><span class="n">xf</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">])</span> <span class="o">/</span> <span class="n">OUT</span><span class="o">.</span><span class="n">NAnalyzedElements</span>
     <span class="n">OUT</span><span class="o">.</span><span class="n">FracNan</span> <span class="o">=</span> <span class="n">OUT</span><span class="o">.</span><span class="n">Nnans</span> <span class="o">/</span> <span class="n">OUT</span><span class="o">.</span><span class="n">NElements</span>
 
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;================= m s t a t s ==================&#39;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;        MatrixSize: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MatrixSize</span><span class="p">)))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;         NElements: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">NElements</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39; NAnalyzedElements: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">NAnalyzedElements</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">datatype</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;int8&#39;</span><span class="p">,</span> <span class="s1">&#39;int16&#39;</span><span class="p">,</span> <span class="s1">&#39;int32&#39;</span><span class="p">,</span> <span class="s1">&#39;int64&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="s1">&#39;uint32&#39;</span><span class="p">,</span> <span class="s1">&#39;uint64&#39;</span><span class="p">,</span>
-                    <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;float16&#39;</span><span class="p">,</span> <span class="s1">&#39;float32&#39;</span><span class="p">,</span> <span class="s1">&#39;float64&#39;</span><span class="p">]:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;              Mean: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Mean</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;               Max: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Max</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;               Min: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Min</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;            Median: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Median</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;             StDev: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">StDev</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;           MeanAbs: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MeanAbs</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;            MinAbs: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MinAbs</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">datatype</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;complex&#39;</span><span class="p">,</span> <span class="s1">&#39;complex64&#39;</span><span class="p">,</span> <span class="s1">&#39;complex128&#39;</span><span class="p">]:</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;              Mean: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Mean</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">Mean</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;               Max: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Max</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">Max</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;               Min: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Min</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">Min</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;            Median: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span>
-              <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Median</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">Median</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;             StDev: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span>
-              <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">StDev</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">StDev</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;           MeanAbs: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span>
-              <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MeanAbs</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">MeanAbs</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;            MinAbs: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span>
-              <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MinAbs</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">MinAbs</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;          FracZero: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">FracZero</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;           FracNaN: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">FracNan</span><span class="p">))</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;================================================&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;================= m s t a t s ==================&#39;</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;        MatrixSize: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MatrixSize</span><span class="p">)))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;         NElements: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">NElements</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39; NAnalyzedElements: </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">NAnalyzedElements</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">datatype</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;int8&#39;</span><span class="p">,</span> <span class="s1">&#39;int16&#39;</span><span class="p">,</span> <span class="s1">&#39;int32&#39;</span><span class="p">,</span> <span class="s1">&#39;int64&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="s1">&#39;uint32&#39;</span><span class="p">,</span> <span class="s1">&#39;uint64&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;float16&#39;</span><span class="p">,</span> <span class="s1">&#39;float32&#39;</span><span class="p">,</span> <span class="s1">&#39;float64&#39;</span><span class="p">]:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;              Mean: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Mean</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;               Max: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Max</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;               Min: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Min</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;            Median: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Median</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;             StDev: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">StDev</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;           MeanAbs: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MeanAbs</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;            MinAbs: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MinAbs</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">datatype</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;complex&#39;</span><span class="p">,</span> <span class="s1">&#39;complex64&#39;</span><span class="p">,</span> <span class="s1">&#39;complex128&#39;</span><span class="p">]:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;              Mean: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Mean</span><span class="o">.</span><span class="n">real</span><span class="p">,</span>
+                                                    <span class="n">OUT</span><span class="o">.</span><span class="n">Mean</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;               Max: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Max</span><span class="o">.</span><span class="n">real</span><span class="p">,</span>
+                                                    <span class="n">OUT</span><span class="o">.</span><span class="n">Max</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;               Min: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Min</span><span class="o">.</span><span class="n">real</span><span class="p">,</span>
+                                                    <span class="n">OUT</span><span class="o">.</span><span class="n">Min</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;            Median: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span>
+                  <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">Median</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">Median</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;             StDev: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span>
+                  <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">StDev</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">StDev</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;           MeanAbs: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span>
+                  <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MeanAbs</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">MeanAbs</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;            MinAbs: </span><span class="si">%f</span><span class="s1"> + </span><span class="si">%f</span><span class="s1">i&#39;</span> <span class="o">%</span>
+                  <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">MinAbs</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">OUT</span><span class="o">.</span><span class="n">MinAbs</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;          FracZero: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">FracZero</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;           FracNaN: </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">OUT</span><span class="o">.</span><span class="n">FracNan</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;================================================&#39;</span><span class="p">)</span>
 
-    <span class="k">return</span>
+        <span class="k">return</span>
+
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="n">OUT</span>
 </pre></div>
 
         </details>
@@ -391,8 +423,16 @@ various statistics of a variable.</p>
 <h6 id="args">Args</h6>
 
 <ul>
-<li><strong>x :</strong>  (numpy array) numpy variable whose statistics are to be computed and displayed</li>
+<li><strong>x :</strong>  (numpy array) numpy variable whose statistics are to
+be computed and displayed</li>
+<li><strong>verbose :</strong>  (boolean, default=True) Prints statistics if True</li>
 </ul>
+
+<h6 id="returns">Returns</h6>
+
+<blockquote>
+  <p>OUT : (object) returns if verbose=False</p>
+</blockquote>
 </div>
 
 
@@ -421,7 +461,8 @@ various statistics of a variable.</p>
 <span class="sd">    Returns:</span>
 <span class="sd">        The linear regression coefficient (float),</span>
 <span class="sd">        the standard error on the linear regression coefficient (float),</span>
-<span class="sd">        and the statistical signficance of the linear regression coefficient (bool).</span>
+<span class="sd">        and the statistical signficance of the linear regression</span>
+<span class="sd">        coefficient (bool).</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="c1"># make sure the two samples are of the same size</span>
@@ -471,7 +512,8 @@ for a t-value at a desired confidence interval.</p>
 <blockquote>
   <p>The linear regression coefficient (float),
   the standard error on the linear regression coefficient (float),
-  and the statistical signficance of the linear regression coefficient (bool).</p>
+  and the statistical signficance of the linear regression
+  coefficient (bool).</p>
 </blockquote>
 </div>
 
@@ -489,19 +531,23 @@ for a t-value at a desired confidence interval.</p>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ttest</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="mf">95.0</span><span class="p">,</span> <span class="n">paired</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Given two samples, perform the Student&#39;s t-test and return the errorbar.  The test assumes the sample size be the same between x and y.</span>
+<span class="sd">    Given two samples, perform the Student&#39;s t-test and return the errorbar.</span>
+<span class="sd">    The test assumes the sample size be the same between x and y.</span>
 <span class="sd">    Args:</span>
 <span class="sd">        x: (numpy array) control</span>
 <span class="sd">        y: (numpy array, optional, default=x )experiment</span>
 <span class="sd">        ci: (float, optional, default=95) confidence interval percentage</span>
 <span class="sd">        paired: (bool, optional, default=True) paired t-test</span>
-<span class="sd">        scale: (bool, optional, default=False) normalize with mean(x) and return as a percentage</span>
+<span class="sd">        scale: (bool, optional, default=False) normalize with mean(x) and</span>
+<span class="sd">               return as a percentage</span>
+
 <span class="sd">    Returns:</span>
 <span class="sd">        The (normalized) difference in the sample means and</span>
 <span class="sd">        the (normalized) errorbar with respect to control.</span>
 
 <span class="sd">    To mask out statistically significant values:\n</span>
-<span class="sd">    `diffmask = numpy.ma.masked_where(numpy.abs(diffmean)&lt;=errorbar,diffmean).mask`</span>
+<span class="sd">    `diffmask = numpy.ma.masked_where(numpy.abs(diffmean)</span>
+<span class="sd">                                      &lt;=errorbar,diffmean).mask`</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">nsamp</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -538,7 +584,8 @@ for a t-value at a desired confidence interval.</p>
 
         </details>
 
-            <div class="docstring"><p>Given two samples, perform the Student's t-test and return the errorbar.  The test assumes the sample size be the same between x and y.</p>
+            <div class="docstring"><p>Given two samples, perform the Student's t-test and return the errorbar.
+The test assumes the sample size be the same between x and y.</p>
 
 <h6 id="args">Args</h6>
 
@@ -547,7 +594,8 @@ for a t-value at a desired confidence interval.</p>
 <li><strong>y:</strong>  (numpy array, optional, default=x )experiment</li>
 <li><strong>ci:</strong>  (float, optional, default=95) confidence interval percentage</li>
 <li><strong>paired:</strong>  (bool, optional, default=True) paired t-test</li>
-<li><strong>scale:</strong>  (bool, optional, default=False) normalize with mean(x) and return as a percentage</li>
+<li><strong>scale:</strong>  (bool, optional, default=False) normalize with mean(x) and
+return as a percentage</li>
 </ul>
 
 <h6 id="returns">Returns</h6>
@@ -559,7 +607,8 @@ for a t-value at a desired confidence interval.</p>
 
 <p>To mask out statistically significant values:</p>
 
-<p><code>diffmask = numpy.ma.masked_where(numpy.abs(diffmean)&lt;=errorbar,diffmean).mask</code></p>
+<p><code>diffmask = numpy.ma.masked_where(numpy.abs(diffmean)
+                                  &lt;=errorbar,diffmean).mask</code></p>
 </div>
 
 
@@ -680,8 +729,9 @@ Uses <code>numpy.average</code></p>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        The predicted y values from calculation,</span>
-<span class="sd">        the R squared value, the intercept of the line, and the slope of the line</span>
-<span class="sd">        from the equation for the predicted y values.</span>
+<span class="sd">        the R squared value, the intercept of the line, and the</span>
+<span class="sd">        slope of the line from the equation for the predicted</span>
+<span class="sd">        y values.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -712,8 +762,9 @@ approximation.</p>
 
 <blockquote>
   <p>The predicted y values from calculation,
-  the R squared value, the intercept of the line, and the slope of the line
-  from the equation for the predicted y values.</p>
+  the R squared value, the intercept of the line, and the
+  slope of the line from the equation for the predicted
+  y values.</p>
 </blockquote>
 </div>
 
