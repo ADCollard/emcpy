@@ -59,80 +59,25 @@
                         <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-<span class="n">vardict</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;temperature&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;temperature&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;short name&#39;</span><span class="p">:</span> <span class="s1">&#39;t&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;variable type&#39;</span><span class="p">:</span> <span class="s1">&#39;conventional&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">220</span><span class="p">,</span> <span class="mi">320</span><span class="p">],</span>
-        <span class="s1">&#39;contour interval&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="s1">&#39;diff range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
-        <span class="s1">&#39;diff contour interval&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
-        <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;rainbow&#39;</span>
-    <span class="p">},</span>
-    <span class="s1">&#39;specific humidity&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;specific humidity&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;short name&#39;</span><span class="p">:</span> <span class="s1">&#39;q&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;variable type&#39;</span><span class="p">:</span> <span class="s1">&#39;conventional&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;kg/kg&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.030</span><span class="p">],</span>
-        <span class="s1">&#39;contour interval&#39;</span><span class="p">:</span> <span class="mf">0.0025</span><span class="p">,</span>
-        <span class="s1">&#39;diff range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">],</span>
-        <span class="s1">&#39;diff contour interval&#39;</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span>
-        <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;YlGnBu&#39;</span>
-    <span class="p">},</span>
-    <span class="s1">&#39;u&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;zonal wind&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;short name&#39;</span><span class="p">:</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;variable type&#39;</span><span class="p">:</span> <span class="s1">&#39;conventional&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;m/s&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
-        <span class="s1">&#39;contour interval&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="s1">&#39;diff range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
-        <span class="s1">&#39;diff contour interval&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
-        <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;PuOr&#39;</span>
-    <span class="p">},</span>
-    <span class="s1">&#39;v&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;meridional wind&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;short name&#39;</span><span class="p">:</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;variable type&#39;</span><span class="p">:</span> <span class="s1">&#39;conventional&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;m/s&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span>
-        <span class="s1">&#39;contour interval&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="s1">&#39;diff range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
-        <span class="s1">&#39;diff contour interval&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
-        <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;PuOr&#39;</span>
-    <span class="p">},</span>
-    <span class="s1">&#39;wind speed&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;wind speed&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;short name&#39;</span><span class="p">:</span> <span class="s1">&#39;wndspd&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;variable type&#39;</span><span class="p">:</span> <span class="s1">&#39;conventional&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;m/s&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">75</span><span class="p">],</span>
-        <span class="s1">&#39;contour interval&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="s1">&#39;diff range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
-        <span class="s1">&#39;diff contour interval&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
-        <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;viridis&#39;</span>
-    <span class="p">},</span>
-    <span class="s1">&#39;brightness temperature&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;brightness temperature&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;short name&#39;</span><span class="p">:</span> <span class="s1">&#39;bt&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;variable type&#39;</span><span class="p">:</span> <span class="s1">&#39;radiance&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">220</span><span class="p">,</span> <span class="mi">320</span><span class="p">],</span>
-        <span class="s1">&#39;contour interval&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="s1">&#39;diff range&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
-        <span class="s1">&#39;diff contour interval&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
-        <span class="s1">&#39;cmap&#39;</span><span class="p">:</span> <span class="s1">&#39;rainbow&#39;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
 
 <span class="k">class</span> <span class="nc">VariableSpecs</span><span class="p">:</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">eval_type</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">eval_type</span><span class="p">,</span> <span class="n">var_yaml</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+        <span class="c1"># find default YAML if not specified</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">var_yaml</span><span class="p">:</span>
+            <span class="n">_emcpy_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
+            <span class="n">var_yaml</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_emcpy_dir</span><span class="p">,</span>
+                                    <span class="s1">&#39;cfg&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;var_defaults.yaml&#39;</span><span class="p">)</span>
+
+        <span class="c1"># read YAML into dictionary</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">var_yaml</span><span class="p">)</span> <span class="k">as</span> <span class="n">yamlfile</span><span class="p">:</span>
+            <span class="n">vardict</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">yamlfile</span><span class="p">,</span> <span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">FullLoader</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">variable</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">vardict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{variable} is not a valid variable. &#39;</span> <span class="o">+</span>
@@ -181,7 +126,18 @@
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">VariableSpecs</span><span class="p">:</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">eval_type</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">eval_type</span><span class="p">,</span> <span class="n">var_yaml</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+        <span class="c1"># find default YAML if not specified</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">var_yaml</span><span class="p">:</span>
+            <span class="n">_emcpy_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
+            <span class="n">var_yaml</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_emcpy_dir</span><span class="p">,</span>
+                                    <span class="s1">&#39;cfg&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;var_defaults.yaml&#39;</span><span class="p">)</span>
+
+        <span class="c1"># read YAML into dictionary</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">var_yaml</span><span class="p">)</span> <span class="k">as</span> <span class="n">yamlfile</span><span class="p">:</span>
+            <span class="n">vardict</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">yamlfile</span><span class="p">,</span> <span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">FullLoader</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">variable</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">vardict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{variable} is not a valid variable. &#39;</span> <span class="o">+</span>
@@ -222,12 +178,23 @@
                                         <div class="attr function"><a class="headerlink" href="#VariableSpecs.__init__">#&nbsp;&nbsp</a>
 
         
-            <span class="name">VariableSpecs</span><span class="signature">(variable, eval_type)</span>
+            <span class="name">VariableSpecs</span><span class="signature">(variable, eval_type, var_yaml=None)</span>
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">eval_type</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">eval_type</span><span class="p">,</span> <span class="n">var_yaml</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+
+        <span class="c1"># find default YAML if not specified</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">var_yaml</span><span class="p">:</span>
+            <span class="n">_emcpy_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span>
+            <span class="n">var_yaml</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_emcpy_dir</span><span class="p">,</span>
+                                    <span class="s1">&#39;cfg&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;var_defaults.yaml&#39;</span><span class="p">)</span>
+
+        <span class="c1"># read YAML into dictionary</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">var_yaml</span><span class="p">)</span> <span class="k">as</span> <span class="n">yamlfile</span><span class="p">:</span>
+            <span class="n">vardict</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">yamlfile</span><span class="p">,</span> <span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">FullLoader</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">variable</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">vardict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{variable} is not a valid variable. &#39;</span> <span class="o">+</span>
