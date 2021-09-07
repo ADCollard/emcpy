@@ -58,6 +58,9 @@
                                 <a class="function" href="#CreateMap.add_grid">add_grid</a>
                         </li>
                         <li>
+                                <a class="function" href="#CreateMap.add_stats_dict">add_stats_dict</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#CreateMap.return_figure">return_figure</a>
                         </li>
                 </ul>
@@ -354,6 +357,24 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">,</span>
                           <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="n">linestyle</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_stats_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats_dict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Stats&#39;</span><span class="p">:</span> <span class="s1">&#39;None&#39;</span><span class="p">},</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Annotate statistics to the figure. For a given dictionary, stats_dict,</span>
+<span class="sd">        each key and value will be annotated in order.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            stats_dict : (dict; default={&#39;Stats&#39;: &#39;None&#39;}) dict of values to be annotated</span>
+<span class="sd">            fontsize : (int; default=10) Annotated text font size</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># loop through the dictionary and create the sting to annotate</span>
+        <span class="n">outstr</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">stats_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">outstr</span> <span class="o">=</span> <span class="n">outstr</span> <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;    {key}: {value}&#39;</span>
+        <span class="c1"># annotate this just underneath the figure on the right side</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">outstr</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span>
+                         <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                         <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">return_figure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -671,6 +692,24 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">,</span>
                           <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="n">linestyle</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_stats_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats_dict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Stats&#39;</span><span class="p">:</span> <span class="s1">&#39;None&#39;</span><span class="p">},</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Annotate statistics to the figure. For a given dictionary, stats_dict,</span>
+<span class="sd">        each key and value will be annotated in order.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            stats_dict : (dict; default={&#39;Stats&#39;: &#39;None&#39;}) dict of values to be annotated</span>
+<span class="sd">            fontsize : (int; default=10) Annotated text font size</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># loop through the dictionary and create the sting to annotate</span>
+        <span class="n">outstr</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">stats_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">outstr</span> <span class="o">=</span> <span class="n">outstr</span> <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;    {key}: {value}&#39;</span>
+        <span class="c1"># annotate this just underneath the figure on the right side</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">outstr</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span>
+                         <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                         <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">return_figure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1164,6 +1203,50 @@ https://scitools.org.uk/cartopy/docs/v0.14/matplotlib
 <li><strong>alpha :</strong>  (float; default=None) The alpha value,
 between 0 (transparent) and 1 (opaque)</li>
 <li><strong>linestyle :</strong>  (str; default='-') Line style</li>
+</ul>
+</div>
+
+
+                            </div>
+                            <div id="CreateMap.add_stats_dict" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#CreateMap.add_stats_dict">#&nbsp;&nbsp</a>
+
+        
+            <span class="def">def</span>
+            <span class="name">add_stats_dict</span><span class="signature">(self, stats_dict={&#39;Stats&#39;: &#39;None&#39;}, fontsize=12)</span>:
+    </div>
+
+                <details>
+            <summary>View Source</summary>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">add_stats_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats_dict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Stats&#39;</span><span class="p">:</span> <span class="s1">&#39;None&#39;</span><span class="p">},</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Annotate statistics to the figure. For a given dictionary, stats_dict,</span>
+<span class="sd">        each key and value will be annotated in order.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            stats_dict : (dict; default={&#39;Stats&#39;: &#39;None&#39;}) dict of values to be annotated</span>
+<span class="sd">            fontsize : (int; default=10) Annotated text font size</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># loop through the dictionary and create the sting to annotate</span>
+        <span class="n">outstr</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">stats_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">outstr</span> <span class="o">=</span> <span class="n">outstr</span> <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;    {key}: {value}&#39;</span>
+        <span class="c1"># annotate this just underneath the figure on the right side</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">outstr</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span>
+                         <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                         <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+</pre></div>
+
+        </details>
+
+            <div class="docstring"><p>Annotate statistics to the figure. For a given dictionary, stats_dict,
+each key and value will be annotated in order.</p>
+
+<h6 id="args">Args</h6>
+
+<ul>
+<li><strong>stats_dict :</strong>  (dict; default={'Stats': 'None'}) dict of values to be annotated</li>
+<li><strong>fontsize :</strong>  (int; default=10) Annotated text font size</li>
 </ul>
 </div>
 
