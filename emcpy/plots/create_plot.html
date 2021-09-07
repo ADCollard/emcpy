@@ -417,12 +417,14 @@
                              <span class="s1">&#39;len of yticks. Set yticks appropriately &#39;</span> <span class="o">+</span>
                              <span class="s1">&#39;or change labels to be len of yticks.&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">add_colorbar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">label_fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">add_colorbar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
+                     <span class="n">label_fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates new axes and adds colorbar to figure.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            label : (str; default=None) Colorbar label</span>
+<span class="sd">            orientation  : (str; default=&#39;horizontal&#39;) colorbar orientation</span>
 <span class="sd">            label_fontsize : (int; default=12) Colorbar label font size</span>
 <span class="sd">            extend : (str; default=&#39;neither&#39;) Extends min/max side of colorbar</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -430,17 +432,30 @@
         <span class="c1"># object. If &#39;cs&#39; exists, it will create a colorbar for the data</span>
         <span class="c1"># saved to the variable. &#39;cs&#39; can be overwritten if plotting</span>
         <span class="c1"># multiple layers and with colorbar set to True.</span>
-        <span class="k">if</span> <span class="s1">&#39;cs&#39;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="n">cax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">x1</span> <span class="o">+</span> <span class="mf">0.02</span><span class="p">,</span>
-                                     <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">y0</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">,</span>
-                                     <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">height</span><span class="p">])</span>
 
-            <span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="n">extend</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">)</span>
+        <span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span>
+
+        <span class="k">if</span> <span class="s1">&#39;cs&#39;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">:</span>
+                <span class="n">axins</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
+                                   <span class="n">width</span><span class="o">=</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span>
+                                   <span class="n">height</span><span class="o">=</span><span class="s2">&quot;5%&quot;</span><span class="p">,</span>
+                                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower center&#39;</span><span class="p">,</span>
+                                   <span class="n">borderpad</span><span class="o">=-</span><span class="mi">8</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">axins</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
+                                   <span class="n">width</span><span class="o">=</span><span class="s2">&quot;2.5%&quot;</span><span class="p">,</span>
+                                   <span class="n">height</span><span class="o">=</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span>
+                                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>
+                                   <span class="n">borderpad</span><span class="o">=-</span><span class="mi">4</span><span class="p">)</span>
+
+            <span class="n">cb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="n">extend</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">axins</span><span class="p">,</span>
+                                   <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">)</span>
             <span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">label_fontsize</span><span class="p">)</span>
 
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Data being plotted has no color series &#39;</span> <span class="o">+</span>
-                            <span class="s1">&#39;to plot. Make sure data requres a colorbar.&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Data object has colorbar set to False.&#39;</span> <span class="o">+</span>
+                            <span class="s1">&#39;Set obj.colorbar=True&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">return_figure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -771,12 +786,14 @@
                              <span class="s1">&#39;len of yticks. Set yticks appropriately &#39;</span> <span class="o">+</span>
                              <span class="s1">&#39;or change labels to be len of yticks.&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">add_colorbar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">label_fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">add_colorbar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
+                     <span class="n">label_fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates new axes and adds colorbar to figure.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            label : (str; default=None) Colorbar label</span>
+<span class="sd">            orientation  : (str; default=&#39;horizontal&#39;) colorbar orientation</span>
 <span class="sd">            label_fontsize : (int; default=12) Colorbar label font size</span>
 <span class="sd">            extend : (str; default=&#39;neither&#39;) Extends min/max side of colorbar</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -784,17 +801,30 @@
         <span class="c1"># object. If &#39;cs&#39; exists, it will create a colorbar for the data</span>
         <span class="c1"># saved to the variable. &#39;cs&#39; can be overwritten if plotting</span>
         <span class="c1"># multiple layers and with colorbar set to True.</span>
-        <span class="k">if</span> <span class="s1">&#39;cs&#39;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="n">cax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">x1</span> <span class="o">+</span> <span class="mf">0.02</span><span class="p">,</span>
-                                     <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">y0</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">,</span>
-                                     <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">height</span><span class="p">])</span>
 
-            <span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="n">extend</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">)</span>
+        <span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span>
+
+        <span class="k">if</span> <span class="s1">&#39;cs&#39;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">:</span>
+                <span class="n">axins</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
+                                   <span class="n">width</span><span class="o">=</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span>
+                                   <span class="n">height</span><span class="o">=</span><span class="s2">&quot;5%&quot;</span><span class="p">,</span>
+                                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower center&#39;</span><span class="p">,</span>
+                                   <span class="n">borderpad</span><span class="o">=-</span><span class="mi">8</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">axins</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
+                                   <span class="n">width</span><span class="o">=</span><span class="s2">&quot;2.5%&quot;</span><span class="p">,</span>
+                                   <span class="n">height</span><span class="o">=</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span>
+                                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>
+                                   <span class="n">borderpad</span><span class="o">=-</span><span class="mi">4</span><span class="p">)</span>
+
+            <span class="n">cb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="n">extend</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">axins</span><span class="p">,</span>
+                                   <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">)</span>
             <span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">label_fontsize</span><span class="p">)</span>
 
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Data being plotted has no color series &#39;</span> <span class="o">+</span>
-                            <span class="s1">&#39;to plot. Make sure data requres a colorbar.&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Data object has colorbar set to False.&#39;</span> <span class="o">+</span>
+                            <span class="s1">&#39;Set obj.colorbar=True&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">return_figure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1371,17 +1401,25 @@ a Value Error will be raised.</p>
 
         
             <span class="def">def</span>
-            <span class="name">add_colorbar</span><span class="signature">(self, label=None, label_fontsize=12, extend=&#39;neither&#39;)</span>:
+            <span class="name">add_colorbar</span><span class="signature">(
+    self,
+    label=None,
+    orientation=&#39;horizontal&#39;,
+    label_fontsize=12,
+    extend=&#39;neither&#39;
+)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">add_colorbar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">label_fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">add_colorbar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
+                     <span class="n">label_fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates new axes and adds colorbar to figure.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            label : (str; default=None) Colorbar label</span>
+<span class="sd">            orientation  : (str; default=&#39;horizontal&#39;) colorbar orientation</span>
 <span class="sd">            label_fontsize : (int; default=12) Colorbar label font size</span>
 <span class="sd">            extend : (str; default=&#39;neither&#39;) Extends min/max side of colorbar</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1389,17 +1427,30 @@ a Value Error will be raised.</p>
         <span class="c1"># object. If &#39;cs&#39; exists, it will create a colorbar for the data</span>
         <span class="c1"># saved to the variable. &#39;cs&#39; can be overwritten if plotting</span>
         <span class="c1"># multiple layers and with colorbar set to True.</span>
-        <span class="k">if</span> <span class="s1">&#39;cs&#39;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="n">cax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">x1</span> <span class="o">+</span> <span class="mf">0.02</span><span class="p">,</span>
-                                     <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">y0</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">,</span>
-                                     <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span><span class="o">.</span><span class="n">height</span><span class="p">])</span>
 
-            <span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="n">extend</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">)</span>
+        <span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span>
+
+        <span class="k">if</span> <span class="s1">&#39;cs&#39;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">:</span>
+                <span class="n">axins</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
+                                   <span class="n">width</span><span class="o">=</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span>
+                                   <span class="n">height</span><span class="o">=</span><span class="s2">&quot;5%&quot;</span><span class="p">,</span>
+                                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower center&#39;</span><span class="p">,</span>
+                                   <span class="n">borderpad</span><span class="o">=-</span><span class="mi">8</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">axins</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
+                                   <span class="n">width</span><span class="o">=</span><span class="s2">&quot;2.5%&quot;</span><span class="p">,</span>
+                                   <span class="n">height</span><span class="o">=</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span>
+                                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>
+                                   <span class="n">borderpad</span><span class="o">=-</span><span class="mi">4</span><span class="p">)</span>
+
+            <span class="n">cb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="n">extend</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">axins</span><span class="p">,</span>
+                                   <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">)</span>
             <span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">label_fontsize</span><span class="p">)</span>
 
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Data being plotted has no color series &#39;</span> <span class="o">+</span>
-                            <span class="s1">&#39;to plot. Make sure data requres a colorbar.&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Data object has colorbar set to False.&#39;</span> <span class="o">+</span>
+                            <span class="s1">&#39;Set obj.colorbar=True&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -1410,6 +1461,7 @@ a Value Error will be raised.</p>
 
 <ul>
 <li><strong>label :</strong>  (str; default=None) Colorbar label</li>
+<li><strong>orientation  :</strong>  (str; default='horizontal') colorbar orientation</li>
 <li><strong>label_fontsize :</strong>  (int; default=12) Colorbar label font size</li>
 <li><strong>extend :</strong>  (str; default='neither') Extends min/max side of colorbar</li>
 </ul>
