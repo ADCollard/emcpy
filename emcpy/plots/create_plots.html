@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="pdoc 7.4.0" />
-    <title>emcpy.plots.create_plot API documentation</title>
+    <title>emcpy.plots.create_plots API documentation</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%2244.5%202.5%2015%2015%22%3E%3Cpath%20d%3D%22M49.351%2021.041c-.233-.721-.546-2.408-.772-4.076-.042-.09-.067-.187-.046-.288-.166-1.347-.277-2.625-.241-3.351-1.378-1.008-2.271-2.586-2.271-4.362%200-.976.272-1.935.788-2.774.057-.094.122-.18.184-.268-.033-.167-.052-.339-.052-.516%200-1.477%201.202-2.679%202.679-2.679.791%200%201.496.352%201.987.9a6.3%206.3%200%200%201%201.001.029c.492-.564%201.207-.929%202.012-.929%201.477%200%202.679%201.202%202.679%202.679a2.65%202.65%200%200%201-.269%201.148c.383.747.595%201.572.595%202.41%200%202.311-1.507%204.29-3.635%205.107.037.699.147%202.27.423%203.294l.137.461c.156%202.136-4.612%205.166-5.199%203.215zm.127-4.919a4.78%204.78%200%200%200%20.775-.584c-.172-.115-.505-.254-.88-.378zm.331%202.302l.828-.502c-.202-.143-.576-.328-.984-.49zm.45%202.157l.701-.403c-.214-.115-.536-.249-.891-.376l.19.779zM49.13%204.141c0%20.152.123.276.276.276s.275-.124.275-.276-.123-.276-.276-.276-.275.124-.275.276zm.735-.389a1.15%201.15%200%200%201%20.314.783%201.16%201.16%200%200%201-1.162%201.162c-.457%200-.842-.27-1.032-.653-.026.117-.042.238-.042.362a1.68%201.68%200%200%200%201.679%201.679%201.68%201.68%200%200%200%201.679-1.679c0-.843-.626-1.535-1.436-1.654zm3.076%201.654a1.68%201.68%200%200%200%201.679%201.679%201.68%201.68%200%200%200%201.679-1.679c0-.037-.009-.072-.011-.109-.21.3-.541.508-.935.508a1.16%201.16%200%200%201-1.162-1.162%201.14%201.14%200%200%201%20.474-.912c-.015%200-.03-.005-.045-.005-.926.001-1.679.754-1.679%201.68zm1.861-1.265c0%20.152.123.276.276.276s.275-.124.275-.276-.123-.276-.276-.276-.275.124-.275.276zm1.823%204.823c0-.52-.103-1.035-.288-1.52-.466.394-1.06.64-1.717.64-1.144%200-2.116-.725-2.499-1.738-.383%201.012-1.355%201.738-2.499%201.738-.867%200-1.631-.421-2.121-1.062-.307.605-.478%201.267-.478%201.942%200%202.486%202.153%204.51%204.801%204.51s4.801-2.023%204.801-4.51zm-3.032%209.156l-.146-.492c-.276-1.02-.395-2.457-.444-3.268a6.11%206.11%200%200%201-1.18.115%206.01%206.01%200%200%201-2.536-.562l.006.175c.802.215%201.848.612%202.021%201.25.079.295-.021.601-.274.837l-.598.501c.667.304%201.243.698%201.311%201.179.02.144.022.507-.393.787l-.564.365c1.285.521%201.361.96%201.381%201.126.018.142.011.496-.427.746l-.854.489c.064-1.19%201.985-2.585%202.697-3.248zM49.34%209.925c0-.667%201-.667%201%200%200%20.653.818%201.205%201.787%201.205s1.787-.552%201.787-1.205c0-.667%201-.667%201%200%200%201.216-1.25%202.205-2.787%202.205s-2.787-.989-2.787-2.205zm-.887-7.633c-.093.077-.205.114-.317.114a.5.5%200%200%201-.318-.886L49.183.397a.5.5%200%200%201%20.703.068.5.5%200%200%201-.069.703zm7.661-.065c-.086%200-.173-.022-.253-.068l-1.523-.893c-.575-.337-.069-1.2.506-.863l1.523.892a.5.5%200%200%201%20.179.685c-.094.158-.261.247-.432.247z%22%20fill%3D%22%233bb300%22/%3E%3C/svg%3E"/>
 
 
@@ -40,15 +40,6 @@
                                 <a class="function" href="#CreatePlot.draw_data">draw_data</a>
                         </li>
                         <li>
-                                <a class="function" href="#CreatePlot.add_title">add_title</a>
-                        </li>
-                        <li>
-                                <a class="function" href="#CreatePlot.add_xlabel">add_xlabel</a>
-                        </li>
-                        <li>
-                                <a class="function" href="#CreatePlot.add_ylabel">add_ylabel</a>
-                        </li>
-                        <li>
                                 <a class="function" href="#CreatePlot.add_legend">add_legend</a>
                         </li>
                         <li>
@@ -72,14 +63,23 @@
                         <li>
                                 <a class="function" href="#CreatePlot.set_yticklabels">set_yticklabels</a>
                         </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="class" href="#CreateMap">CreateMap</a>
+                            <ul class="memberlist">
                         <li>
-                                <a class="function" href="#CreatePlot.add_colorbar">add_colorbar</a>
+                                <a class="function" href="#CreateMap.__init__">CreateMap</a>
                         </li>
                         <li>
-                                <a class="function" href="#CreatePlot.add_stats_dict">add_stats_dict</a>
+                                <a class="function" href="#CreateMap.add_features">add_features</a>
                         </li>
                         <li>
-                                <a class="function" href="#CreatePlot.return_figure">return_figure</a>
+                                <a class="function" href="#CreateMap.draw_data">draw_data</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#CreateMap.add_grid">add_grid</a>
                         </li>
                 </ul>
 
@@ -98,26 +98,181 @@
     <main class="pdoc">
             <section>
                     <h1 class="modulename">
-<a href="./../../emcpy.html">emcpy</a><wbr>.<a href="./../plots.html">plots</a><wbr>.create_plot    </h1>
+<a href="./../../emcpy.html">emcpy</a><wbr>.<a href="./../plots.html">plots</a><wbr>.create_plots    </h1>
 
                 
                         <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="kn">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="kn">as</span> <span class="nn">cfeature</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span>
 <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
 <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interpn</span>
+<span class="kn">from</span> <span class="nn">cartopy.mpl.ticker</span> <span class="kn">import</span> <span class="n">LongitudeFormatter</span><span class="p">,</span> <span class="n">LatitudeFormatter</span>
+<span class="kn">from</span> <span class="nn">emcpy.plots.map_tools</span> <span class="kn">import</span> <span class="n">Domain</span><span class="p">,</span> <span class="n">MapProjection</span>
 <span class="kn">from</span> <span class="nn">emcpy.stats</span> <span class="kn">import</span> <span class="n">get_linear_regression</span>
 
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CreatePlot&#39;</span><span class="p">,</span> <span class="s1">&#39;CreateMap&#39;</span><span class="p">]</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CreatePlot&#39;</span><span class="p">]</span>
+
+<span class="k">class</span> <span class="nc">EMCPyPlots</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figsize</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        EMCPyPlots Constructor.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            figsize : (tuple) Figure dimension size</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+
+        <span class="k">return</span>
+
+    <span class="k">def</span> <span class="nf">add_title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span>
+                  <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                  <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                  <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+                  <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;baseline&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds title to map axes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            label : (str) Text to use for title</span>
+<span class="sd">            loc : (str; default=&#39;center&#39;) Location of title</span>
+<span class="sd">            fontsize : (int; default=12) Text font size</span>
+<span class="sd">            fontweight : (str; default=&#39;normal&#39;) Text font weight</span>
+<span class="sd">            color : (str; default=&#39;k&#39;) Text font color</span>
+<span class="sd">            va : (str; default=&#39;baseline&#39;) Vertical alignment of text</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
+                          <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+                          <span class="n">verticalalignment</span><span class="o">=</span><span class="n">verticalalignment</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_xlabel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span>
+                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                   <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                   <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
+                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds x label to map axes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            xlabel : (str) Text to use for x label</span>
+<span class="sd">            loc : (str; default=&#39;center&#39;) Location of title</span>
+<span class="sd">            fontsize : (int; default=12) Text font size</span>
+<span class="sd">            fontweight : (str; default=&#39;normal&#39;) Text font weight</span>
+<span class="sd">            color : (str; default=&#39;k&#39;) Text font color</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
+                           <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_ylabel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span>
+                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                   <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                   <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
+                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds y label to map axes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ylabel : (str) Text to use for y label</span>
+<span class="sd">            loc : (str; default=&#39;center&#39;) Location of title</span>
+<span class="sd">            fontsize : (int; default=12) Text font size</span>
+<span class="sd">            fontweight : (str; default=&#39;normal&#39;) Text font weight</span>
+<span class="sd">            color : (str; default=&#39;k&#39;) Text font color</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
+                           <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_colorbar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
+                     <span class="n">label_fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates new axes and adds colorbar to figure.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            label : (str; default=None) Colorbar label</span>
+<span class="sd">            orientation  : (str; default=&#39;horizontal&#39;) colorbar orientation</span>
+<span class="sd">            label_fontsize : (int; default=12) Colorbar label font size</span>
+<span class="sd">            extend : (str; default=&#39;neither&#39;) Extends min/max side of colorbar</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># &#39;cs&#39; is saved as an attribute if colorbar is True in plotting</span>
+        <span class="c1"># object. If &#39;cs&#39; exists, it will create a colorbar for the data</span>
+        <span class="c1"># saved to the variable. &#39;cs&#39; can be overwritten if plotting</span>
+        <span class="c1"># multiple layers and with colorbar set to True.</span>
+
+        <span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span>
+
+        <span class="k">if</span> <span class="s1">&#39;cs&#39;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">:</span>
+                <span class="n">axins</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
+                                   <span class="n">width</span><span class="o">=</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span>
+                                   <span class="n">height</span><span class="o">=</span><span class="s2">&quot;5%&quot;</span><span class="p">,</span>
+                                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower center&#39;</span><span class="p">,</span>
+                                   <span class="n">borderpad</span><span class="o">=-</span><span class="mi">8</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">axins</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
+                                   <span class="n">width</span><span class="o">=</span><span class="s2">&quot;2.5%&quot;</span><span class="p">,</span>
+                                   <span class="n">height</span><span class="o">=</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span>
+                                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>
+                                   <span class="n">borderpad</span><span class="o">=-</span><span class="mi">4</span><span class="p">)</span>
+
+            <span class="n">cb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="n">extend</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">axins</span><span class="p">,</span>
+                                   <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">)</span>
+            <span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">label_fontsize</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Data object has colorbar set to False.&#39;</span> <span class="o">+</span>
+                            <span class="s1">&#39;Set obj.colorbar=True&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_stats_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats_dict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Stats&#39;</span><span class="p">:</span> <span class="s1">&#39;None&#39;</span><span class="p">},</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Annotate statistics to the figure. For a given dictionary, stats_dict,</span>
+<span class="sd">        each key and value will be annotated in order.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            stats_dict : (dict; default={&#39;Stats&#39;: &#39;None&#39;}) dict of values</span>
+<span class="sd">                         to be annotated</span>
+<span class="sd">            fontsize : (int; default=10) Annotated text font size</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># loop through the dictionary and create the sting to annotate</span>
+        <span class="n">outstr</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">stats_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">outstr</span> <span class="o">=</span> <span class="n">outstr</span> <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;    {key}: {value}&#39;</span>
+        <span class="c1"># annotate this just underneath the figure on the right side</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">outstr</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span>
+                         <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                         <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">return_figure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the figure created.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span>
 
 
-<span class="k">class</span> <span class="nc">CreatePlot</span><span class="p">:</span>
+<span class="k">class</span> <span class="nc">CreatePlot</span><span class="p">(</span><span class="n">EMCPyPlots</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a figure to plot data as a scatter plot,</span>
+<span class="sd">    histogram, or line plot.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">)):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        CreatePlot constructor.</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">figsize</span> <span class="o">=</span> <span class="n">figsize</span>
+<span class="sd">        Args:</span>
+<span class="sd">            figsize : (tuple; default=(8,6)) Figure dimension size</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">figsize</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">draw_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot_list</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -172,7 +327,6 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Uses Scatter object to plot on axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">figsize</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
         <span class="c1"># checks to see if density attribute is True</span>
@@ -204,7 +358,6 @@
 <span class="sd">        Uses Histogram object to plot on axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">figsize</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
@@ -229,7 +382,6 @@
 <span class="sd">        Uses LinePlot object to plot on axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">figsize</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
@@ -241,66 +393,6 @@
                      <span class="n">markersize</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
                      <span class="n">alpha</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
                      <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">add_title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span>
-                  <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
-                  <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
-                  <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
-                  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
-                  <span class="n">va</span><span class="o">=</span><span class="s1">&#39;baseline&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Adds title to plot.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            label : (str) Text to use for title</span>
-<span class="sd">            loc : (str; default=&#39;center&#39;) Location of title</span>
-<span class="sd">            fontsize : (int; default=12) Text font size</span>
-<span class="sd">            fontweight : (str; default=&#39;normal&#39;) Text font weight</span>
-<span class="sd">            color : (str; default=&#39;k&#39;) Text font color</span>
-<span class="sd">            va : (str; default=&#39;baseline&#39;) Vertical alignment of text</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
-                          <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-                          <span class="n">verticalalignment</span><span class="o">=</span><span class="n">va</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">add_xlabel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span>
-                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
-                   <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
-                   <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
-                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Adds x label to plot.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            xlabel : (str) Text to use for x label</span>
-<span class="sd">            loc : (str; default=&#39;center&#39;) Location of title</span>
-<span class="sd">            fontsize : (int; default=12) Text font size</span>
-<span class="sd">            fontweight : (str; default=&#39;normal&#39;) Text font weight</span>
-<span class="sd">            color : (str; default=&#39;k&#39;) Text font color</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
-                           <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">add_ylabel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span>
-                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
-                   <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
-                   <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
-                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Adds y label to plot.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            ylabel : (str) Text to use for y label</span>
-<span class="sd">            loc : (str; default=&#39;center&#39;) Location of title</span>
-<span class="sd">            fontsize : (int; default=12) Text font size</span>
-<span class="sd">            fontweight : (str; default=&#39;normal&#39;) Text font weight</span>
-<span class="sd">            color : (str; default=&#39;k&#39;) Text font color</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
-                           <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">add_legend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span>
                    <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">):</span>
@@ -420,70 +512,202 @@
                              <span class="s1">&#39;len of yticks. Set yticks appropriately &#39;</span> <span class="o">+</span>
                              <span class="s1">&#39;or change labels to be len of yticks.&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">add_colorbar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
-                     <span class="n">label_fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">):</span>
+
+<span class="k">class</span> <span class="nc">CreateMap</span><span class="p">(</span><span class="n">EMCPyPlots</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a map axes on a figure to plot data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+                 <span class="n">domain</span><span class="o">=</span><span class="n">Domain</span><span class="p">(</span><span class="s1">&#39;global&#39;</span><span class="p">),</span>
+                 <span class="n">proj_obj</span><span class="o">=</span><span class="n">MapProjection</span><span class="p">(</span><span class="s1">&#39;plcarr&#39;</span><span class="p">)):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Creates new axes and adds colorbar to figure.</span>
+<span class="sd">        CreateMap constructor</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            label : (str; default=None) Colorbar label</span>
-<span class="sd">            orientation  : (str; default=&#39;horizontal&#39;) colorbar orientation</span>
-<span class="sd">            label_fontsize : (int; default=12) Colorbar label font size</span>
-<span class="sd">            extend : (str; default=&#39;neither&#39;) Extends min/max side of colorbar</span>
+<span class="sd">            figsize : (tuple; default=(12,8)) Figure dimension size</span>
+<span class="sd">            domain : (object) domain from emcpy.plots.map_tools.Domain()</span>
+<span class="sd">            projection : (object) projection from emcpy</span>
+<span class="sd">                         emcpy.plots.map_tools.MapProjection()</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># &#39;cs&#39; is saved as an attribute if colorbar is True in plotting</span>
-        <span class="c1"># object. If &#39;cs&#39; exists, it will create a colorbar for the data</span>
-        <span class="c1"># saved to the variable. &#39;cs&#39; can be overwritten if plotting</span>
-        <span class="c1"># multiple layers and with colorbar set to True.</span>
 
-        <span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">figsize</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="s1">&#39;cs&#39;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">:</span>
-                <span class="n">axins</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
-                                   <span class="n">width</span><span class="o">=</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span>
-                                   <span class="n">height</span><span class="o">=</span><span class="s2">&quot;5%&quot;</span><span class="p">,</span>
-                                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower center&#39;</span><span class="p">,</span>
-                                   <span class="n">borderpad</span><span class="o">=-</span><span class="mi">8</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">axins</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
-                                   <span class="n">width</span><span class="o">=</span><span class="s2">&quot;2.5%&quot;</span><span class="p">,</span>
-                                   <span class="n">height</span><span class="o">=</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span>
-                                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>
-                                   <span class="n">borderpad</span><span class="o">=-</span><span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="n">domain</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">proj_obj</span> <span class="o">=</span> <span class="n">proj_obj</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">proj_obj</span><span class="o">.</span><span class="n">projection</span><span class="p">)</span>
 
-            <span class="n">cb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="n">extend</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">axins</span><span class="p">,</span>
-                                   <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">)</span>
-            <span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">label_fontsize</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">proj_obj</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;npstere&#39;</span><span class="p">,</span> <span class="s1">&#39;spstere&#39;</span><span class="p">]:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">extent</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">xticks</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">yticks</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+            <span class="n">lon_formatter</span> <span class="o">=</span> <span class="n">LongitudeFormatter</span><span class="p">(</span><span class="n">zero_direction_label</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+            <span class="n">lat_formatter</span> <span class="o">=</span> <span class="n">LatitudeFormatter</span><span class="p">()</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">lon_formatter</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">lat_formatter</span><span class="p">)</span>
 
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Data object has colorbar set to False.&#39;</span> <span class="o">+</span>
-                            <span class="s1">&#39;Set obj.colorbar=True&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span>
 
-    <span class="k">def</span> <span class="nf">add_stats_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats_dict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Stats&#39;</span><span class="p">:</span> <span class="s1">&#39;None&#39;</span><span class="p">},</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">add_features</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature_list</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;coastlines&#39;</span><span class="p">]):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Annotate statistics to the figure. For a given dictionary, stats_dict,</span>
-<span class="sd">        each key and value will be annotated in order.</span>
+<span class="sd">        Add features onto map.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            stats_dict : (dict; default={&#39;Stats&#39;: &#39;None&#39;}) dict of values to be annotated</span>
-<span class="sd">            fontsize : (int; default=10) Annotated text font size</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># loop through the dictionary and create the sting to annotate</span>
-        <span class="n">outstr</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">stats_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">outstr</span> <span class="o">=</span> <span class="n">outstr</span> <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;    {key}: {value}&#39;</span>
-        <span class="c1"># annotate this just underneath the figure on the right side</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">outstr</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span>
-                         <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
-                         <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+<span class="sd">            feature_list : (array-like, default=[&#39;coastlines&#39;]) List of cartopy</span>
+<span class="sd">                           cfeatures that can be found here:</span>
+<span class="sd">                           https://scitools.org.uk/cartopy/docs/v0.14/matplotlib</span>
+<span class="sd">                           /feature_interface.html</span>
 
-    <span class="k">def</span> <span class="nf">return_figure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<span class="sd">        ***Need to get shapefiles/figure out how to get cfeatures from Cartopy</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">feature_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;coastlines&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_coastlines</span><span class="p">,</span>
+            <span class="s1">&#39;borders&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_borders</span><span class="p">,</span>
+            <span class="s1">&#39;states&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_states</span><span class="p">,</span>
+            <span class="s1">&#39;lakes&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_lakes</span><span class="p">,</span>
+            <span class="s1">&#39;rivers&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_rivers</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">feature_list</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">feature_dict</span><span class="p">[</span><span class="n">feat</span><span class="p">]()</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{feat} is not a valid map feature.&#39;</span> <span class="o">+</span>
+                                <span class="s1">&#39;Current map features supported are:</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+                                <span class="n">f</span><span class="s1">&#39;{&quot; | &quot;.join(feature_dict.keys())}&quot;&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">draw_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot_list</span><span class="o">=</span><span class="nb">list</span><span class="p">()):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns the figure created.</span>
+<span class="sd">        Add data layer onto map.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            plot_list : (array-like) List of map plot objects from emcpy</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span>
+        <span class="n">plot_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;map_scatter&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scatter</span><span class="p">,</span>
+            <span class="s1">&#39;map_gridded&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gridded</span><span class="p">,</span>
+            <span class="s1">&#39;map_contour&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contour</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="n">plotobj</span> <span class="ow">in</span> <span class="n">plot_list</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">plot_dict</span><span class="p">[</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plottype</span><span class="p">](</span><span class="n">plotobj</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{plotobj} is not a valid plot type.&#39;</span> <span class="o">+</span>
+                                <span class="s1">&#39;Current plot types supported are:</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+                                <span class="n">f</span><span class="s1">&#39;{&quot; | &quot;.join(feature_dict.keys())}&quot;&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_scatter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plots MapScatter object on map axes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+                             <span class="n">plot</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+                             <span class="n">c</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                             <span class="n">s</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
+                             <span class="n">cmap</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span>
+                             <span class="n">marker</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">marker</span><span class="p">,</span>
+                             <span class="n">vmin</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmin</span><span class="p">,</span>
+                             <span class="n">vmax</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmax</span><span class="p">,</span>
+                             <span class="n">transform</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proj_obj</span><span class="o">.</span><span class="n">projection</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">plot</span><span class="o">.</span><span class="n">colorbar</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">cs</span>
+
+    <span class="k">def</span> <span class="nf">_gridded</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plots MapGridded object on map axes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+                                <span class="n">plot</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+                                <span class="n">plot</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                                <span class="n">cmap</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span>
+                                <span class="n">vmin</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmin</span><span class="p">,</span>
+                                <span class="n">vmax</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmax</span><span class="p">,</span>
+                                <span class="n">alpha</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
+                                <span class="n">transform</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proj_obj</span><span class="o">.</span><span class="n">projection</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">plot</span><span class="o">.</span><span class="n">colorbar</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">cs</span>
+
+    <span class="k">def</span> <span class="nf">_contour</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plots MapContour object on map axes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+                             <span class="n">plot</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+                             <span class="n">plot</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                             <span class="n">levels</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span>
+                             <span class="n">colors</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">colors</span><span class="p">,</span>
+                             <span class="n">linewidth</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">linewidths</span><span class="p">,</span>
+                             <span class="n">linestyle</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">linestyles</span><span class="p">,</span>
+                             <span class="n">cmap</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span>
+                             <span class="n">vmin</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmin</span><span class="p">,</span>
+                             <span class="n">vmax</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmax</span><span class="p">,</span>
+                             <span class="n">alpha</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
+                             <span class="n">transform</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proj_obj</span><span class="o">.</span><span class="n">projection</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">plot</span><span class="o">.</span><span class="n">clabel</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span> <span class="n">use_clabeltext</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">plot</span><span class="o">.</span><span class="n">colorbar</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">cs</span>
+
+    <span class="k">def</span> <span class="nf">add_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+                 <span class="n">alpha</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds gridlines on map axes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            linewidth : (int; default=1) Line thickness</span>
+<span class="sd">            color : (str; default=&#39;gray&#39;) Line color</span>
+<span class="sd">            alpha : (float; default=None) The alpha value,</span>
+<span class="sd">                    between 0 (transparent) and 1 (opaque)</span>
+<span class="sd">            linestyle : (str; default=&#39;-&#39;) Line style</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">,</span>
+                          <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="n">linestyle</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_add_coastlines</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add coastline to map axes. (Only feature that currently works)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">GSHHSFeature</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">))</span>
+
+        <span class="c1"># Will uncomment when we can get cfeatures to work</span>
+        <span class="c1"># self.ax.add_feature(cfeature.COASTLINE)</span>
+
+    <span class="k">def</span> <span class="nf">_add_borders</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add country borders to map axes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">BORDERS</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_add_states</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add state borders to map axes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">STATES</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_add_lakes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add lakes to map axes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAKES</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_add_rivers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add rivers to map axes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">sfeature</span><span class="o">.</span><span class="n">RIVERS</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -495,16 +719,26 @@
 
         
         <span class="def">class</span>
-        <span class="name">CreatePlot</span>:
+        <span class="name">CreatePlot</span><wbr>(<span class="base"><a href="#EMCPyPlots">EMCPyPlots</a></span>):
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">CreatePlot</span><span class="p">:</span>
+            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">CreatePlot</span><span class="p">(</span><span class="n">EMCPyPlots</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a figure to plot data as a scatter plot,</span>
+<span class="sd">    histogram, or line plot.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">)):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        CreatePlot constructor.</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">figsize</span> <span class="o">=</span> <span class="n">figsize</span>
+<span class="sd">        Args:</span>
+<span class="sd">            figsize : (tuple; default=(8,6)) Figure dimension size</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">figsize</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">draw_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot_list</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -559,7 +793,6 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Uses Scatter object to plot on axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">figsize</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
         <span class="c1"># checks to see if density attribute is True</span>
@@ -591,7 +824,6 @@
 <span class="sd">        Uses Histogram object to plot on axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">figsize</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
@@ -616,7 +848,6 @@
 <span class="sd">        Uses LinePlot object to plot on axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">figsize</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
@@ -628,66 +859,6 @@
                      <span class="n">markersize</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
                      <span class="n">alpha</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
                      <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">add_title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span>
-                  <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
-                  <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
-                  <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
-                  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
-                  <span class="n">va</span><span class="o">=</span><span class="s1">&#39;baseline&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Adds title to plot.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            label : (str) Text to use for title</span>
-<span class="sd">            loc : (str; default=&#39;center&#39;) Location of title</span>
-<span class="sd">            fontsize : (int; default=12) Text font size</span>
-<span class="sd">            fontweight : (str; default=&#39;normal&#39;) Text font weight</span>
-<span class="sd">            color : (str; default=&#39;k&#39;) Text font color</span>
-<span class="sd">            va : (str; default=&#39;baseline&#39;) Vertical alignment of text</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
-                          <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-                          <span class="n">verticalalignment</span><span class="o">=</span><span class="n">va</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">add_xlabel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span>
-                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
-                   <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
-                   <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
-                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Adds x label to plot.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            xlabel : (str) Text to use for x label</span>
-<span class="sd">            loc : (str; default=&#39;center&#39;) Location of title</span>
-<span class="sd">            fontsize : (int; default=12) Text font size</span>
-<span class="sd">            fontweight : (str; default=&#39;normal&#39;) Text font weight</span>
-<span class="sd">            color : (str; default=&#39;k&#39;) Text font color</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
-                           <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">add_ylabel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span>
-                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
-                   <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
-                   <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
-                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Adds y label to plot.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            ylabel : (str) Text to use for y label</span>
-<span class="sd">            loc : (str; default=&#39;center&#39;) Location of title</span>
-<span class="sd">            fontsize : (int; default=12) Text font size</span>
-<span class="sd">            fontweight : (str; default=&#39;normal&#39;) Text font weight</span>
-<span class="sd">            color : (str; default=&#39;k&#39;) Text font color</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
-                           <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">add_legend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span>
                    <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">):</span>
@@ -806,76 +977,14 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Len of ytick labels does not equal &#39;</span> <span class="o">+</span>
                              <span class="s1">&#39;len of yticks. Set yticks appropriately &#39;</span> <span class="o">+</span>
                              <span class="s1">&#39;or change labels to be len of yticks.&#39;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">add_colorbar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
-                     <span class="n">label_fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Creates new axes and adds colorbar to figure.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            label : (str; default=None) Colorbar label</span>
-<span class="sd">            orientation  : (str; default=&#39;horizontal&#39;) colorbar orientation</span>
-<span class="sd">            label_fontsize : (int; default=12) Colorbar label font size</span>
-<span class="sd">            extend : (str; default=&#39;neither&#39;) Extends min/max side of colorbar</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># &#39;cs&#39; is saved as an attribute if colorbar is True in plotting</span>
-        <span class="c1"># object. If &#39;cs&#39; exists, it will create a colorbar for the data</span>
-        <span class="c1"># saved to the variable. &#39;cs&#39; can be overwritten if plotting</span>
-        <span class="c1"># multiple layers and with colorbar set to True.</span>
-
-        <span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span>
-
-        <span class="k">if</span> <span class="s1">&#39;cs&#39;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">:</span>
-                <span class="n">axins</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
-                                   <span class="n">width</span><span class="o">=</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span>
-                                   <span class="n">height</span><span class="o">=</span><span class="s2">&quot;5%&quot;</span><span class="p">,</span>
-                                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower center&#39;</span><span class="p">,</span>
-                                   <span class="n">borderpad</span><span class="o">=-</span><span class="mi">8</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">axins</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
-                                   <span class="n">width</span><span class="o">=</span><span class="s2">&quot;2.5%&quot;</span><span class="p">,</span>
-                                   <span class="n">height</span><span class="o">=</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span>
-                                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>
-                                   <span class="n">borderpad</span><span class="o">=-</span><span class="mi">4</span><span class="p">)</span>
-
-            <span class="n">cb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="n">extend</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">axins</span><span class="p">,</span>
-                                   <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">)</span>
-            <span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">label_fontsize</span><span class="p">)</span>
-
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Data object has colorbar set to False.&#39;</span> <span class="o">+</span>
-                            <span class="s1">&#39;Set obj.colorbar=True&#39;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">add_stats_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats_dict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Stats&#39;</span><span class="p">:</span> <span class="s1">&#39;None&#39;</span><span class="p">},</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Annotate statistics to the figure. For a given dictionary, stats_dict,</span>
-<span class="sd">        each key and value will be annotated in order.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            stats_dict : (dict; default={&#39;Stats&#39;: &#39;None&#39;}) dict of values to be annotated</span>
-<span class="sd">            fontsize : (int; default=10) Annotated text font size</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># loop through the dictionary and create the sting to annotate</span>
-        <span class="n">outstr</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">stats_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">outstr</span> <span class="o">=</span> <span class="n">outstr</span> <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;    {key}: {value}&#39;</span>
-        <span class="c1"># annotate this just underneath the figure on the right side</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">outstr</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span>
-                         <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
-                         <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">return_figure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns the figure created.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span>
 </pre></div>
 
         </details>
 
-    
+            <div class="docstring"><p>Creates a figure to plot data as a scatter plot,
+histogram, or line plot.</p>
+</div>
+
 
                             <div id="CreatePlot.__init__" class="classattr">
                                         <div class="attr function"><a class="headerlink" href="#CreatePlot.__init__">#&nbsp;&nbsp</a>
@@ -887,13 +996,27 @@
                 <details>
             <summary>View Source</summary>
             <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">)):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        CreatePlot constructor.</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">figsize</span> <span class="o">=</span> <span class="n">figsize</span>
+<span class="sd">        Args:</span>
+<span class="sd">            figsize : (tuple; default=(8,6)) Figure dimension size</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">figsize</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
-    
+            <div class="docstring"><p>CreatePlot constructor.</p>
+
+<h6 id="args">Args</h6>
+
+<ul>
+<li><strong>figsize :</strong>  (tuple; default=(8,6)) Figure dimension size</li>
+</ul>
+</div>
+
 
                             </div>
                             <div id="CreatePlot.draw_data" class="classattr">
@@ -937,173 +1060,6 @@
 
 <ul>
 <li><strong>plot_list :</strong>  (array-like) List of map plot objects from emcpy</li>
-</ul>
-</div>
-
-
-                            </div>
-                            <div id="CreatePlot.add_title" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#CreatePlot.add_title">#&nbsp;&nbsp</a>
-
-        
-            <span class="def">def</span>
-            <span class="name">add_title</span><span class="signature">(
-    self,
-    label,
-    loc=&#39;center&#39;,
-    fontsize=12,
-    fontweight=&#39;normal&#39;,
-    color=&#39;k&#39;,
-    va=&#39;baseline&#39;
-)</span>:
-    </div>
-
-                <details>
-            <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">add_title</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span>
-                  <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
-                  <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
-                  <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
-                  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
-                  <span class="n">va</span><span class="o">=</span><span class="s1">&#39;baseline&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Adds title to plot.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            label : (str) Text to use for title</span>
-<span class="sd">            loc : (str; default=&#39;center&#39;) Location of title</span>
-<span class="sd">            fontsize : (int; default=12) Text font size</span>
-<span class="sd">            fontweight : (str; default=&#39;normal&#39;) Text font weight</span>
-<span class="sd">            color : (str; default=&#39;k&#39;) Text font color</span>
-<span class="sd">            va : (str; default=&#39;baseline&#39;) Vertical alignment of text</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
-                          <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-                          <span class="n">verticalalignment</span><span class="o">=</span><span class="n">va</span><span class="p">)</span>
-</pre></div>
-
-        </details>
-
-            <div class="docstring"><p>Adds title to plot.</p>
-
-<h6 id="args">Args</h6>
-
-<ul>
-<li><strong>label :</strong>  (str) Text to use for title</li>
-<li><strong>loc :</strong>  (str; default='center') Location of title</li>
-<li><strong>fontsize :</strong>  (int; default=12) Text font size</li>
-<li><strong>fontweight :</strong>  (str; default='normal') Text font weight</li>
-<li><strong>color :</strong>  (str; default='k') Text font color</li>
-<li><strong>va :</strong>  (str; default='baseline') Vertical alignment of text</li>
-</ul>
-</div>
-
-
-                            </div>
-                            <div id="CreatePlot.add_xlabel" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#CreatePlot.add_xlabel">#&nbsp;&nbsp</a>
-
-        
-            <span class="def">def</span>
-            <span class="name">add_xlabel</span><span class="signature">(
-    self,
-    xlabel,
-    loc=&#39;center&#39;,
-    fontsize=12,
-    fontweight=&#39;normal&#39;,
-    color=&#39;k&#39;
-)</span>:
-    </div>
-
-                <details>
-            <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">add_xlabel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span>
-                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
-                   <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
-                   <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
-                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Adds x label to plot.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            xlabel : (str) Text to use for x label</span>
-<span class="sd">            loc : (str; default=&#39;center&#39;) Location of title</span>
-<span class="sd">            fontsize : (int; default=12) Text font size</span>
-<span class="sd">            fontweight : (str; default=&#39;normal&#39;) Text font weight</span>
-<span class="sd">            color : (str; default=&#39;k&#39;) Text font color</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
-                           <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
-</pre></div>
-
-        </details>
-
-            <div class="docstring"><p>Adds x label to plot.</p>
-
-<h6 id="args">Args</h6>
-
-<ul>
-<li><strong>xlabel :</strong>  (str) Text to use for x label</li>
-<li><strong>loc :</strong>  (str; default='center') Location of title</li>
-<li><strong>fontsize :</strong>  (int; default=12) Text font size</li>
-<li><strong>fontweight :</strong>  (str; default='normal') Text font weight</li>
-<li><strong>color :</strong>  (str; default='k') Text font color</li>
-</ul>
-</div>
-
-
-                            </div>
-                            <div id="CreatePlot.add_ylabel" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#CreatePlot.add_ylabel">#&nbsp;&nbsp</a>
-
-        
-            <span class="def">def</span>
-            <span class="name">add_ylabel</span><span class="signature">(
-    self,
-    ylabel,
-    loc=&#39;center&#39;,
-    fontsize=12,
-    fontweight=&#39;normal&#39;,
-    color=&#39;k&#39;
-)</span>:
-    </div>
-
-                <details>
-            <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">add_ylabel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span>
-                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
-                   <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
-                   <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
-                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Adds y label to plot.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            ylabel : (str) Text to use for y label</span>
-<span class="sd">            loc : (str; default=&#39;center&#39;) Location of title</span>
-<span class="sd">            fontsize : (int; default=12) Text font size</span>
-<span class="sd">            fontweight : (str; default=&#39;normal&#39;) Text font weight</span>
-<span class="sd">            color : (str; default=&#39;k&#39;) Text font color</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
-                           <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
-</pre></div>
-
-        </details>
-
-            <div class="docstring"><p>Adds y label to plot.</p>
-
-<h6 id="args">Args</h6>
-
-<ul>
-<li><strong>ylabel :</strong>  (str) Text to use for y label</li>
-<li><strong>loc :</strong>  (str; default='center') Location of title</li>
-<li><strong>fontsize :</strong>  (int; default=12) Text font size</li>
-<li><strong>fontweight :</strong>  (str; default='normal') Text font weight</li>
-<li><strong>color :</strong>  (str; default='k') Text font color</li>
 </ul>
 </div>
 
@@ -1435,147 +1391,459 @@ a Value Error will be raised.</p>
 
 
                             </div>
-                            <div id="CreatePlot.add_colorbar" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#CreatePlot.add_colorbar">#&nbsp;&nbsp</a>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="#EMCPyPlots">EMCPyPlots</a></dt>
+                                <dd id="CreatePlot.add_title" class="function"><a href="#EMCPyPlots.add_title">add_title</a></dd>
+                <dd id="CreatePlot.add_xlabel" class="function"><a href="#EMCPyPlots.add_xlabel">add_xlabel</a></dd>
+                <dd id="CreatePlot.add_ylabel" class="function"><a href="#EMCPyPlots.add_ylabel">add_ylabel</a></dd>
+                <dd id="CreatePlot.add_colorbar" class="function"><a href="#EMCPyPlots.add_colorbar">add_colorbar</a></dd>
+                <dd id="CreatePlot.add_stats_dict" class="function"><a href="#EMCPyPlots.add_stats_dict">add_stats_dict</a></dd>
+                <dd id="CreatePlot.return_figure" class="function"><a href="#EMCPyPlots.return_figure">return_figure</a></dd>
+
+            </div>
+                                </dl>
+                            </div>
+                </section>
+                <section id="CreateMap">
+                                <div class="attr class">
+        <a class="headerlink" href="#CreateMap">#&nbsp;&nbsp</a>
 
         
-            <span class="def">def</span>
-            <span class="name">add_colorbar</span><span class="signature">(
-    self,
-    label=None,
-    orientation=&#39;horizontal&#39;,
-    label_fontsize=12,
-    extend=&#39;neither&#39;
-)</span>:
+        <span class="def">class</span>
+        <span class="name">CreateMap</span><wbr>(<span class="base"><a href="#EMCPyPlots">EMCPyPlots</a></span>):
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">add_colorbar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
-                     <span class="n">label_fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">CreateMap</span><span class="p">(</span><span class="n">EMCPyPlots</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a map axes on a figure to plot data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+                 <span class="n">domain</span><span class="o">=</span><span class="n">Domain</span><span class="p">(</span><span class="s1">&#39;global&#39;</span><span class="p">),</span>
+                 <span class="n">proj_obj</span><span class="o">=</span><span class="n">MapProjection</span><span class="p">(</span><span class="s1">&#39;plcarr&#39;</span><span class="p">)):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Creates new axes and adds colorbar to figure.</span>
+<span class="sd">        CreateMap constructor</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            label : (str; default=None) Colorbar label</span>
-<span class="sd">            orientation  : (str; default=&#39;horizontal&#39;) colorbar orientation</span>
-<span class="sd">            label_fontsize : (int; default=12) Colorbar label font size</span>
-<span class="sd">            extend : (str; default=&#39;neither&#39;) Extends min/max side of colorbar</span>
+<span class="sd">            figsize : (tuple; default=(12,8)) Figure dimension size</span>
+<span class="sd">            domain : (object) domain from emcpy.plots.map_tools.Domain()</span>
+<span class="sd">            projection : (object) projection from emcpy</span>
+<span class="sd">                         emcpy.plots.map_tools.MapProjection()</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># &#39;cs&#39; is saved as an attribute if colorbar is True in plotting</span>
-        <span class="c1"># object. If &#39;cs&#39; exists, it will create a colorbar for the data</span>
-        <span class="c1"># saved to the variable. &#39;cs&#39; can be overwritten if plotting</span>
-        <span class="c1"># multiple layers and with colorbar set to True.</span>
 
-        <span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">figsize</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="s1">&#39;cs&#39;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="s1">&#39;horizontal&#39;</span><span class="p">:</span>
-                <span class="n">axins</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
-                                   <span class="n">width</span><span class="o">=</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span>
-                                   <span class="n">height</span><span class="o">=</span><span class="s2">&quot;5%&quot;</span><span class="p">,</span>
-                                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower center&#39;</span><span class="p">,</span>
-                                   <span class="n">borderpad</span><span class="o">=-</span><span class="mi">8</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">axins</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="p">,</span>
-                                   <span class="n">width</span><span class="o">=</span><span class="s2">&quot;2.5%&quot;</span><span class="p">,</span>
-                                   <span class="n">height</span><span class="o">=</span><span class="s2">&quot;95%&quot;</span><span class="p">,</span>
-                                   <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>
-                                   <span class="n">borderpad</span><span class="o">=-</span><span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="n">domain</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">proj_obj</span> <span class="o">=</span> <span class="n">proj_obj</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">proj_obj</span><span class="o">.</span><span class="n">projection</span><span class="p">)</span>
 
-            <span class="n">cb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cs</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="n">extend</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">axins</span><span class="p">,</span>
-                                   <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">)</span>
-            <span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">label_fontsize</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">proj_obj</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;npstere&#39;</span><span class="p">,</span> <span class="s1">&#39;spstere&#39;</span><span class="p">]:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">extent</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">xticks</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">yticks</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+            <span class="n">lon_formatter</span> <span class="o">=</span> <span class="n">LongitudeFormatter</span><span class="p">(</span><span class="n">zero_direction_label</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+            <span class="n">lat_formatter</span> <span class="o">=</span> <span class="n">LatitudeFormatter</span><span class="p">()</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">lon_formatter</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">lat_formatter</span><span class="p">)</span>
 
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Data object has colorbar set to False.&#39;</span> <span class="o">+</span>
-                            <span class="s1">&#39;Set obj.colorbar=True&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span>
+
+    <span class="k">def</span> <span class="nf">add_features</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature_list</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;coastlines&#39;</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add features onto map.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            feature_list : (array-like, default=[&#39;coastlines&#39;]) List of cartopy</span>
+<span class="sd">                           cfeatures that can be found here:</span>
+<span class="sd">                           https://scitools.org.uk/cartopy/docs/v0.14/matplotlib</span>
+<span class="sd">                           /feature_interface.html</span>
+
+
+<span class="sd">        ***Need to get shapefiles/figure out how to get cfeatures from Cartopy</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">feature_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;coastlines&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_coastlines</span><span class="p">,</span>
+            <span class="s1">&#39;borders&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_borders</span><span class="p">,</span>
+            <span class="s1">&#39;states&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_states</span><span class="p">,</span>
+            <span class="s1">&#39;lakes&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_lakes</span><span class="p">,</span>
+            <span class="s1">&#39;rivers&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_rivers</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">feature_list</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">feature_dict</span><span class="p">[</span><span class="n">feat</span><span class="p">]()</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{feat} is not a valid map feature.&#39;</span> <span class="o">+</span>
+                                <span class="s1">&#39;Current map features supported are:</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+                                <span class="n">f</span><span class="s1">&#39;{&quot; | &quot;.join(feature_dict.keys())}&quot;&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">draw_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot_list</span><span class="o">=</span><span class="nb">list</span><span class="p">()):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add data layer onto map.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            plot_list : (array-like) List of map plot objects from emcpy</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">plot_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;map_scatter&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scatter</span><span class="p">,</span>
+            <span class="s1">&#39;map_gridded&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gridded</span><span class="p">,</span>
+            <span class="s1">&#39;map_contour&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contour</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="n">plotobj</span> <span class="ow">in</span> <span class="n">plot_list</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">plot_dict</span><span class="p">[</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plottype</span><span class="p">](</span><span class="n">plotobj</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{plotobj} is not a valid plot type.&#39;</span> <span class="o">+</span>
+                                <span class="s1">&#39;Current plot types supported are:</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+                                <span class="n">f</span><span class="s1">&#39;{&quot; | &quot;.join(feature_dict.keys())}&quot;&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_scatter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plots MapScatter object on map axes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+                             <span class="n">plot</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+                             <span class="n">c</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                             <span class="n">s</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
+                             <span class="n">cmap</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span>
+                             <span class="n">marker</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">marker</span><span class="p">,</span>
+                             <span class="n">vmin</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmin</span><span class="p">,</span>
+                             <span class="n">vmax</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmax</span><span class="p">,</span>
+                             <span class="n">transform</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proj_obj</span><span class="o">.</span><span class="n">projection</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">plot</span><span class="o">.</span><span class="n">colorbar</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">cs</span>
+
+    <span class="k">def</span> <span class="nf">_gridded</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plots MapGridded object on map axes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+                                <span class="n">plot</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+                                <span class="n">plot</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                                <span class="n">cmap</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span>
+                                <span class="n">vmin</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmin</span><span class="p">,</span>
+                                <span class="n">vmax</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmax</span><span class="p">,</span>
+                                <span class="n">alpha</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
+                                <span class="n">transform</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proj_obj</span><span class="o">.</span><span class="n">projection</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">plot</span><span class="o">.</span><span class="n">colorbar</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">cs</span>
+
+    <span class="k">def</span> <span class="nf">_contour</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plots MapContour object on map axes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+                             <span class="n">plot</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+                             <span class="n">plot</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                             <span class="n">levels</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span>
+                             <span class="n">colors</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">colors</span><span class="p">,</span>
+                             <span class="n">linewidth</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">linewidths</span><span class="p">,</span>
+                             <span class="n">linestyle</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">linestyles</span><span class="p">,</span>
+                             <span class="n">cmap</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span>
+                             <span class="n">vmin</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmin</span><span class="p">,</span>
+                             <span class="n">vmax</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmax</span><span class="p">,</span>
+                             <span class="n">alpha</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
+                             <span class="n">transform</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proj_obj</span><span class="o">.</span><span class="n">projection</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">plot</span><span class="o">.</span><span class="n">clabel</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span> <span class="n">use_clabeltext</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">plot</span><span class="o">.</span><span class="n">colorbar</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">cs</span>
+
+    <span class="k">def</span> <span class="nf">add_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+                 <span class="n">alpha</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds gridlines on map axes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            linewidth : (int; default=1) Line thickness</span>
+<span class="sd">            color : (str; default=&#39;gray&#39;) Line color</span>
+<span class="sd">            alpha : (float; default=None) The alpha value,</span>
+<span class="sd">                    between 0 (transparent) and 1 (opaque)</span>
+<span class="sd">            linestyle : (str; default=&#39;-&#39;) Line style</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">,</span>
+                          <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="n">linestyle</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_add_coastlines</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add coastline to map axes. (Only feature that currently works)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">GSHHSFeature</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">))</span>
+
+        <span class="c1"># Will uncomment when we can get cfeatures to work</span>
+        <span class="c1"># self.ax.add_feature(cfeature.COASTLINE)</span>
+
+    <span class="k">def</span> <span class="nf">_add_borders</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add country borders to map axes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">BORDERS</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_add_states</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add state borders to map axes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">STATES</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_add_lakes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add lakes to map axes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAKES</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_add_rivers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add rivers to map axes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">sfeature</span><span class="o">.</span><span class="n">RIVERS</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Creates new axes and adds colorbar to figure.</p>
+            <div class="docstring"><p>Creates a map axes on a figure to plot data.</p>
+</div>
+
+
+                            <div id="CreateMap.__init__" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#CreateMap.__init__">#&nbsp;&nbsp</a>
+
+        
+            <span class="name">CreateMap</span><span class="signature">(
+    figsize=(12, 8),
+    domain=&lt;<a href="map_tools.html#Domain">emcpy.plots.map_tools.Domain</a> object&gt;,
+    proj_obj=&lt;<a href="map_tools.html#MapProjection">emcpy.plots.map_tools.MapProjection</a> object&gt;
+)</span>
+    </div>
+
+                <details>
+            <summary>View Source</summary>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+                 <span class="n">domain</span><span class="o">=</span><span class="n">Domain</span><span class="p">(</span><span class="s1">&#39;global&#39;</span><span class="p">),</span>
+                 <span class="n">proj_obj</span><span class="o">=</span><span class="n">MapProjection</span><span class="p">(</span><span class="s1">&#39;plcarr&#39;</span><span class="p">)):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        CreateMap constructor</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            figsize : (tuple; default=(12,8)) Figure dimension size</span>
+<span class="sd">            domain : (object) domain from emcpy.plots.map_tools.Domain()</span>
+<span class="sd">            projection : (object) projection from emcpy</span>
+<span class="sd">                         emcpy.plots.map_tools.MapProjection()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">figsize</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="n">domain</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">proj_obj</span> <span class="o">=</span> <span class="n">proj_obj</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">proj_obj</span><span class="o">.</span><span class="n">projection</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">proj_obj</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;npstere&#39;</span><span class="p">,</span> <span class="s1">&#39;spstere&#39;</span><span class="p">]:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">extent</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">xticks</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">yticks</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+            <span class="n">lon_formatter</span> <span class="o">=</span> <span class="n">LongitudeFormatter</span><span class="p">(</span><span class="n">zero_direction_label</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+            <span class="n">lat_formatter</span> <span class="o">=</span> <span class="n">LatitudeFormatter</span><span class="p">()</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">lon_formatter</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">lat_formatter</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span>
+</pre></div>
+
+        </details>
+
+            <div class="docstring"><p>CreateMap constructor</p>
 
 <h6 id="args">Args</h6>
 
 <ul>
-<li><strong>label :</strong>  (str; default=None) Colorbar label</li>
-<li><strong>orientation  :</strong>  (str; default='horizontal') colorbar orientation</li>
-<li><strong>label_fontsize :</strong>  (int; default=12) Colorbar label font size</li>
-<li><strong>extend :</strong>  (str; default='neither') Extends min/max side of colorbar</li>
+<li><strong>figsize :</strong>  (tuple; default=(12,8)) Figure dimension size</li>
+<li><strong>domain :</strong>  (object) domain from <a href="map_tools.html#Domain">emcpy.plots.map_tools.Domain()</a></li>
+<li><strong>projection :</strong>  (object) projection from emcpy
+<a href="map_tools.html#MapProjection">emcpy.plots.map_tools.MapProjection()</a></li>
 </ul>
 </div>
 
 
                             </div>
-                            <div id="CreatePlot.add_stats_dict" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#CreatePlot.add_stats_dict">#&nbsp;&nbsp</a>
+                            <div id="CreateMap.add_features" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#CreateMap.add_features">#&nbsp;&nbsp</a>
 
         
             <span class="def">def</span>
-            <span class="name">add_stats_dict</span><span class="signature">(self, stats_dict={&#39;Stats&#39;: &#39;None&#39;}, fontsize=12)</span>:
+            <span class="name">add_features</span><span class="signature">(self, feature_list=[&#39;coastlines&#39;])</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">add_stats_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats_dict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Stats&#39;</span><span class="p">:</span> <span class="s1">&#39;None&#39;</span><span class="p">},</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">add_features</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature_list</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;coastlines&#39;</span><span class="p">]):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Annotate statistics to the figure. For a given dictionary, stats_dict,</span>
-<span class="sd">        each key and value will be annotated in order.</span>
+<span class="sd">        Add features onto map.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            stats_dict : (dict; default={&#39;Stats&#39;: &#39;None&#39;}) dict of values to be annotated</span>
-<span class="sd">            fontsize : (int; default=10) Annotated text font size</span>
+<span class="sd">            feature_list : (array-like, default=[&#39;coastlines&#39;]) List of cartopy</span>
+<span class="sd">                           cfeatures that can be found here:</span>
+<span class="sd">                           https://scitools.org.uk/cartopy/docs/v0.14/matplotlib</span>
+<span class="sd">                           /feature_interface.html</span>
+
+
+<span class="sd">        ***Need to get shapefiles/figure out how to get cfeatures from Cartopy</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># loop through the dictionary and create the sting to annotate</span>
-        <span class="n">outstr</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">stats_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">outstr</span> <span class="o">=</span> <span class="n">outstr</span> <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;    {key}: {value}&#39;</span>
-        <span class="c1"># annotate this just underneath the figure on the right side</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">outstr</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span>
-                         <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
-                         <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+
+        <span class="n">feature_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;coastlines&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_coastlines</span><span class="p">,</span>
+            <span class="s1">&#39;borders&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_borders</span><span class="p">,</span>
+            <span class="s1">&#39;states&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_states</span><span class="p">,</span>
+            <span class="s1">&#39;lakes&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_lakes</span><span class="p">,</span>
+            <span class="s1">&#39;rivers&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_add_rivers</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">feature_list</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">feature_dict</span><span class="p">[</span><span class="n">feat</span><span class="p">]()</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{feat} is not a valid map feature.&#39;</span> <span class="o">+</span>
+                                <span class="s1">&#39;Current map features supported are:</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+                                <span class="n">f</span><span class="s1">&#39;{&quot; | &quot;.join(feature_dict.keys())}&quot;&#39;</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Annotate statistics to the figure. For a given dictionary, stats_dict,
-each key and value will be annotated in order.</p>
+            <div class="docstring"><p>Add features onto map.</p>
 
 <h6 id="args">Args</h6>
 
 <ul>
-<li><strong>stats_dict :</strong>  (dict; default={'Stats': 'None'}) dict of values to be annotated</li>
-<li><strong>fontsize :</strong>  (int; default=10) Annotated text font size</li>
+<li><strong>feature_list :</strong>  (array-like, default=['coastlines']) List of cartopy
+cfeatures that can be found here:
+https://scitools.org.uk/cartopy/docs/v0.14/matplotlib
+/feature_interface.html</li>
+</ul>
+
+<p><em>*</em>Need to get shapefiles/figure out how to get cfeatures from Cartopy</p>
+</div>
+
+
+                            </div>
+                            <div id="CreateMap.draw_data" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#CreateMap.draw_data">#&nbsp;&nbsp</a>
+
+        
+            <span class="def">def</span>
+            <span class="name">draw_data</span><span class="signature">(self, plot_list=[])</span>:
+    </div>
+
+                <details>
+            <summary>View Source</summary>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">draw_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot_list</span><span class="o">=</span><span class="nb">list</span><span class="p">()):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add data layer onto map.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            plot_list : (array-like) List of map plot objects from emcpy</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">plot_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;map_scatter&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scatter</span><span class="p">,</span>
+            <span class="s1">&#39;map_gridded&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gridded</span><span class="p">,</span>
+            <span class="s1">&#39;map_contour&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contour</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="n">plotobj</span> <span class="ow">in</span> <span class="n">plot_list</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">plot_dict</span><span class="p">[</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plottype</span><span class="p">](</span><span class="n">plotobj</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{plotobj} is not a valid plot type.&#39;</span> <span class="o">+</span>
+                                <span class="s1">&#39;Current plot types supported are:</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+                                <span class="n">f</span><span class="s1">&#39;{&quot; | &quot;.join(feature_dict.keys())}&quot;&#39;</span><span class="p">)</span>
+</pre></div>
+
+        </details>
+
+            <div class="docstring"><p>Add data layer onto map.</p>
+
+<h6 id="args">Args</h6>
+
+<ul>
+<li><strong>plot_list :</strong>  (array-like) List of map plot objects from emcpy</li>
 </ul>
 </div>
 
 
                             </div>
-                            <div id="CreatePlot.return_figure" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#CreatePlot.return_figure">#&nbsp;&nbsp</a>
+                            <div id="CreateMap.add_grid" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#CreateMap.add_grid">#&nbsp;&nbsp</a>
 
         
             <span class="def">def</span>
-            <span class="name">return_figure</span><span class="signature">(self)</span>:
+            <span class="name">add_grid</span><span class="signature">(self, linewidth=1, color=&#39;gray&#39;, alpha=None, linestyle=&#39;-&#39;)</span>:
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">return_figure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">add_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+                 <span class="n">alpha</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                 <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns the figure created.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        Adds gridlines on map axes.</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span>
+<span class="sd">        Args:</span>
+<span class="sd">            linewidth : (int; default=1) Line thickness</span>
+<span class="sd">            color : (str; default=&#39;gray&#39;) Line color</span>
+<span class="sd">            alpha : (float; default=None) The alpha value,</span>
+<span class="sd">                    between 0 (transparent) and 1 (opaque)</span>
+<span class="sd">            linestyle : (str; default=&#39;-&#39;) Line style</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">,</span>
+                          <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="n">linestyle</span><span class="p">)</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Returns the figure created.</p>
+            <div class="docstring"><p>Adds gridlines on map axes.</p>
+
+<h6 id="args">Args</h6>
+
+<ul>
+<li><strong>linewidth :</strong>  (int; default=1) Line thickness</li>
+<li><strong>color :</strong>  (str; default='gray') Line color</li>
+<li><strong>alpha :</strong>  (float; default=None) The alpha value,
+between 0 (transparent) and 1 (opaque)</li>
+<li><strong>linestyle :</strong>  (str; default='-') Line style</li>
+</ul>
 </div>
 
 
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt><a href="#EMCPyPlots">EMCPyPlots</a></dt>
+                                <dd id="CreateMap.add_title" class="function"><a href="#EMCPyPlots.add_title">add_title</a></dd>
+                <dd id="CreateMap.add_xlabel" class="function"><a href="#EMCPyPlots.add_xlabel">add_xlabel</a></dd>
+                <dd id="CreateMap.add_ylabel" class="function"><a href="#EMCPyPlots.add_ylabel">add_ylabel</a></dd>
+                <dd id="CreateMap.add_colorbar" class="function"><a href="#EMCPyPlots.add_colorbar">add_colorbar</a></dd>
+                <dd id="CreateMap.add_stats_dict" class="function"><a href="#EMCPyPlots.add_stats_dict">add_stats_dict</a></dd>
+                <dd id="CreateMap.return_figure" class="function"><a href="#EMCPyPlots.return_figure">return_figure</a></dd>
+
+            </div>
+                                </dl>
                             </div>
                 </section>
     </main>
