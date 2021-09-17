@@ -146,7 +146,8 @@
 <span class="sd">            fontsize : (int; default=12) Text font size</span>
 <span class="sd">            fontweight : (str; default=&#39;normal&#39;) Text font weight</span>
 <span class="sd">            color : (str; default=&#39;k&#39;) Text font color</span>
-<span class="sd">            va : (str; default=&#39;baseline&#39;) Vertical alignment of text</span>
+<span class="sd">            verticalalignment : (str; default=&#39;baseline&#39;) Vertical</span>
+<span class="sd">                                alignment of text</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
@@ -249,6 +250,27 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">outstr</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span>
                          <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
                          <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xloc</span><span class="p">,</span> <span class="n">yloc</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                 <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span>
+                 <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add text to a figure.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            xloc : (int/float) x location on axis</span>
+<span class="sd">            yloc : (int/float) y location on axis</span>
+<span class="sd">            text : (str) Text to plot on figure</span>
+<span class="sd">            fontsize : (int; default=12) Text font size</span>
+<span class="sd">            fontweight : (str; default=&#39;normal&#39;) Text font weight</span>
+<span class="sd">            color : (str; default=&#39;k&#39;) Text font color</span>
+<span class="sd">            alpha : (float; default=1.) alpha of text</span>
+<span class="sd">            horizontalalignment : (str; default=&#39;baseline&#39;) Vertical</span>
+<span class="sd">                                alignment of text</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xloc</span><span class="p">,</span> <span class="n">yloc</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
+                     <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+                     <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="n">horizontalalignment</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">return_figure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1400,6 +1422,7 @@ a Value Error will be raised.</p>
                 <dd id="CreatePlot.add_ylabel" class="function"><a href="#EMCPyPlots.add_ylabel">add_ylabel</a></dd>
                 <dd id="CreatePlot.add_colorbar" class="function"><a href="#EMCPyPlots.add_colorbar">add_colorbar</a></dd>
                 <dd id="CreatePlot.add_stats_dict" class="function"><a href="#EMCPyPlots.add_stats_dict">add_stats_dict</a></dd>
+                <dd id="CreatePlot.add_text" class="function"><a href="#EMCPyPlots.add_text">add_text</a></dd>
                 <dd id="CreatePlot.return_figure" class="function"><a href="#EMCPyPlots.return_figure">return_figure</a></dd>
 
             </div>
@@ -1840,6 +1863,7 @@ between 0 (transparent) and 1 (opaque)</li>
                 <dd id="CreateMap.add_ylabel" class="function"><a href="#EMCPyPlots.add_ylabel">add_ylabel</a></dd>
                 <dd id="CreateMap.add_colorbar" class="function"><a href="#EMCPyPlots.add_colorbar">add_colorbar</a></dd>
                 <dd id="CreateMap.add_stats_dict" class="function"><a href="#EMCPyPlots.add_stats_dict">add_stats_dict</a></dd>
+                <dd id="CreateMap.add_text" class="function"><a href="#EMCPyPlots.add_text">add_text</a></dd>
                 <dd id="CreateMap.return_figure" class="function"><a href="#EMCPyPlots.return_figure">return_figure</a></dd>
 
             </div>
