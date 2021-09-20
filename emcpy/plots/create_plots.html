@@ -232,7 +232,8 @@
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Data object has colorbar set to False.&#39;</span> <span class="o">+</span>
                             <span class="s1">&#39;Set obj.colorbar=True&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">add_stats_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats_dict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Stats&#39;</span><span class="p">:</span> <span class="s1">&#39;None&#39;</span><span class="p">},</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">add_stats_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stats_dict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Stats&#39;</span><span class="p">:</span> <span class="s1">&#39;None&#39;</span><span class="p">},</span> <span class="n">xloc</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                       <span class="n">yloc</span><span class="o">=-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Annotate statistics to the figure. For a given dictionary, stats_dict,</span>
 <span class="sd">        each key and value will be annotated in order.</span>
@@ -240,6 +241,8 @@
 <span class="sd">        Args:</span>
 <span class="sd">            stats_dict : (dict; default={&#39;Stats&#39;: &#39;None&#39;}) dict of values</span>
 <span class="sd">                         to be annotated</span>
+<span class="sd">            xloc : (float; default=0.5) location of text on x-axis</span>
+<span class="sd">            yloc : (float; default=-0.1) location of text on y-axis</span>
 <span class="sd">            fontsize : (int; default=10) Annotated text font size</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># loop through the dictionary and create the sting to annotate</span>
@@ -247,7 +250,7 @@
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">stats_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">outstr</span> <span class="o">=</span> <span class="n">outstr</span> <span class="o">+</span> <span class="n">f</span><span class="s1">&#39;    {key}: {value}&#39;</span>
         <span class="c1"># annotate this just underneath the figure on the right side</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">outstr</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">outstr</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">xloc</span><span class="p">,</span> <span class="n">yloc</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span>
                          <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
                          <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
 
