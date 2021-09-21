@@ -311,7 +311,9 @@
         <span class="n">plot_dict</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;scatter&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scatter</span><span class="p">,</span>
             <span class="s1">&#39;histogram&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_histogram</span><span class="p">,</span>
-            <span class="s1">&#39;line_plot&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineplot</span>
+            <span class="s1">&#39;line_plot&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineplot</span><span class="p">,</span>
+            <span class="s1">&#39;vertical_line&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verticalline</span><span class="p">,</span>
+            <span class="s1">&#39;horizontal_line&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_horizontalline</span>
         <span class="p">}</span>
 
         <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">plot_list</span><span class="p">:</span>
@@ -414,6 +416,28 @@
                      <span class="n">markersize</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
                      <span class="n">alpha</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
                      <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_verticalline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Uses VerticalLine object to plot on axis.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
+                        <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                        <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
+                        <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
+                        <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_horizontalline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Uses HorizontalLine object to plot on axis.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+                        <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                        <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
+                        <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
+                        <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">add_legend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span>
                    <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">):</span>
@@ -773,7 +797,9 @@
         <span class="n">plot_dict</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;scatter&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scatter</span><span class="p">,</span>
             <span class="s1">&#39;histogram&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_histogram</span><span class="p">,</span>
-            <span class="s1">&#39;line_plot&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineplot</span>
+            <span class="s1">&#39;line_plot&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineplot</span><span class="p">,</span>
+            <span class="s1">&#39;vertical_line&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verticalline</span><span class="p">,</span>
+            <span class="s1">&#39;horizontal_line&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_horizontalline</span>
         <span class="p">}</span>
 
         <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">plot_list</span><span class="p">:</span>
@@ -876,6 +902,28 @@
                      <span class="n">markersize</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
                      <span class="n">alpha</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
                      <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_verticalline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Uses VerticalLine object to plot on axis.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
+                        <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                        <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
+                        <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
+                        <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_horizontalline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Uses HorizontalLine object to plot on axis.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+                        <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                        <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
+                        <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
+                        <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">add_legend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span>
                    <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">):</span>
@@ -1058,7 +1106,9 @@ histogram, or line plot.</p>
         <span class="n">plot_dict</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;scatter&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scatter</span><span class="p">,</span>
             <span class="s1">&#39;histogram&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_histogram</span><span class="p">,</span>
-            <span class="s1">&#39;line_plot&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineplot</span>
+            <span class="s1">&#39;line_plot&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineplot</span><span class="p">,</span>
+            <span class="s1">&#39;vertical_line&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verticalline</span><span class="p">,</span>
+            <span class="s1">&#39;horizontal_line&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_horizontalline</span>
         <span class="p">}</span>
 
         <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">plot_list</span><span class="p">:</span>
