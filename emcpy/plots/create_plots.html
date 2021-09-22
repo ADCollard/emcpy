@@ -63,6 +63,15 @@
                         <li>
                                 <a class="function" href="#CreatePlot.set_yticklabels">set_yticklabels</a>
                         </li>
+                        <li>
+                                <a class="function" href="#CreatePlot.invert_xaxis">invert_xaxis</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#CreatePlot.invert_yaxis">invert_yaxis</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#CreatePlot.set_yscale">set_yscale</a>
+                        </li>
                 </ul>
 
             </li>
@@ -557,6 +566,31 @@
                              <span class="s1">&#39;len of yticks. Set yticks appropriately &#39;</span> <span class="o">+</span>
                              <span class="s1">&#39;or change labels to be len of yticks.&#39;</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">invert_xaxis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Invert the x axis</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">invert_yaxis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Invert the y axis</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">set_yscale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the y axis scale to &#39;log&#39;, &#39;linear&#39;, &#39;symlog&#39;, or &#39;logit&#39;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            scale : (str) scale type &#39;log&#39;, &#39;linear&#39;, &#39;symlog&#39;, or &#39;logit&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">valid_scales</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;symlog&#39;</span><span class="p">,</span> <span class="s1">&#39;logit&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">scale</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_scales</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;requested scale {scale} is invalid. Valid choices are: {&quot; | &quot;.join(valid_scales)}&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span>
+
 
 <span class="k">class</span> <span class="nc">CreateMap</span><span class="p">(</span><span class="n">EMCPyPlots</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1042,6 +1076,31 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Len of ytick labels does not equal &#39;</span> <span class="o">+</span>
                              <span class="s1">&#39;len of yticks. Set yticks appropriately &#39;</span> <span class="o">+</span>
                              <span class="s1">&#39;or change labels to be len of yticks.&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">invert_xaxis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Invert the x axis</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">invert_yaxis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Invert the y axis</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">set_yscale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the y axis scale to &#39;log&#39;, &#39;linear&#39;, &#39;symlog&#39;, or &#39;logit&#39;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            scale : (str) scale type &#39;log&#39;, &#39;linear&#39;, &#39;symlog&#39;, or &#39;logit&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">valid_scales</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;symlog&#39;</span><span class="p">,</span> <span class="s1">&#39;logit&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">scale</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_scales</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;requested scale {scale} is invalid. Valid choices are: {&quot; | &quot;.join(valid_scales)}&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span>
 </pre></div>
 
         </details>
@@ -1454,6 +1513,91 @@ a Value Error will be raised.</p>
 <li><strong>fontweight :</strong>  (str; default='normal') Text font weight</li>
 <li><strong>color :</strong>  (str; default='k') Text font color</li>
 <li><strong>rotation :</strong>  (int) rotation of tick labels</li>
+</ul>
+</div>
+
+
+                            </div>
+                            <div id="CreatePlot.invert_xaxis" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#CreatePlot.invert_xaxis">#&nbsp;&nbsp</a>
+
+        
+            <span class="def">def</span>
+            <span class="name">invert_xaxis</span><span class="signature">(self)</span>:
+    </div>
+
+                <details>
+            <summary>View Source</summary>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">invert_xaxis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Invert the x axis</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+</pre></div>
+
+        </details>
+
+            <div class="docstring"><p>Invert the x axis</p>
+</div>
+
+
+                            </div>
+                            <div id="CreatePlot.invert_yaxis" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#CreatePlot.invert_yaxis">#&nbsp;&nbsp</a>
+
+        
+            <span class="def">def</span>
+            <span class="name">invert_yaxis</span><span class="signature">(self)</span>:
+    </div>
+
+                <details>
+            <summary>View Source</summary>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">invert_yaxis</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Invert the y axis</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+</pre></div>
+
+        </details>
+
+            <div class="docstring"><p>Invert the y axis</p>
+</div>
+
+
+                            </div>
+                            <div id="CreatePlot.set_yscale" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#CreatePlot.set_yscale">#&nbsp;&nbsp</a>
+
+        
+            <span class="def">def</span>
+            <span class="name">set_yscale</span><span class="signature">(self, scale)</span>:
+    </div>
+
+                <details>
+            <summary>View Source</summary>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">set_yscale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the y axis scale to &#39;log&#39;, &#39;linear&#39;, &#39;symlog&#39;, or &#39;logit&#39;</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            scale : (str) scale type &#39;log&#39;, &#39;linear&#39;, &#39;symlog&#39;, or &#39;logit&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">valid_scales</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;symlog&#39;</span><span class="p">,</span> <span class="s1">&#39;logit&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">scale</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid_scales</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;requested scale {scale} is invalid. Valid choices are: {&quot; | &quot;.join(valid_scales)}&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span>
+</pre></div>
+
+        </details>
+
+            <div class="docstring"><p>Sets the y axis scale to 'log', 'linear', 'symlog', or 'logit'</p>
+
+<h6 id="args">Args</h6>
+
+<ul>
+<li><strong>scale :</strong>  (str) scale type 'log', 'linear', 'symlog', or 'logit'</li>
 </ul>
 </div>
 
