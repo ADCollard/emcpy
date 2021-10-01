@@ -167,7 +167,8 @@
                    <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
                    <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
                    <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
-                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">):</span>
+                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+                   <span class="n">xaxis</span><span class="o">=</span><span class="s1">&#39;primary&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds x label to map axes.</span>
 
@@ -177,16 +178,26 @@
 <span class="sd">            fontsize : (int; default=12) Text font size</span>
 <span class="sd">            fontweight : (str; default=&#39;normal&#39;) Text font weight</span>
 <span class="sd">            color : (str; default=&#39;k&#39;) Text font color</span>
+<span class="sd">            xaxis : (str; default=&#39;primary&#39;) choices are primary</span>
+<span class="sd">                    or secondary if shared_ay exists.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
-                           <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span>
+        <span class="k">if</span> <span class="n">xaxis</span> <span class="o">==</span> <span class="s1">&#39;secondary&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_ay</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unable to add x label.  Secondary &#39;</span> <span class="o">+</span>
+                                 <span class="s1">&#39;x axis does not exist.&#39;</span><span class="p">)</span>
+            <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_ay</span>
+
+        <span class="n">axis</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="n">xlabel</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
+                        <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">add_ylabel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span>
                    <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
                    <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
                    <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span>
-                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">):</span>
+                   <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+                   <span class="n">yaxis</span><span class="o">=</span><span class="s1">&#39;primary&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds y label to map axes.</span>
 
@@ -196,10 +207,19 @@
 <span class="sd">            fontsize : (int; default=12) Text font size</span>
 <span class="sd">            fontweight : (str; default=&#39;normal&#39;) Text font weight</span>
 <span class="sd">            color : (str; default=&#39;k&#39;) Text font color</span>
+<span class="sd">            yaxis : (str; default=&#39;primary&#39;) choices are primary</span>
+<span class="sd">                    or secondary if shared_ax exists.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
-                           <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span>
+        <span class="k">if</span> <span class="n">yaxis</span> <span class="o">==</span> <span class="s1">&#39;secondary&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_ax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unable to add y label.  Secondary &#39;</span> <span class="o">+</span>
+                      <span class="s1">&#39;y axis does not exist.&#39;</span><span class="p">)</span>
+            <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_ax</span>
+
+        <span class="n">axis</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
+                        <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">add_colorbar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
                      <span class="n">label_fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">):</span>
@@ -308,6 +328,8 @@
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">figsize</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_ax</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_ay</span> <span class="o">=</span> <span class="bp">None</span>
 
     <span class="k">def</span> <span class="nf">draw_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot_list</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -351,10 +373,11 @@
         <span class="k">if</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">sort</span><span class="p">:</span>
             <span class="n">idx</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
             <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">z</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-        <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">z</span><span class="p">,</span>
-                             <span class="n">s</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
-                             <span class="n">cmap</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span>
-                             <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_axis</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plot_ax</span><span class="p">)</span>
+        <span class="n">cs</span> <span class="o">=</span> <span class="n">axis</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">z</span><span class="p">,</span>
+                          <span class="n">s</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
+                          <span class="n">cmap</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span>
+                          <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
         <span class="n">norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">colorbar</span><span class="p">:</span>
@@ -364,89 +387,112 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Uses Scatter object to plot on axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_axis</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plot_ax</span><span class="p">)</span>
 
         <span class="c1"># checks to see if density attribute is True</span>
         <span class="k">if</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">density</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_density_scatter</span><span class="p">(</span><span class="n">plotobj</span><span class="p">)</span>
 
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
-                                <span class="n">s</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
-                                <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
-                                <span class="n">marker</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">marker</span><span class="p">,</span>
-                                <span class="n">vmin</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">vmin</span><span class="p">,</span>
-                                <span class="n">vmax</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">vmax</span><span class="p">,</span>
-                                <span class="n">alpha</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
-                                <span class="n">linewidths</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidths</span><span class="p">,</span>
-                                <span class="n">edgecolors</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">edgecolors</span><span class="p">,</span>
-                                <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">axis</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+                             <span class="n">s</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
+                             <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                             <span class="n">marker</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">marker</span><span class="p">,</span>
+                             <span class="n">vmin</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">vmin</span><span class="p">,</span>
+                             <span class="n">vmax</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">vmax</span><span class="p">,</span>
+                             <span class="n">alpha</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
+                             <span class="n">linewidths</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidths</span><span class="p">,</span>
+                             <span class="n">edgecolors</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">edgecolors</span><span class="p">,</span>
+                             <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
 
         <span class="c1"># checks to see if linear regression attribute is True</span>
         <span class="k">if</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">linear_regression</span><span class="p">:</span>
             <span class="n">y_pred</span><span class="p">,</span> <span class="n">r_sq</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span> <span class="o">=</span> <span class="n">get_linear_regression</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
                                                                    <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
             <span class="n">label</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;y = {slope:.4f}x + {intercept:.4f}</span><span class="se">\n</span><span class="s2">R</span><span class="se">\u00b2</span><span class="s2"> : {r_sq:.4f}&quot;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">lr_color</span><span class="p">,</span>
-                         <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">lr_linewidth</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">axis</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">lr_color</span><span class="p">,</span>
+                      <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">lr_linewidth</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_histogram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Uses Histogram object to plot on axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
-                     <span class="n">bins</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">bins</span><span class="p">,</span>
-                     <span class="nb">range</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">range</span><span class="p">,</span>
-                     <span class="n">density</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">density</span><span class="p">,</span>
-                     <span class="n">weights</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span>
-                     <span class="n">cumulative</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">cumulative</span><span class="p">,</span>
-                     <span class="n">bottom</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span>
-                     <span class="n">histtype</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">histtype</span><span class="p">,</span>
-                     <span class="n">align</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">align</span><span class="p">,</span>
-                     <span class="n">orientation</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">orientation</span><span class="p">,</span>
-                     <span class="n">rwidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">rwidth</span><span class="p">,</span>
-                     <span class="n">log</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">log</span><span class="p">,</span>
-                     <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
-                     <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
-                     <span class="n">stacked</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">stacked</span><span class="p">,</span>
-                     <span class="n">alpha</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_axis</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plot_ax</span><span class="p">)</span>
+        <span class="n">axis</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                  <span class="n">bins</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">bins</span><span class="p">,</span>
+                  <span class="nb">range</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">range</span><span class="p">,</span>
+                  <span class="n">density</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">density</span><span class="p">,</span>
+                  <span class="n">weights</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span>
+                  <span class="n">cumulative</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">cumulative</span><span class="p">,</span>
+                  <span class="n">bottom</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span>
+                  <span class="n">histtype</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">histtype</span><span class="p">,</span>
+                  <span class="n">align</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">align</span><span class="p">,</span>
+                  <span class="n">orientation</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">orientation</span><span class="p">,</span>
+                  <span class="n">rwidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">rwidth</span><span class="p">,</span>
+                  <span class="n">log</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">log</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                  <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+                  <span class="n">stacked</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">stacked</span><span class="p">,</span>
+                  <span class="n">alpha</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_lineplot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Uses LinePlot object to plot on axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
-                     <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
-                     <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
-                     <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
-                     <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
-                     <span class="n">marker</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">marker</span><span class="p">,</span>
-                     <span class="n">markersize</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
-                     <span class="n">alpha</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
-                     <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_axis</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plot_ax</span><span class="p">)</span>
+        <span class="n">axis</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
+                  <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                  <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
+                  <span class="n">marker</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">marker</span><span class="p">,</span>
+                  <span class="n">markersize</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
+                  <span class="n">alpha</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
+                  <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_verticalline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Uses VerticalLine object to plot on axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
-                        <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
-                        <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
-                        <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
-                        <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_axis</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plot_ax</span><span class="p">)</span>
+        <span class="n">axis</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
+                     <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                     <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
+                     <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
+                     <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_horizontalline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Uses HorizontalLine object to plot on axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
-                        <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
-                        <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
-                        <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
-                        <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_axis</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plot_ax</span><span class="p">)</span>
+        <span class="n">axis</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+                     <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                     <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
+                     <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
+                     <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_determine_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">requested_axis</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Determine which axis to use for plotting.  Default is self.ax.</span>
+<span class="sd">        Return:</span>
+<span class="sd">            correct axis for plotting</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">requested_axis</span> <span class="o">==</span> <span class="s1">&#39;shared_ax&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_ax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">shared_ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+            <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_ax</span>
+        <span class="k">elif</span> <span class="n">requested_axis</span> <span class="o">==</span> <span class="s1">&#39;shared_ay&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_ay</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">shared_ay</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">twiny</span><span class="p">()</span>
+            <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_ay</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span>
+
+        <span class="k">return</span> <span class="n">axis</span>
 
     <span class="k">def</span> <span class="nf">add_legend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span>
                    <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">):</span>
@@ -819,6 +865,8 @@
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">figsize</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_ax</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_ay</span> <span class="o">=</span> <span class="bp">None</span>
 
     <span class="k">def</span> <span class="nf">draw_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot_list</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -862,10 +910,11 @@
         <span class="k">if</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">sort</span><span class="p">:</span>
             <span class="n">idx</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
             <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">z</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-        <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">z</span><span class="p">,</span>
-                             <span class="n">s</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
-                             <span class="n">cmap</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span>
-                             <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_axis</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plot_ax</span><span class="p">)</span>
+        <span class="n">cs</span> <span class="o">=</span> <span class="n">axis</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">z</span><span class="p">,</span>
+                          <span class="n">s</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
+                          <span class="n">cmap</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span>
+                          <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
         <span class="n">norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">colorbar</span><span class="p">:</span>
@@ -875,89 +924,112 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Uses Scatter object to plot on axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_axis</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plot_ax</span><span class="p">)</span>
 
         <span class="c1"># checks to see if density attribute is True</span>
         <span class="k">if</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">density</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_density_scatter</span><span class="p">(</span><span class="n">plotobj</span><span class="p">)</span>
 
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
-                                <span class="n">s</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
-                                <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
-                                <span class="n">marker</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">marker</span><span class="p">,</span>
-                                <span class="n">vmin</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">vmin</span><span class="p">,</span>
-                                <span class="n">vmax</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">vmax</span><span class="p">,</span>
-                                <span class="n">alpha</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
-                                <span class="n">linewidths</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidths</span><span class="p">,</span>
-                                <span class="n">edgecolors</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">edgecolors</span><span class="p">,</span>
-                                <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">axis</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+                             <span class="n">s</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
+                             <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                             <span class="n">marker</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">marker</span><span class="p">,</span>
+                             <span class="n">vmin</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">vmin</span><span class="p">,</span>
+                             <span class="n">vmax</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">vmax</span><span class="p">,</span>
+                             <span class="n">alpha</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
+                             <span class="n">linewidths</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidths</span><span class="p">,</span>
+                             <span class="n">edgecolors</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">edgecolors</span><span class="p">,</span>
+                             <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
 
         <span class="c1"># checks to see if linear regression attribute is True</span>
         <span class="k">if</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">linear_regression</span><span class="p">:</span>
             <span class="n">y_pred</span><span class="p">,</span> <span class="n">r_sq</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span> <span class="o">=</span> <span class="n">get_linear_regression</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
                                                                    <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
             <span class="n">label</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;y = {slope:.4f}x + {intercept:.4f}</span><span class="se">\n</span><span class="s2">R</span><span class="se">\u00b2</span><span class="s2"> : {r_sq:.4f}&quot;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">lr_color</span><span class="p">,</span>
-                         <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">lr_linewidth</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+            <span class="n">axis</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">lr_color</span><span class="p">,</span>
+                      <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">lr_linewidth</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_histogram</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Uses Histogram object to plot on axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
-                     <span class="n">bins</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">bins</span><span class="p">,</span>
-                     <span class="nb">range</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">range</span><span class="p">,</span>
-                     <span class="n">density</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">density</span><span class="p">,</span>
-                     <span class="n">weights</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span>
-                     <span class="n">cumulative</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">cumulative</span><span class="p">,</span>
-                     <span class="n">bottom</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span>
-                     <span class="n">histtype</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">histtype</span><span class="p">,</span>
-                     <span class="n">align</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">align</span><span class="p">,</span>
-                     <span class="n">orientation</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">orientation</span><span class="p">,</span>
-                     <span class="n">rwidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">rwidth</span><span class="p">,</span>
-                     <span class="n">log</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">log</span><span class="p">,</span>
-                     <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
-                     <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
-                     <span class="n">stacked</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">stacked</span><span class="p">,</span>
-                     <span class="n">alpha</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_axis</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plot_ax</span><span class="p">)</span>
+        <span class="n">axis</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                  <span class="n">bins</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">bins</span><span class="p">,</span>
+                  <span class="nb">range</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">range</span><span class="p">,</span>
+                  <span class="n">density</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">density</span><span class="p">,</span>
+                  <span class="n">weights</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span>
+                  <span class="n">cumulative</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">cumulative</span><span class="p">,</span>
+                  <span class="n">bottom</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span>
+                  <span class="n">histtype</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">histtype</span><span class="p">,</span>
+                  <span class="n">align</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">align</span><span class="p">,</span>
+                  <span class="n">orientation</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">orientation</span><span class="p">,</span>
+                  <span class="n">rwidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">rwidth</span><span class="p">,</span>
+                  <span class="n">log</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">log</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                  <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+                  <span class="n">stacked</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">stacked</span><span class="p">,</span>
+                  <span class="n">alpha</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">alpha</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_lineplot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Uses LinePlot object to plot on axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
-                     <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
-                     <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
-                     <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
-                     <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
-                     <span class="n">marker</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">marker</span><span class="p">,</span>
-                     <span class="n">markersize</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
-                     <span class="n">alpha</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
-                     <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_axis</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plot_ax</span><span class="p">)</span>
+        <span class="n">axis</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
+                  <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                  <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
+                  <span class="n">marker</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">marker</span><span class="p">,</span>
+                  <span class="n">markersize</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
+                  <span class="n">alpha</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">alpha</span><span class="p">,</span>
+                  <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_verticalline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Uses VerticalLine object to plot on axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
-                        <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
-                        <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
-                        <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
-                        <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_axis</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plot_ax</span><span class="p">)</span>
+        <span class="n">axis</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
+                     <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                     <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
+                     <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
+                     <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_horizontalline</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Uses HorizontalLine object to plot on axis.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
-                        <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
-                        <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
-                        <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
-                        <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_axis</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plot_ax</span><span class="p">)</span>
+        <span class="n">axis</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+                     <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                     <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
+                     <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
+                     <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_determine_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">requested_axis</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Determine which axis to use for plotting.  Default is self.ax.</span>
+<span class="sd">        Return:</span>
+<span class="sd">            correct axis for plotting</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">requested_axis</span> <span class="o">==</span> <span class="s1">&#39;shared_ax&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_ax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">shared_ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+            <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_ax</span>
+        <span class="k">elif</span> <span class="n">requested_axis</span> <span class="o">==</span> <span class="s1">&#39;shared_ay&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_ay</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">shared_ay</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">twiny</span><span class="p">()</span>
+            <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_ay</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span>
+
+        <span class="k">return</span> <span class="n">axis</span>
 
     <span class="k">def</span> <span class="nf">add_legend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span>
                    <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">):</span>
@@ -1129,6 +1201,8 @@ histogram, or line plot.</p>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">figsize</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_ax</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shared_ay</span> <span class="o">=</span> <span class="bp">None</span>
 </pre></div>
 
         </details>
