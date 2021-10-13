@@ -280,9 +280,11 @@
                          <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
                          <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">add_legend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span>
-                   <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span>
-                   <span class="n">handlesize</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">add_legend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span>
+                   <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">markerfirst</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                   <span class="n">frameon</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">fancybox</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                   <span class="n">framealpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;inherit&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span>
+                   <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds legend to plot.</span>
 
@@ -292,19 +294,43 @@
 <span class="sd">                 &#39;lower left&#39;, &#39;lower right&#39;, &#39;upper center&#39;,</span>
 <span class="sd">                 &#39;lower center&#39;, &#39;center left&#39;, &#39;center right&#39;,</span>
 <span class="sd">                 &#39;center&#39;, &#39;best&#39;]</span>
+<span class="sd">            ncol : (int) number of columsn legend is split into</span>
 <span class="sd">            fontsize : (int or str; default=&#39;medium&#39;) the font</span>
 <span class="sd">                size of the legend.</span>
 <span class="sd">                Options include [&#39;xx-small&#39;, &#39;x-small&#39;, &#39;small&#39;,</span>
 <span class="sd">                &#39;medium&#39;, &#39;large&#39;, &#39;x-large&#39;, &#39;xx-large&#39;] or an</span>
 <span class="sd">                integer value</span>
-<span class="sd">            handlesize : (int; default=20) changes the size of the</span>
-<span class="sd">                shape in the legend. ** Does not change size of a</span>
-<span class="sd">                line from a lineplot.</span>
+<span class="sd">            labelcolor : (str; default=&#39;black&#39;) color of label text</span>
+<span class="sd">            markersize : (int; default=20) size of marker in legend</span>
+<span class="sd">            markerfirst : (bool; default=True) places marker in front</span>
+<span class="sd">                          of label text. If False, label will be first</span>
+<span class="sd">            frameon : (bool; default=True) Puts legend on a patch</span>
+<span class="sd">            fancybox : (bool; default=True) Applies round edges to patch</span>
+<span class="sd">            shadow : (bool; default=False) Draws shadow behind legend</span>
+<span class="sd">            framealpha : (float; default=0.8) Alpha transparency of</span>
+<span class="sd">                         legend background</span>
+<span class="sd">            facecolor : (str; default=&#39;inherit&#39;) Background color of</span>
+<span class="sd">                        legend</span>
+<span class="sd">            edgecolor : (str; default=&#39;lightgray&#39;) Legend&#39;s background</span>
+<span class="sd">                        edge color</span>
+<span class="sd">            title : (str; default=None) Title of legend</span>
+<span class="sd">            title_fonstize : (int or str: default=&#39;medium&#39;) the font of</span>
+<span class="sd">                             the legend title.</span>
+<span class="sd">                             Options include [&#39;xx-small&#39;, &#39;x-small&#39;,</span>
+<span class="sd">                             &#39;small&#39;, &#39;medium&#39;, &#39;large&#39;, &#39;x-large&#39;,</span>
+<span class="sd">                             &#39;xx-large&#39;] or an integer value</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="n">legend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+        <span class="n">legend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
+            <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="n">ncol</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
+            <span class="n">labelcolor</span><span class="o">=</span><span class="n">labelcolor</span><span class="p">,</span> <span class="n">markerfirst</span><span class="o">=</span><span class="n">markerfirst</span><span class="p">,</span>
+            <span class="n">frameon</span><span class="o">=</span><span class="n">frameon</span><span class="p">,</span> <span class="n">fancybox</span><span class="o">=</span><span class="n">fancybox</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="n">shadow</span><span class="p">,</span>
+            <span class="n">framealpha</span><span class="o">=</span><span class="n">framealpha</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor</span><span class="p">,</span>
+            <span class="n">edgecolor</span><span class="o">=</span><span class="n">edgecolor</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+            <span class="n">title_fontsize</span><span class="o">=</span><span class="n">title_fontsize</span><span class="p">)</span>
+
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">legend</span><span class="o">.</span><span class="n">legendHandles</span><span class="p">):</span>
-            <span class="n">legend</span><span class="o">.</span><span class="n">legendHandles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">handlesize</span><span class="p">]</span>
+            <span class="n">legend</span><span class="o">.</span><span class="n">legendHandles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">markersize</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">add_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xloc</span><span class="p">,</span> <span class="n">yloc</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
                  <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span>
