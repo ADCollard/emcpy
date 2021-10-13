@@ -40,9 +40,6 @@
                                 <a class="function" href="#CreatePlot.draw_data">draw_data</a>
                         </li>
                         <li>
-                                <a class="function" href="#CreatePlot.add_legend">add_legend</a>
-                        </li>
-                        <li>
                                 <a class="function" href="#CreatePlot.add_grid">add_grid</a>
                         </li>
                         <li>
@@ -215,7 +212,7 @@
         <span class="k">if</span> <span class="n">yaxis</span> <span class="o">==</span> <span class="s1">&#39;secondary&#39;</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_ax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unable to add y label.  Secondary &#39;</span> <span class="o">+</span>
-                      <span class="s1">&#39;y axis does not exist.&#39;</span><span class="p">)</span>
+                                 <span class="s1">&#39;y axis does not exist.&#39;</span><span class="p">)</span>
             <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shared_ax</span>
 
         <span class="n">axis</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="n">ylabel</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
@@ -282,6 +279,32 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">outstr</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">xloc</span><span class="p">,</span> <span class="n">yloc</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;axes fraction&#39;</span><span class="p">,</span>
                          <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
                          <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_legend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span>
+                   <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span>
+                   <span class="n">handlesize</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds legend to plot.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            loc : (str; default=&#39;best&#39;) location of the legend.</span>
+<span class="sd">                 Options include: [&#39;upper left&#39;, &#39;upper right&#39;,</span>
+<span class="sd">                 &#39;lower left&#39;, &#39;lower right&#39;, &#39;upper center&#39;,</span>
+<span class="sd">                 &#39;lower center&#39;, &#39;center left&#39;, &#39;center right&#39;,</span>
+<span class="sd">                 &#39;center&#39;, &#39;best&#39;]</span>
+<span class="sd">            fontsize : (int or str; default=&#39;medium&#39;) the font</span>
+<span class="sd">                size of the legend.</span>
+<span class="sd">                Options include [&#39;xx-small&#39;, &#39;x-small&#39;, &#39;small&#39;,</span>
+<span class="sd">                &#39;medium&#39;, &#39;large&#39;, &#39;x-large&#39;, &#39;xx-large&#39;] or an</span>
+<span class="sd">                integer value</span>
+<span class="sd">            handlesize : (int; default=20) changes the size of the</span>
+<span class="sd">                shape in the legend. ** Does not change size of a</span>
+<span class="sd">                line from a lineplot.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">legend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">legend</span><span class="o">.</span><span class="n">legendHandles</span><span class="p">):</span>
+            <span class="n">legend</span><span class="o">.</span><span class="n">legendHandles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">handlesize</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">add_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xloc</span><span class="p">,</span> <span class="n">yloc</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
                  <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span>
@@ -493,14 +516,6 @@
             <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span>
 
         <span class="k">return</span> <span class="n">axis</span>
-
-    <span class="k">def</span> <span class="nf">add_legend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span>
-                   <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Adds legend to plot.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">add_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -731,16 +746,27 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Plots MapScatter object on map axes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
-                             <span class="n">plot</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
-                             <span class="n">c</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
-                             <span class="n">s</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
-                             <span class="n">cmap</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span>
-                             <span class="n">marker</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">marker</span><span class="p">,</span>
-                             <span class="n">vmin</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmin</span><span class="p">,</span>
-                             <span class="n">vmax</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmax</span><span class="p">,</span>
-                             <span class="n">transform</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proj_obj</span><span class="o">.</span><span class="n">projection</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">plot</span><span class="o">.</span><span class="n">data</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+                                 <span class="n">plot</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+                                 <span class="n">s</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
+                                 <span class="n">color</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                                 <span class="n">marker</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">marker</span><span class="p">,</span>
+                                 <span class="n">vmin</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmin</span><span class="p">,</span>
+                                 <span class="n">vmax</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmax</span><span class="p">,</span>
+                                 <span class="n">label</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+                                 <span class="n">transform</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proj_obj</span><span class="o">.</span><span class="n">projection</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+                                 <span class="n">plot</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+                                 <span class="n">c</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                                 <span class="n">s</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
+                                 <span class="n">cmap</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span>
+                                 <span class="n">marker</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">marker</span><span class="p">,</span>
+                                 <span class="n">vmin</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmin</span><span class="p">,</span>
+                                 <span class="n">vmax</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmax</span><span class="p">,</span>
+                                 <span class="n">label</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+                                 <span class="n">transform</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proj_obj</span><span class="o">.</span><span class="n">projection</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">plot</span><span class="o">.</span><span class="n">colorbar</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">cs</span>
 
@@ -1033,14 +1059,6 @@
 
         <span class="k">return</span> <span class="n">axis</span>
 
-    <span class="k">def</span> <span class="nf">add_legend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span>
-                   <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Adds legend to plot.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
-
     <span class="k">def</span> <span class="nf">add_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
@@ -1265,32 +1283,6 @@ histogram, or line plot.</p>
 <ul>
 <li><strong>plot_list :</strong>  (array-like) List of map plot objects from emcpy</li>
 </ul>
-</div>
-
-
-                            </div>
-                            <div id="CreatePlot.add_legend" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#CreatePlot.add_legend">#&nbsp;&nbsp</a>
-
-        
-            <span class="def">def</span>
-            <span class="name">add_legend</span><span class="signature">(self, loc=&#39;upper left&#39;, fontsize=&#39;medium&#39;)</span>:
-    </div>
-
-                <details>
-            <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">add_legend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span>
-                   <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Adds legend to plot.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
-</pre></div>
-
-        </details>
-
-            <div class="docstring"><p>Adds legend to plot.</p>
 </div>
 
 
@@ -1690,6 +1682,7 @@ a Value Error will be raised.</p>
                 <dd id="CreatePlot.add_ylabel" class="function"><a href="#EMCPyPlots.add_ylabel">add_ylabel</a></dd>
                 <dd id="CreatePlot.add_colorbar" class="function"><a href="#EMCPyPlots.add_colorbar">add_colorbar</a></dd>
                 <dd id="CreatePlot.add_stats_dict" class="function"><a href="#EMCPyPlots.add_stats_dict">add_stats_dict</a></dd>
+                <dd id="CreatePlot.add_legend" class="function"><a href="#EMCPyPlots.add_legend">add_legend</a></dd>
                 <dd id="CreatePlot.add_text" class="function"><a href="#EMCPyPlots.add_text">add_text</a></dd>
                 <dd id="CreatePlot.return_figure" class="function"><a href="#EMCPyPlots.return_figure">return_figure</a></dd>
 
@@ -1800,16 +1793,27 @@ a Value Error will be raised.</p>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Plots MapScatter object on map axes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
-                             <span class="n">plot</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
-                             <span class="n">c</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
-                             <span class="n">s</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
-                             <span class="n">cmap</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span>
-                             <span class="n">marker</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">marker</span><span class="p">,</span>
-                             <span class="n">vmin</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmin</span><span class="p">,</span>
-                             <span class="n">vmax</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmax</span><span class="p">,</span>
-                             <span class="n">transform</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proj_obj</span><span class="o">.</span><span class="n">projection</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">plot</span><span class="o">.</span><span class="n">data</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+                                 <span class="n">plot</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+                                 <span class="n">s</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
+                                 <span class="n">color</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                                 <span class="n">marker</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">marker</span><span class="p">,</span>
+                                 <span class="n">vmin</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmin</span><span class="p">,</span>
+                                 <span class="n">vmax</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmax</span><span class="p">,</span>
+                                 <span class="n">label</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+                                 <span class="n">transform</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proj_obj</span><span class="o">.</span><span class="n">projection</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">plot</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+                                 <span class="n">plot</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+                                 <span class="n">c</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                                 <span class="n">s</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
+                                 <span class="n">cmap</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span>
+                                 <span class="n">marker</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">marker</span><span class="p">,</span>
+                                 <span class="n">vmin</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmin</span><span class="p">,</span>
+                                 <span class="n">vmax</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">vmax</span><span class="p">,</span>
+                                 <span class="n">label</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">label</span><span class="p">,</span>
+                                 <span class="n">transform</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proj_obj</span><span class="o">.</span><span class="n">projection</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">plot</span><span class="o">.</span><span class="n">colorbar</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">cs</span>
 
@@ -2133,6 +2137,7 @@ between 0 (transparent) and 1 (opaque)</li>
                 <dd id="CreateMap.add_ylabel" class="function"><a href="#EMCPyPlots.add_ylabel">add_ylabel</a></dd>
                 <dd id="CreateMap.add_colorbar" class="function"><a href="#EMCPyPlots.add_colorbar">add_colorbar</a></dd>
                 <dd id="CreateMap.add_stats_dict" class="function"><a href="#EMCPyPlots.add_stats_dict">add_stats_dict</a></dd>
+                <dd id="CreateMap.add_legend" class="function"><a href="#EMCPyPlots.add_legend">add_legend</a></dd>
                 <dd id="CreateMap.add_text" class="function"><a href="#EMCPyPlots.add_text">add_text</a></dd>
                 <dd id="CreateMap.return_figure" class="function"><a href="#EMCPyPlots.return_figure">return_figure</a></dd>
 
