@@ -40,6 +40,9 @@
                                 <a class="function" href="#CreatePlot.draw_data">draw_data</a>
                         </li>
                         <li>
+                                <a class="function" href="#CreatePlot.add_unity">add_unity</a>
+                        </li>
+                        <li>
                                 <a class="function" href="#CreatePlot.add_grid">add_grid</a>
                         </li>
                         <li>
@@ -409,12 +412,16 @@
 <span class="sd">        Uses Scatter Object to plot density scatter colored by</span>
 <span class="sd">        2d histogram.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">data</span><span class="p">,</span> <span class="n">x_e</span><span class="p">,</span> <span class="n">y_e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+        <span class="n">_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+        <span class="n">data</span><span class="p">,</span> <span class="n">x_e</span><span class="p">,</span> <span class="n">y_e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">_idx</span><span class="p">],</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">_idx</span><span class="p">],</span>
                                         <span class="n">bins</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">bins</span><span class="p">,</span>
-                                        <span class="n">density</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                                        <span class="n">density</span><span class="o">=</span><span class="ow">not</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">nsamples</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">nsamples</span><span class="p">:</span>
+            <span class="c1"># compute percentage of total for each bin</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">_idx</span><span class="p">)</span> <span class="o">*</span> <span class="mf">100.</span>
         <span class="n">z</span> <span class="o">=</span> <span class="n">interpn</span><span class="p">((</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">x_e</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">x_e</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">y_e</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">+</span><span class="n">y_e</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])),</span>
                     <span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
-                    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;splinef2d&quot;</span><span class="p">,</span> <span class="n">bounds_error</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+                    <span class="n">method</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">interp</span><span class="p">,</span> <span class="n">bounds_error</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
         <span class="c1"># To be sure to plot all data</span>
         <span class="n">z</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">z</span><span class="p">))]</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="c1"># Sort the points by density, so that the densest</span>
@@ -427,7 +434,8 @@
                           <span class="n">s</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
                           <span class="n">cmap</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span>
                           <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-        <span class="n">norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+        <span class="c1"># below doing nothing? fix/remove in subsequent PR?</span>
+        <span class="c1"># norm = Normalize(vmin=np.min(z), vmax=np.max(z))</span>
 
         <span class="k">if</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">colorbar</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">cs</span>
@@ -542,6 +550,25 @@
             <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span>
 
         <span class="k">return</span> <span class="n">axis</span>
+
+    <span class="k">def</span> <span class="nf">add_unity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+                  <span class="n">alpha</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                  <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plots 1:1 line on plot.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            linewidth : (int; default=1) Line thickness</span>
+<span class="sd">            color : (str; default=&#39;gray&#39;) Line color</span>
+<span class="sd">            alpha : (float; default=None) The alpha value,</span>
+<span class="sd">                    between 0 (transparent) and 1 (opaque)</span>
+<span class="sd">            linestyle : (str; default=&#39;-&#39;) Line style</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">_xy</span><span class="p">,</span> <span class="n">_xy</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+                     <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="n">linestyle</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">add_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -951,12 +978,16 @@
 <span class="sd">        Uses Scatter Object to plot density scatter colored by</span>
 <span class="sd">        2d histogram.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">data</span><span class="p">,</span> <span class="n">x_e</span><span class="p">,</span> <span class="n">y_e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+        <span class="n">_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">),</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+        <span class="n">data</span><span class="p">,</span> <span class="n">x_e</span><span class="p">,</span> <span class="n">y_e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">_idx</span><span class="p">],</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">_idx</span><span class="p">],</span>
                                         <span class="n">bins</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">bins</span><span class="p">,</span>
-                                        <span class="n">density</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                                        <span class="n">density</span><span class="o">=</span><span class="ow">not</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">nsamples</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">nsamples</span><span class="p">:</span>
+            <span class="c1"># compute percentage of total for each bin</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">_idx</span><span class="p">)</span> <span class="o">*</span> <span class="mf">100.</span>
         <span class="n">z</span> <span class="o">=</span> <span class="n">interpn</span><span class="p">((</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">x_e</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">x_e</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">y_e</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">+</span><span class="n">y_e</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])),</span>
                     <span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
-                    <span class="n">method</span><span class="o">=</span><span class="s2">&quot;splinef2d&quot;</span><span class="p">,</span> <span class="n">bounds_error</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+                    <span class="n">method</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">interp</span><span class="p">,</span> <span class="n">bounds_error</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
         <span class="c1"># To be sure to plot all data</span>
         <span class="n">z</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">z</span><span class="p">))]</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="c1"># Sort the points by density, so that the densest</span>
@@ -969,7 +1000,8 @@
                           <span class="n">s</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">markersize</span><span class="p">,</span>
                           <span class="n">cmap</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">cmap</span><span class="p">,</span>
                           <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
-        <span class="n">norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+        <span class="c1"># below doing nothing? fix/remove in subsequent PR?</span>
+        <span class="c1"># norm = Normalize(vmin=np.min(z), vmax=np.max(z))</span>
 
         <span class="k">if</span> <span class="n">plotobj</span><span class="o">.</span><span class="n">colorbar</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cs</span> <span class="o">=</span> <span class="n">cs</span>
@@ -1084,6 +1116,25 @@
             <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ax</span>
 
         <span class="k">return</span> <span class="n">axis</span>
+
+    <span class="k">def</span> <span class="nf">add_unity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+                  <span class="n">alpha</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                  <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plots 1:1 line on plot.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            linewidth : (int; default=1) Line thickness</span>
+<span class="sd">            color : (str; default=&#39;gray&#39;) Line color</span>
+<span class="sd">            alpha : (float; default=None) The alpha value,</span>
+<span class="sd">                    between 0 (transparent) and 1 (opaque)</span>
+<span class="sd">            linestyle : (str; default=&#39;-&#39;) Line style</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">_xy</span><span class="p">,</span> <span class="n">_xy</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+                     <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="n">linestyle</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">add_grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -1308,6 +1359,53 @@ histogram, or line plot.</p>
 
 <ul>
 <li><strong>plot_list :</strong>  (array-like) List of map plot objects from emcpy</li>
+</ul>
+</div>
+
+
+                            </div>
+                            <div id="CreatePlot.add_unity" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#CreatePlot.add_unity">#&nbsp;&nbsp</a>
+
+        
+            <span class="def">def</span>
+            <span class="name">add_unity</span><span class="signature">(self, linewidth=1, color=&#39;gray&#39;, alpha=None, linestyle=&#39;-&#39;)</span>:
+    </div>
+
+                <details>
+            <summary>View Source</summary>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">add_unity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+                  <span class="n">alpha</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                  <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Plots 1:1 line on plot.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            linewidth : (int; default=1) Line thickness</span>
+<span class="sd">            color : (str; default=&#39;gray&#39;) Line color</span>
+<span class="sd">            alpha : (float; default=None) The alpha value,</span>
+<span class="sd">                    between 0 (transparent) and 1 (opaque)</span>
+<span class="sd">            linestyle : (str; default=&#39;-&#39;) Line style</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">_xy</span><span class="p">,</span> <span class="n">_xy</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+                     <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="n">linestyle</span><span class="p">)</span>
+</pre></div>
+
+        </details>
+
+            <div class="docstring"><p>Plots 1:1 line on plot.</p>
+
+<h6 id="args">Args</h6>
+
+<ul>
+<li><strong>linewidth :</strong>  (int; default=1) Line thickness</li>
+<li><strong>color :</strong>  (str; default='gray') Line color</li>
+<li><strong>alpha :</strong>  (float; default=None) The alpha value,
+between 0 (transparent) and 1 (opaque)</li>
+<li><strong>linestyle :</strong>  (str; default='-') Line style</li>
 </ul>
 </div>
 
