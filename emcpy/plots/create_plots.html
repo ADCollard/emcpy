@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="pdoc 8.0.0" />
+    <meta name="generator" content="pdoc 8.0.1" />
     <title>emcpy.plots.create_plots API documentation</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%2244.5%202.5%2015%2015%22%3E%3Cpath%20d%3D%22M49.351%2021.041c-.233-.721-.546-2.408-.772-4.076-.042-.09-.067-.187-.046-.288-.166-1.347-.277-2.625-.241-3.351-1.378-1.008-2.271-2.586-2.271-4.362%200-.976.272-1.935.788-2.774.057-.094.122-.18.184-.268-.033-.167-.052-.339-.052-.516%200-1.477%201.202-2.679%202.679-2.679.791%200%201.496.352%201.987.9a6.3%206.3%200%200%201%201.001.029c.492-.564%201.207-.929%202.012-.929%201.477%200%202.679%201.202%202.679%202.679a2.65%202.65%200%200%201-.269%201.148c.383.747.595%201.572.595%202.41%200%202.311-1.507%204.29-3.635%205.107.037.699.147%202.27.423%203.294l.137.461c.156%202.136-4.612%205.166-5.199%203.215zm.127-4.919a4.78%204.78%200%200%200%20.775-.584c-.172-.115-.505-.254-.88-.378zm.331%202.302l.828-.502c-.202-.143-.576-.328-.984-.49zm.45%202.157l.701-.403c-.214-.115-.536-.249-.891-.376l.19.779zM49.13%204.141c0%20.152.123.276.276.276s.275-.124.275-.276-.123-.276-.276-.276-.275.124-.275.276zm.735-.389a1.15%201.15%200%200%201%20.314.783%201.16%201.16%200%200%201-1.162%201.162c-.457%200-.842-.27-1.032-.653-.026.117-.042.238-.042.362a1.68%201.68%200%200%200%201.679%201.679%201.68%201.68%200%200%200%201.679-1.679c0-.843-.626-1.535-1.436-1.654zm3.076%201.654a1.68%201.68%200%200%200%201.679%201.679%201.68%201.68%200%200%200%201.679-1.679c0-.037-.009-.072-.011-.109-.21.3-.541.508-.935.508a1.16%201.16%200%200%201-1.162-1.162%201.14%201.14%200%200%201%20.474-.912c-.015%200-.03-.005-.045-.005-.926.001-1.679.754-1.679%201.68zm1.861-1.265c0%20.152.123.276.276.276s.275-.124.275-.276-.123-.276-.276-.276-.275.124-.275.276zm1.823%204.823c0-.52-.103-1.035-.288-1.52-.466.394-1.06.64-1.717.64-1.144%200-2.116-.725-2.499-1.738-.383%201.012-1.355%201.738-2.499%201.738-.867%200-1.631-.421-2.121-1.062-.307.605-.478%201.267-.478%201.942%200%202.486%202.153%204.51%204.801%204.51s4.801-2.023%204.801-4.51zm-3.032%209.156l-.146-.492c-.276-1.02-.395-2.457-.444-3.268a6.11%206.11%200%200%201-1.18.115%206.01%206.01%200%200%201-2.536-.562l.006.175c.802.215%201.848.612%202.021%201.25.079.295-.021.601-.274.837l-.598.501c.667.304%201.243.698%201.311%201.179.02.144.022.507-.393.787l-.564.365c1.285.521%201.361.96%201.381%201.126.018.142.011.496-.427.746l-.854.489c.064-1.19%201.985-2.585%202.697-3.248zM49.34%209.925c0-.667%201-.667%201%200%200%20.653.818%201.205%201.787%201.205s1.787-.552%201.787-1.205c0-.667%201-.667%201%200%200%201.216-1.25%202.205-2.787%202.205s-2.787-.989-2.787-2.205zm-.887-7.633c-.093.077-.205.114-.317.114a.5.5%200%200%201-.318-.886L49.183.397a.5.5%200%200%201%20.703.068.5.5%200%200%201-.069.703zm7.661-.065c-.086%200-.173-.022-.253-.068l-1.523-.893c-.575-.337-.069-1.2.506-.863l1.523.892a.5.5%200%200%201%20.179.685c-.094.158-.261.247-.432.247z%22%20fill%3D%22%233bb300%22/%3E%3C/svg%3E"/>
 
@@ -93,6 +93,18 @@
                 </ul>
 
             </li>
+            <li>
+                    <a class="class" href="#CreateFigure">CreateFigure</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#CreateFigure.__init__">CreateFigure</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#CreateFigure.add_legend">add_legend</a>
+                        </li>
+                </ul>
+
+            </li>
     </ul>
 
 
@@ -117,13 +129,14 @@
 <span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="kn">as</span> <span class="nn">cfeature</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span>
+<span class="kn">from</span> <span class="nn">matplotlib.figure</span> <span class="kn">import</span> <span class="n">Figure</span>
 <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
 <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interpn</span>
 <span class="kn">from</span> <span class="nn">cartopy.mpl.ticker</span> <span class="kn">import</span> <span class="n">LongitudeFormatter</span><span class="p">,</span> <span class="n">LatitudeFormatter</span>
 <span class="kn">from</span> <span class="nn">emcpy.plots.map_tools</span> <span class="kn">import</span> <span class="n">Domain</span><span class="p">,</span> <span class="n">MapProjection</span>
 <span class="kn">from</span> <span class="nn">emcpy.stats</span> <span class="kn">import</span> <span class="n">get_linear_regression</span>
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CreatePlot&#39;</span><span class="p">,</span> <span class="s1">&#39;CreateMap&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CreatePlot&#39;</span><span class="p">,</span> <span class="s1">&#39;CreateMap&#39;</span><span class="p">,</span> <span class="s1">&#39;CreateFigure&#39;</span><span class="p">]</span>
 
 
 <span class="k">class</span> <span class="nc">EMCPyPlots</span><span class="p">:</span>
@@ -135,8 +148,7 @@
 <span class="sd">        Args:</span>
 <span class="sd">            figsize : (tuple) Figure dimension size</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span> <span class="n">FigureClass</span><span class="o">=</span><span class="n">CreateFigure</span><span class="p">)</span>
 
         <span class="k">return</span>
 
@@ -377,7 +389,6 @@
 <span class="sd">        Args:</span>
 <span class="sd">            figsize : (tuple; default=(8,6)) Figure dimension size</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">figsize</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">shared_ax</span> <span class="o">=</span> <span class="bp">None</span>
@@ -914,6 +925,87 @@
 <span class="sd">        Add rivers to map axes.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">sfeature</span><span class="o">.</span><span class="n">RIVERS</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">CreateFigure</span><span class="p">(</span><span class="n">Figure</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extends class figure for plotted data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        CreatePlot constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_legend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span>
+                   <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">markerfirst</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                   <span class="n">frameon</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">fancybox</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                   <span class="n">framealpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;inherit&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span>
+                   <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a legend to a CreateFigure class object.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            plotobj : (CreatePlot) object for bbox transformation.</span>
+<span class="sd">            loc : (str; default=&#39;upper left&#39;) location of legend box.</span>
+<span class="sd">            ncol : (int) number of columsn legend is split into</span>
+<span class="sd">            fontsize : (int or str; default=&#39;medium&#39;) the font</span>
+<span class="sd">                size of the legend.</span>
+<span class="sd">                Options include [&#39;xx-small&#39;, &#39;x-small&#39;, &#39;small&#39;,</span>
+<span class="sd">                &#39;medium&#39;, &#39;large&#39;, &#39;x-large&#39;, &#39;xx-large&#39;] or an</span>
+<span class="sd">                integer value</span>
+<span class="sd">            labelcolor : (str; default=&#39;black&#39;) color of label text</span>
+<span class="sd">            markersize : (int; default=20) size of marker in legend</span>
+<span class="sd">            markerfirst : (bool; default=True) places marker in front</span>
+<span class="sd">                          of label text. If False, label will be first</span>
+<span class="sd">            frameon : (bool; default=True) Puts legend on a patch</span>
+<span class="sd">            fancybox : (bool; default=True) Applies round edges to patch</span>
+<span class="sd">            shadow : (bool; default=False) Draws shadow behind legend</span>
+<span class="sd">            framealpha : (float; default=0.8) Alpha transparency of</span>
+<span class="sd">                         legend background</span>
+<span class="sd">            facecolor : (str; default=&#39;inherit&#39;) Background color of</span>
+<span class="sd">                        legend</span>
+<span class="sd">            edgecolor : (str; default=&#39;lightgray&#39;) Legend&#39;s background</span>
+<span class="sd">                        edge color</span>
+<span class="sd">            title : (str; default=None) Title of legend</span>
+<span class="sd">            title_fonstize : (int or str: default=&#39;medium&#39;) the font of</span>
+<span class="sd">                             the legend title.</span>
+<span class="sd">                             Options include [&#39;xx-small&#39;, &#39;x-small&#39;,</span>
+<span class="sd">                             &#39;small&#39;, &#39;medium&#39;, &#39;large&#39;, &#39;x-large&#39;,</span>
+<span class="sd">                             &#39;xx-large&#39;] or an integer value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getcoords</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
+        <span class="n">legend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span>
+                             <span class="n">bbox_transform</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+                             <span class="n">ncol</span><span class="o">=</span><span class="n">ncol</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
+                             <span class="n">labelcolor</span><span class="o">=</span><span class="n">labelcolor</span><span class="p">,</span> <span class="n">markerfirst</span><span class="o">=</span><span class="n">markerfirst</span><span class="p">,</span>
+                             <span class="n">frameon</span><span class="o">=</span><span class="n">frameon</span><span class="p">,</span> <span class="n">fancybox</span><span class="o">=</span><span class="n">fancybox</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="n">shadow</span><span class="p">,</span>
+                             <span class="n">framealpha</span><span class="o">=</span><span class="n">framealpha</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor</span><span class="p">,</span>
+                             <span class="n">edgecolor</span><span class="o">=</span><span class="n">edgecolor</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+                             <span class="n">title_fontsize</span><span class="o">=</span><span class="n">title_fontsize</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">legend</span><span class="o">.</span><span class="n">legendHandles</span><span class="p">):</span>
+            <span class="n">legend</span><span class="o">.</span><span class="n">legendHandles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">markersize</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_getcoords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the relative coordinate tuple for a given location string.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            loc : (str; default=&#39;upper left&#39;) location of legend box.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;upper left&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="s1">&#39;upper center&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="s1">&#39;upper right&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="s1">&#39;center left&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+            <span class="s1">&#39;center&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+            <span class="s1">&#39;center right&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+            <span class="s1">&#39;lower left&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s1">&#39;lower center&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s1">&#39;lower right&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>    <span class="c1"># upper left is default if loc is not found</span>
 </pre></div>
 
         </details>
@@ -943,7 +1035,6 @@
 <span class="sd">        Args:</span>
 <span class="sd">            figsize : (tuple; default=(8,6)) Figure dimension size</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">figsize</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">shared_ax</span> <span class="o">=</span> <span class="bp">None</span>
@@ -1296,7 +1387,6 @@ histogram, or line plot.</p>
 <span class="sd">        Args:</span>
 <span class="sd">            figsize : (tuple; default=(8,6)) Figure dimension size</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">figsize</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">shared_ax</span> <span class="o">=</span> <span class="bp">None</span>
@@ -2264,6 +2354,388 @@ between 0 (transparent) and 1 (opaque)</li>
                 <dd id="CreateMap.add_legend" class="function"><a href="#EMCPyPlots.add_legend">add_legend</a></dd>
                 <dd id="CreateMap.add_text" class="function"><a href="#EMCPyPlots.add_text">add_text</a></dd>
                 <dd id="CreateMap.return_figure" class="function"><a href="#EMCPyPlots.return_figure">return_figure</a></dd>
+
+            </div>
+                                </dl>
+                            </div>
+                </section>
+                <section id="CreateFigure">
+                                <div class="attr class">
+        <a class="headerlink" href="#CreateFigure">#&nbsp;&nbsp</a>
+
+        
+        <span class="def">class</span>
+        <span class="name">CreateFigure</span><wbr>(<span class="base">matplotlib.figure.Figure</span>):
+    </div>
+
+                <details>
+            <summary>View Source</summary>
+            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">CreateFigure</span><span class="p">(</span><span class="n">Figure</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extends class figure for plotted data.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        CreatePlot constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_legend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span>
+                   <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">markerfirst</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                   <span class="n">frameon</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">fancybox</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                   <span class="n">framealpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;inherit&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span>
+                   <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a legend to a CreateFigure class object.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            plotobj : (CreatePlot) object for bbox transformation.</span>
+<span class="sd">            loc : (str; default=&#39;upper left&#39;) location of legend box.</span>
+<span class="sd">            ncol : (int) number of columsn legend is split into</span>
+<span class="sd">            fontsize : (int or str; default=&#39;medium&#39;) the font</span>
+<span class="sd">                size of the legend.</span>
+<span class="sd">                Options include [&#39;xx-small&#39;, &#39;x-small&#39;, &#39;small&#39;,</span>
+<span class="sd">                &#39;medium&#39;, &#39;large&#39;, &#39;x-large&#39;, &#39;xx-large&#39;] or an</span>
+<span class="sd">                integer value</span>
+<span class="sd">            labelcolor : (str; default=&#39;black&#39;) color of label text</span>
+<span class="sd">            markersize : (int; default=20) size of marker in legend</span>
+<span class="sd">            markerfirst : (bool; default=True) places marker in front</span>
+<span class="sd">                          of label text. If False, label will be first</span>
+<span class="sd">            frameon : (bool; default=True) Puts legend on a patch</span>
+<span class="sd">            fancybox : (bool; default=True) Applies round edges to patch</span>
+<span class="sd">            shadow : (bool; default=False) Draws shadow behind legend</span>
+<span class="sd">            framealpha : (float; default=0.8) Alpha transparency of</span>
+<span class="sd">                         legend background</span>
+<span class="sd">            facecolor : (str; default=&#39;inherit&#39;) Background color of</span>
+<span class="sd">                        legend</span>
+<span class="sd">            edgecolor : (str; default=&#39;lightgray&#39;) Legend&#39;s background</span>
+<span class="sd">                        edge color</span>
+<span class="sd">            title : (str; default=None) Title of legend</span>
+<span class="sd">            title_fonstize : (int or str: default=&#39;medium&#39;) the font of</span>
+<span class="sd">                             the legend title.</span>
+<span class="sd">                             Options include [&#39;xx-small&#39;, &#39;x-small&#39;,</span>
+<span class="sd">                             &#39;small&#39;, &#39;medium&#39;, &#39;large&#39;, &#39;x-large&#39;,</span>
+<span class="sd">                             &#39;xx-large&#39;] or an integer value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getcoords</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
+        <span class="n">legend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span>
+                             <span class="n">bbox_transform</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+                             <span class="n">ncol</span><span class="o">=</span><span class="n">ncol</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
+                             <span class="n">labelcolor</span><span class="o">=</span><span class="n">labelcolor</span><span class="p">,</span> <span class="n">markerfirst</span><span class="o">=</span><span class="n">markerfirst</span><span class="p">,</span>
+                             <span class="n">frameon</span><span class="o">=</span><span class="n">frameon</span><span class="p">,</span> <span class="n">fancybox</span><span class="o">=</span><span class="n">fancybox</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="n">shadow</span><span class="p">,</span>
+                             <span class="n">framealpha</span><span class="o">=</span><span class="n">framealpha</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor</span><span class="p">,</span>
+                             <span class="n">edgecolor</span><span class="o">=</span><span class="n">edgecolor</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+                             <span class="n">title_fontsize</span><span class="o">=</span><span class="n">title_fontsize</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">legend</span><span class="o">.</span><span class="n">legendHandles</span><span class="p">):</span>
+            <span class="n">legend</span><span class="o">.</span><span class="n">legendHandles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">markersize</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_getcoords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the relative coordinate tuple for a given location string.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            loc : (str; default=&#39;upper left&#39;) location of legend box.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;upper left&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="s1">&#39;upper center&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="s1">&#39;upper right&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="s1">&#39;center left&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+            <span class="s1">&#39;center&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+            <span class="s1">&#39;center right&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+            <span class="s1">&#39;lower left&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s1">&#39;lower center&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="s1">&#39;lower right&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">}</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>    <span class="c1"># upper left is default if loc is not found</span>
+</pre></div>
+
+        </details>
+
+            <div class="docstring"><p>Extends class figure for plotted data.</p>
+</div>
+
+
+                            <div id="CreateFigure.__init__" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#CreateFigure.__init__">#&nbsp;&nbsp</a>
+
+        
+            <span class="name">CreateFigure</span><span class="signature">(*args, **kwargs)</span>
+    </div>
+
+                <details>
+            <summary>View Source</summary>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        CreatePlot constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+
+        </details>
+
+            <div class="docstring"><p>CreatePlot constructor.</p>
+</div>
+
+
+                            </div>
+                            <div id="CreateFigure.add_legend" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#CreateFigure.add_legend">#&nbsp;&nbsp</a>
+
+        
+            <span class="def">def</span>
+            <span class="name">add_legend</span><span class="signature">(
+    self,
+    plotobj,
+    loc=&#39;upper left&#39;,
+    ncol=1,
+    fontsize=&#39;medium&#39;,
+    labelcolor=&#39;black&#39;,
+    markersize=20,
+    markerfirst=True,
+    frameon=True,
+    fancybox=True,
+    shadow=False,
+    framealpha=0.8,
+    facecolor=&#39;inherit&#39;,
+    edgecolor=&#39;lightgray&#39;,
+    title=None,
+    title_fontsize=&#39;medium&#39;
+)</span>:
+    </div>
+
+                <details>
+            <summary>View Source</summary>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="nf">add_legend</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span>
+                   <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">markerfirst</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                   <span class="n">frameon</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">fancybox</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                   <span class="n">framealpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;inherit&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span>
+                   <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a legend to a CreateFigure class object.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            plotobj : (CreatePlot) object for bbox transformation.</span>
+<span class="sd">            loc : (str; default=&#39;upper left&#39;) location of legend box.</span>
+<span class="sd">            ncol : (int) number of columsn legend is split into</span>
+<span class="sd">            fontsize : (int or str; default=&#39;medium&#39;) the font</span>
+<span class="sd">                size of the legend.</span>
+<span class="sd">                Options include [&#39;xx-small&#39;, &#39;x-small&#39;, &#39;small&#39;,</span>
+<span class="sd">                &#39;medium&#39;, &#39;large&#39;, &#39;x-large&#39;, &#39;xx-large&#39;] or an</span>
+<span class="sd">                integer value</span>
+<span class="sd">            labelcolor : (str; default=&#39;black&#39;) color of label text</span>
+<span class="sd">            markersize : (int; default=20) size of marker in legend</span>
+<span class="sd">            markerfirst : (bool; default=True) places marker in front</span>
+<span class="sd">                          of label text. If False, label will be first</span>
+<span class="sd">            frameon : (bool; default=True) Puts legend on a patch</span>
+<span class="sd">            fancybox : (bool; default=True) Applies round edges to patch</span>
+<span class="sd">            shadow : (bool; default=False) Draws shadow behind legend</span>
+<span class="sd">            framealpha : (float; default=0.8) Alpha transparency of</span>
+<span class="sd">                         legend background</span>
+<span class="sd">            facecolor : (str; default=&#39;inherit&#39;) Background color of</span>
+<span class="sd">                        legend</span>
+<span class="sd">            edgecolor : (str; default=&#39;lightgray&#39;) Legend&#39;s background</span>
+<span class="sd">                        edge color</span>
+<span class="sd">            title : (str; default=None) Title of legend</span>
+<span class="sd">            title_fonstize : (int or str: default=&#39;medium&#39;) the font of</span>
+<span class="sd">                             the legend title.</span>
+<span class="sd">                             Options include [&#39;xx-small&#39;, &#39;x-small&#39;,</span>
+<span class="sd">                             &#39;small&#39;, &#39;medium&#39;, &#39;large&#39;, &#39;x-large&#39;,</span>
+<span class="sd">                             &#39;xx-large&#39;] or an integer value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">coords</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getcoords</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
+        <span class="n">legend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="n">coords</span><span class="p">,</span>
+                             <span class="n">bbox_transform</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+                             <span class="n">ncol</span><span class="o">=</span><span class="n">ncol</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
+                             <span class="n">labelcolor</span><span class="o">=</span><span class="n">labelcolor</span><span class="p">,</span> <span class="n">markerfirst</span><span class="o">=</span><span class="n">markerfirst</span><span class="p">,</span>
+                             <span class="n">frameon</span><span class="o">=</span><span class="n">frameon</span><span class="p">,</span> <span class="n">fancybox</span><span class="o">=</span><span class="n">fancybox</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="n">shadow</span><span class="p">,</span>
+                             <span class="n">framealpha</span><span class="o">=</span><span class="n">framealpha</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor</span><span class="p">,</span>
+                             <span class="n">edgecolor</span><span class="o">=</span><span class="n">edgecolor</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+                             <span class="n">title_fontsize</span><span class="o">=</span><span class="n">title_fontsize</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">legend</span><span class="o">.</span><span class="n">legendHandles</span><span class="p">):</span>
+            <span class="n">legend</span><span class="o">.</span><span class="n">legendHandles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">markersize</span><span class="p">]</span>
+</pre></div>
+
+        </details>
+
+            <div class="docstring"><p>Add a legend to a CreateFigure class object.</p>
+
+<h6 id="args">Args</h6>
+
+<ul>
+<li><strong>plotobj :</strong>  (CreatePlot) object for bbox transformation.</li>
+<li><strong>loc :</strong>  (str; default='upper left') location of legend box.</li>
+<li><strong>ncol :</strong>  (int) number of columsn legend is split into</li>
+<li><strong>fontsize :</strong>  (int or str; default='medium') the font
+size of the legend.
+Options include ['xx-small', 'x-small', 'small',
+'medium', 'large', 'x-large', 'xx-large'] or an
+integer value</li>
+<li><strong>labelcolor :</strong>  (str; default='black') color of label text</li>
+<li><strong>markersize :</strong>  (int; default=20) size of marker in legend</li>
+<li><strong>markerfirst :</strong>  (bool; default=True) places marker in front
+of label text. If False, label will be first</li>
+<li><strong>frameon :</strong>  (bool; default=True) Puts legend on a patch</li>
+<li><strong>fancybox :</strong>  (bool; default=True) Applies round edges to patch</li>
+<li><strong>shadow :</strong>  (bool; default=False) Draws shadow behind legend</li>
+<li><strong>framealpha :</strong>  (float; default=0.8) Alpha transparency of
+legend background</li>
+<li><strong>facecolor :</strong>  (str; default='inherit') Background color of
+legend</li>
+<li><strong>edgecolor :</strong>  (str; default='lightgray') Legend's background
+edge color</li>
+<li><strong>title :</strong>  (str; default=None) Title of legend</li>
+<li><strong>title_fonstize :</strong>  (int or str: default='medium') the font of
+the legend title.
+Options include ['xx-small', 'x-small',
+'small', 'medium', 'large', 'x-large',
+'xx-large'] or an integer value</li>
+</ul>
+</div>
+
+
+                            </div>
+                            <div class="inherited">
+                                <h5>Inherited Members</h5>
+                                <dl>
+                                    <div><dt>matplotlib.figure.Figure</dt>
+                                <dd id="CreateFigure.show" class="function">show</dd>
+                <dd id="CreateFigure.get_axes" class="function">get_axes</dd>
+                <dd id="CreateFigure.axes" class="variable">axes</dd>
+                <dd id="CreateFigure.dpi" class="variable">dpi</dd>
+                <dd id="CreateFigure.get_tight_layout" class="function">get_tight_layout</dd>
+                <dd id="CreateFigure.set_tight_layout" class="function">set_tight_layout</dd>
+                <dd id="CreateFigure.get_constrained_layout" class="function">get_constrained_layout</dd>
+                <dd id="CreateFigure.set_constrained_layout" class="function">set_constrained_layout</dd>
+                <dd id="CreateFigure.set_constrained_layout_pads" class="function">set_constrained_layout_pads</dd>
+                <dd id="CreateFigure.get_constrained_layout_pads" class="function">get_constrained_layout_pads</dd>
+                <dd id="CreateFigure.set_canvas" class="function">set_canvas</dd>
+                <dd id="CreateFigure.figimage" class="function">figimage</dd>
+                <dd id="CreateFigure.set_size_inches" class="function">set_size_inches</dd>
+                <dd id="CreateFigure.get_size_inches" class="function">get_size_inches</dd>
+                <dd id="CreateFigure.get_figwidth" class="function">get_figwidth</dd>
+                <dd id="CreateFigure.get_figheight" class="function">get_figheight</dd>
+                <dd id="CreateFigure.get_dpi" class="function">get_dpi</dd>
+                <dd id="CreateFigure.set_dpi" class="function">set_dpi</dd>
+                <dd id="CreateFigure.set_figwidth" class="function">set_figwidth</dd>
+                <dd id="CreateFigure.set_figheight" class="function">set_figheight</dd>
+                <dd id="CreateFigure.clf" class="function">clf</dd>
+                <dd id="CreateFigure.clear" class="function">clear</dd>
+                <dd id="CreateFigure.draw" class="function">draw</dd>
+                <dd id="CreateFigure.draw_artist" class="function">draw_artist</dd>
+                <dd id="CreateFigure.add_axobserver" class="function">add_axobserver</dd>
+                <dd id="CreateFigure.savefig" class="function">savefig</dd>
+                <dd id="CreateFigure.ginput" class="function">ginput</dd>
+                <dd id="CreateFigure.waitforbuttonpress" class="function">waitforbuttonpress</dd>
+                <dd id="CreateFigure.init_layoutgrid" class="function">init_layoutgrid</dd>
+                <dd id="CreateFigure.execute_constrained_layout" class="function">execute_constrained_layout</dd>
+                <dd id="CreateFigure.tight_layout" class="function">tight_layout</dd>
+
+            </div>
+            <div><dt>matplotlib.artist.Artist</dt>
+                                <dd id="CreateFigure.stale" class="variable">stale</dd>
+                <dd id="CreateFigure.zorder" class="variable">zorder</dd>
+                <dd id="CreateFigure.remove" class="function">remove</dd>
+                <dd id="CreateFigure.have_units" class="function">have_units</dd>
+                <dd id="CreateFigure.convert_xunits" class="function">convert_xunits</dd>
+                <dd id="CreateFigure.convert_yunits" class="function">convert_yunits</dd>
+                <dd id="CreateFigure.add_callback" class="function">add_callback</dd>
+                <dd id="CreateFigure.remove_callback" class="function">remove_callback</dd>
+                <dd id="CreateFigure.pchanged" class="function">pchanged</dd>
+                <dd id="CreateFigure.is_transform_set" class="function">is_transform_set</dd>
+                <dd id="CreateFigure.set_transform" class="function">set_transform</dd>
+                <dd id="CreateFigure.get_transform" class="function">get_transform</dd>
+                <dd id="CreateFigure.set_contains" class="function">set_contains</dd>
+                <dd id="CreateFigure.get_contains" class="function">get_contains</dd>
+                <dd id="CreateFigure.pickable" class="function">pickable</dd>
+                <dd id="CreateFigure.pick" class="function">pick</dd>
+                <dd id="CreateFigure.set_picker" class="function">set_picker</dd>
+                <dd id="CreateFigure.get_picker" class="function">get_picker</dd>
+                <dd id="CreateFigure.get_url" class="function">get_url</dd>
+                <dd id="CreateFigure.set_url" class="function">set_url</dd>
+                <dd id="CreateFigure.get_gid" class="function">get_gid</dd>
+                <dd id="CreateFigure.set_gid" class="function">set_gid</dd>
+                <dd id="CreateFigure.get_snap" class="function">get_snap</dd>
+                <dd id="CreateFigure.set_snap" class="function">set_snap</dd>
+                <dd id="CreateFigure.get_sketch_params" class="function">get_sketch_params</dd>
+                <dd id="CreateFigure.set_sketch_params" class="function">set_sketch_params</dd>
+                <dd id="CreateFigure.set_path_effects" class="function">set_path_effects</dd>
+                <dd id="CreateFigure.get_path_effects" class="function">get_path_effects</dd>
+                <dd id="CreateFigure.get_figure" class="function">get_figure</dd>
+                <dd id="CreateFigure.set_figure" class="function">set_figure</dd>
+                <dd id="CreateFigure.set_clip_box" class="function">set_clip_box</dd>
+                <dd id="CreateFigure.set_clip_path" class="function">set_clip_path</dd>
+                <dd id="CreateFigure.get_alpha" class="function">get_alpha</dd>
+                <dd id="CreateFigure.get_visible" class="function">get_visible</dd>
+                <dd id="CreateFigure.get_animated" class="function">get_animated</dd>
+                <dd id="CreateFigure.get_in_layout" class="function">get_in_layout</dd>
+                <dd id="CreateFigure.get_clip_on" class="function">get_clip_on</dd>
+                <dd id="CreateFigure.get_clip_box" class="function">get_clip_box</dd>
+                <dd id="CreateFigure.get_clip_path" class="function">get_clip_path</dd>
+                <dd id="CreateFigure.get_transformed_clip_path_and_affine" class="function">get_transformed_clip_path_and_affine</dd>
+                <dd id="CreateFigure.set_clip_on" class="function">set_clip_on</dd>
+                <dd id="CreateFigure.get_rasterized" class="function">get_rasterized</dd>
+                <dd id="CreateFigure.set_rasterized" class="function">set_rasterized</dd>
+                <dd id="CreateFigure.get_agg_filter" class="function">get_agg_filter</dd>
+                <dd id="CreateFigure.set_agg_filter" class="function">set_agg_filter</dd>
+                <dd id="CreateFigure.set_alpha" class="function">set_alpha</dd>
+                <dd id="CreateFigure.set_visible" class="function">set_visible</dd>
+                <dd id="CreateFigure.set_animated" class="function">set_animated</dd>
+                <dd id="CreateFigure.set_in_layout" class="function">set_in_layout</dd>
+                <dd id="CreateFigure.update" class="function">update</dd>
+                <dd id="CreateFigure.get_label" class="function">get_label</dd>
+                <dd id="CreateFigure.set_label" class="function">set_label</dd>
+                <dd id="CreateFigure.get_zorder" class="function">get_zorder</dd>
+                <dd id="CreateFigure.set_zorder" class="function">set_zorder</dd>
+                <dd id="CreateFigure.sticky_edges" class="variable">sticky_edges</dd>
+                <dd id="CreateFigure.update_from" class="function">update_from</dd>
+                <dd id="CreateFigure.properties" class="function">properties</dd>
+                <dd id="CreateFigure.set" class="function">set</dd>
+                <dd id="CreateFigure.findobj" class="function">findobj</dd>
+                <dd id="CreateFigure.get_cursor_data" class="function">get_cursor_data</dd>
+                <dd id="CreateFigure.format_cursor_data" class="function">format_cursor_data</dd>
+                <dd id="CreateFigure.mouseover" class="variable">mouseover</dd>
+
+            </div>
+            <div><dt>matplotlib.figure.FigureBase</dt>
+                                <dd id="CreateFigure.autofmt_xdate" class="function">autofmt_xdate</dd>
+                <dd id="CreateFigure.get_children" class="function">get_children</dd>
+                <dd id="CreateFigure.contains" class="function">contains</dd>
+                <dd id="CreateFigure.get_window_extent" class="function">get_window_extent</dd>
+                <dd id="CreateFigure.suptitle" class="function">suptitle</dd>
+                <dd id="CreateFigure.supxlabel" class="function">supxlabel</dd>
+                <dd id="CreateFigure.supylabel" class="function">supylabel</dd>
+                <dd id="CreateFigure.get_edgecolor" class="function">get_edgecolor</dd>
+                <dd id="CreateFigure.get_facecolor" class="function">get_facecolor</dd>
+                <dd id="CreateFigure.get_frameon" class="function">get_frameon</dd>
+                <dd id="CreateFigure.set_linewidth" class="function">set_linewidth</dd>
+                <dd id="CreateFigure.get_linewidth" class="function">get_linewidth</dd>
+                <dd id="CreateFigure.set_edgecolor" class="function">set_edgecolor</dd>
+                <dd id="CreateFigure.set_facecolor" class="function">set_facecolor</dd>
+                <dd id="CreateFigure.set_frameon" class="function">set_frameon</dd>
+                <dd id="CreateFigure.frameon" class="variable">frameon</dd>
+                <dd id="CreateFigure.add_artist" class="function">add_artist</dd>
+                <dd id="CreateFigure.add_axes" class="function">add_axes</dd>
+                <dd id="CreateFigure.add_subplot" class="function">add_subplot</dd>
+                <dd id="CreateFigure.subplots" class="function">subplots</dd>
+                <dd id="CreateFigure.delaxes" class="function">delaxes</dd>
+                <dd id="CreateFigure.legend" class="function">legend</dd>
+                <dd id="CreateFigure.text" class="function">text</dd>
+                <dd id="CreateFigure.colorbar" class="function">colorbar</dd>
+                <dd id="CreateFigure.subplots_adjust" class="function">subplots_adjust</dd>
+                <dd id="CreateFigure.align_xlabels" class="function">align_xlabels</dd>
+                <dd id="CreateFigure.align_ylabels" class="function">align_ylabels</dd>
+                <dd id="CreateFigure.align_labels" class="function">align_labels</dd>
+                <dd id="CreateFigure.add_gridspec" class="function">add_gridspec</dd>
+                <dd id="CreateFigure.subfigures" class="function">subfigures</dd>
+                <dd id="CreateFigure.add_subfigure" class="function">add_subfigure</dd>
+                <dd id="CreateFigure.sca" class="function">sca</dd>
+                <dd id="CreateFigure.gca" class="function">gca</dd>
+                <dd id="CreateFigure.get_default_bbox_extra_artists" class="function">get_default_bbox_extra_artists</dd>
+                <dd id="CreateFigure.get_tightbbox" class="function">get_tightbbox</dd>
+                <dd id="CreateFigure.subplot_mosaic" class="function">subplot_mosaic</dd>
 
             </div>
                                 </dl>
