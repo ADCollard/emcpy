@@ -410,7 +410,9 @@
             <span class="s1">&#39;histogram&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_histogram</span><span class="p">,</span>
             <span class="s1">&#39;line_plot&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineplot</span><span class="p">,</span>
             <span class="s1">&#39;vertical_line&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verticalline</span><span class="p">,</span>
-            <span class="s1">&#39;horizontal_line&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_horizontalline</span>
+            <span class="s1">&#39;horizontal_line&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_horizontalline</span><span class="p">,</span>
+            <span class="s1">&#39;bar_plot&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_barplot</span><span class="p">,</span>
+            <span class="s1">&#39;horizontal_bar&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hbar</span>
         <span class="p">}</span>
 
         <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">plot_list</span><span class="p">:</span>
@@ -545,6 +547,50 @@
                      <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
                      <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
                      <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_barplot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Uses BarPlot object to plot on axis.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_axis</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plot_ax</span><span class="p">)</span>
+
+        <span class="n">axis</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
+                 <span class="n">plotobj</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
+                 <span class="n">width</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+                 <span class="n">bottom</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span>
+                 <span class="n">align</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">align</span><span class="p">,</span>
+                 <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                 <span class="n">edgecolor</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">edgecolor</span><span class="p">,</span>
+                 <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
+                 <span class="n">tick_label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">tick_label</span><span class="p">,</span>
+                 <span class="n">xerr</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">xerr</span><span class="p">,</span>
+                 <span class="n">yerr</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">yerr</span><span class="p">,</span>
+                 <span class="n">ecolor</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">ecolor</span><span class="p">,</span>
+                 <span class="n">capsize</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">capsize</span><span class="p">,</span>
+                 <span class="n">error_kw</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">error_kw</span><span class="p">,</span>
+                 <span class="n">log</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">log</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_hbar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Uses HorizontalBar object to plot on axis.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_axis</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plot_ax</span><span class="p">)</span>
+        <span class="n">axis</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+                  <span class="n">plotobj</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+                  <span class="n">height</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
+                  <span class="n">left</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">left</span><span class="p">,</span>
+                  <span class="n">align</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">align</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                  <span class="n">edgecolor</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">edgecolor</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
+                  <span class="n">tick_label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">tick_label</span><span class="p">,</span>
+                  <span class="n">xerr</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">xerr</span><span class="p">,</span>
+                  <span class="n">yerr</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">yerr</span><span class="p">,</span>
+                  <span class="n">ecolor</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">ecolor</span><span class="p">,</span>
+                  <span class="n">capsize</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">capsize</span><span class="p">,</span>
+                  <span class="n">error_kw</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">error_kw</span><span class="p">,</span>
+                  <span class="n">log</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">log</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_determine_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">requested_axis</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1062,7 +1108,9 @@
             <span class="s1">&#39;histogram&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_histogram</span><span class="p">,</span>
             <span class="s1">&#39;line_plot&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineplot</span><span class="p">,</span>
             <span class="s1">&#39;vertical_line&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verticalline</span><span class="p">,</span>
-            <span class="s1">&#39;horizontal_line&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_horizontalline</span>
+            <span class="s1">&#39;horizontal_line&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_horizontalline</span><span class="p">,</span>
+            <span class="s1">&#39;bar_plot&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_barplot</span><span class="p">,</span>
+            <span class="s1">&#39;horizontal_bar&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hbar</span>
         <span class="p">}</span>
 
         <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">plot_list</span><span class="p">:</span>
@@ -1197,6 +1245,50 @@
                      <span class="n">linestyle</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linestyle</span><span class="p">,</span>
                      <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
                      <span class="n">label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_barplot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Uses BarPlot object to plot on axis.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_axis</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plot_ax</span><span class="p">)</span>
+
+        <span class="n">axis</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
+                 <span class="n">plotobj</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
+                 <span class="n">width</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+                 <span class="n">bottom</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span>
+                 <span class="n">align</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">align</span><span class="p">,</span>
+                 <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                 <span class="n">edgecolor</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">edgecolor</span><span class="p">,</span>
+                 <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
+                 <span class="n">tick_label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">tick_label</span><span class="p">,</span>
+                 <span class="n">xerr</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">xerr</span><span class="p">,</span>
+                 <span class="n">yerr</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">yerr</span><span class="p">,</span>
+                 <span class="n">ecolor</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">ecolor</span><span class="p">,</span>
+                 <span class="n">capsize</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">capsize</span><span class="p">,</span>
+                 <span class="n">error_kw</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">error_kw</span><span class="p">,</span>
+                 <span class="n">log</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">log</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_hbar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plotobj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Uses HorizontalBar object to plot on axis.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_axis</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">plot_ax</span><span class="p">)</span>
+        <span class="n">axis</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">plotobj</span><span class="o">.</span><span class="n">y</span><span class="p">,</span>
+                  <span class="n">plotobj</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+                  <span class="n">height</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">height</span><span class="p">,</span>
+                  <span class="n">left</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">left</span><span class="p">,</span>
+                  <span class="n">align</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">align</span><span class="p">,</span>
+                  <span class="n">color</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">color</span><span class="p">,</span>
+                  <span class="n">edgecolor</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">edgecolor</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">linewidth</span><span class="p">,</span>
+                  <span class="n">tick_label</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">tick_label</span><span class="p">,</span>
+                  <span class="n">xerr</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">xerr</span><span class="p">,</span>
+                  <span class="n">yerr</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">yerr</span><span class="p">,</span>
+                  <span class="n">ecolor</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">ecolor</span><span class="p">,</span>
+                  <span class="n">capsize</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">capsize</span><span class="p">,</span>
+                  <span class="n">error_kw</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">error_kw</span><span class="p">,</span>
+                  <span class="n">log</span><span class="o">=</span><span class="n">plotobj</span><span class="o">.</span><span class="n">log</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_determine_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">requested_axis</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1438,7 +1530,9 @@ histogram, or line plot.</p>
             <span class="s1">&#39;histogram&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_histogram</span><span class="p">,</span>
             <span class="s1">&#39;line_plot&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lineplot</span><span class="p">,</span>
             <span class="s1">&#39;vertical_line&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verticalline</span><span class="p">,</span>
-            <span class="s1">&#39;horizontal_line&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_horizontalline</span>
+            <span class="s1">&#39;horizontal_line&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_horizontalline</span><span class="p">,</span>
+            <span class="s1">&#39;bar_plot&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_barplot</span><span class="p">,</span>
+            <span class="s1">&#39;horizontal_bar&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hbar</span>
         <span class="p">}</span>
 
         <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">plot_list</span><span class="p">:</span>

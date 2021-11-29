@@ -55,13 +55,19 @@
 
             </li>
             <li>
-                    <a class="class" href="#LinePlot">LinePlot</a>
+                    <a class="variable" href="#LinePlotVerticalLine">LinePlotVerticalLine</a>
+            </li>
+            <li>
+                    <a class="class" href="#HorizontalLine">HorizontalLine</a>
                             <ul class="memberlist">
                         <li>
-                                <a class="function" href="#LinePlot.__init__">LinePlot</a>
+                                <a class="function" href="#HorizontalLine.__init__">HorizontalLine</a>
                         </li>
                 </ul>
 
+            </li>
+            <li>
+                    <a class="variable" href="#BarPlotHorizontalBar">BarPlotHorizontalBar</a>
             </li>
     </ul>
 
@@ -85,7 +91,8 @@
             <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Scatter&#39;</span><span class="p">,</span> <span class="s1">&#39;Histogram&#39;</span><span class="p">,</span> <span class="s1">&#39;LinePlot&#39;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Scatter&#39;</span><span class="p">,</span> <span class="s1">&#39;Histogram&#39;</span><span class="p">,</span> <span class="s1">&#39;LinePlot&#39;</span> <span class="s1">&#39;VerticalLine&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;HorizontalLine&#39;</span><span class="p">,</span> <span class="s1">&#39;BarPlot&#39;</span> <span class="s1">&#39;HorizontalBar&#39;</span><span class="p">]</span>
 
 
 <span class="k">class</span> <span class="nc">BasePlot</span><span class="p">:</span>
@@ -258,6 +265,70 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.5</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="bp">None</span>
+
+
+<span class="k">class</span> <span class="nc">BarPlot</span><span class="p">(</span><span class="n">BasePlot</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor for BarPlot.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            x : (array type) x coordinate of bars</span>
+<span class="sd">            height : (array type) the height(s) of the bars</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plottype</span> <span class="o">=</span> <span class="s1">&#39;bar_plot&#39;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="mf">0.8</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bottom</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">align</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;tab:blue&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tick_label</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xerr</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">capsize</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_kw</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="bp">False</span>
+
+
+<span class="k">class</span> <span class="nc">HorizontalBar</span><span class="p">(</span><span class="n">BasePlot</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor to create a horizontal bar plot.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            y : (array type) y coordinate of bars</span>
+<span class="sd">            width : (array type) the width(s) of the bars</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plottype</span> <span class="o">=</span> <span class="s1">&#39;horizontal_bar&#39;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="mf">0.8</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">align</span> <span class="o">=</span> <span class="s1">&#39;center&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;tab:blue&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tick_label</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xerr</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">yerr</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">capsize</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_kw</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span> <span class="o">=</span> <span class="bp">False</span>
 </pre></div>
 
         </details>
@@ -556,39 +627,45 @@
                                 </dl>
                             </div>
                 </section>
-                <section id="LinePlot">
+                <section id="LinePlotVerticalLine">
+                                <div class="attr variable"><a class="headerlink" href="#LinePlotVerticalLine">#&nbsp;&nbsp</a>
+
+        <span class="name">LinePlotVerticalLine</span>
+    </div>
+
+    
+
+                </section>
+                <section id="HorizontalLine">
                                 <div class="attr class">
-        <a class="headerlink" href="#LinePlot">#&nbsp;&nbsp</a>
+        <a class="headerlink" href="#HorizontalLine">#&nbsp;&nbsp</a>
 
         
         <span class="def">class</span>
-        <span class="name">LinePlot</span><wbr>(<span class="base"><a href="#BasePlot">BasePlot</a></span>):
+        <span class="name">HorizontalLine</span><wbr>(<span class="base"><a href="#BasePlot">BasePlot</a></span>):
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">LinePlot</span><span class="p">(</span><span class="n">BasePlot</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">HorizontalLine</span><span class="p">(</span><span class="n">BasePlot</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Constructor for LinePlot.</span>
+<span class="sd">        Constructor for HorizontalLine</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            x : (array type)</span>
-<span class="sd">            y : (array type)</span>
+<span class="sd">            y : (int/float) y-value where horizontal</span>
+<span class="sd">                line is to be plotted</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">plottype</span> <span class="o">=</span> <span class="s1">&#39;line_plot&#39;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plottype</span> <span class="o">=</span> <span class="s1">&#39;horizontal_line&#39;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;tab:blue&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.5</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">markersize</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="bp">None</span>
 </pre></div>
 
@@ -596,47 +673,44 @@
 
     
 
-                            <div id="LinePlot.__init__" class="classattr">
-                                        <div class="attr function"><a class="headerlink" href="#LinePlot.__init__">#&nbsp;&nbsp</a>
+                            <div id="HorizontalLine.__init__" class="classattr">
+                                        <div class="attr function"><a class="headerlink" href="#HorizontalLine.__init__">#&nbsp;&nbsp</a>
 
         
-            <span class="name">LinePlot</span><span class="signature">(x, y)</span>
+            <span class="name">HorizontalLine</span><span class="signature">(y)</span>
     </div>
 
                 <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+            <div class="codehilite"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Constructor for LinePlot.</span>
+<span class="sd">        Constructor for HorizontalLine</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            x : (array type)</span>
-<span class="sd">            y : (array type)</span>
+<span class="sd">            y : (int/float) y-value where horizontal</span>
+<span class="sd">                line is to be plotted</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">plottype</span> <span class="o">=</span> <span class="s1">&#39;line_plot&#39;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">plottype</span> <span class="o">=</span> <span class="s1">&#39;horizontal_line&#39;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;tab:blue&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.5</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">marker</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">markersize</span> <span class="o">=</span> <span class="bp">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="bp">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="bp">None</span>
 </pre></div>
 
         </details>
 
-            <div class="docstring"><p>Constructor for LinePlot.</p>
+            <div class="docstring"><p>Constructor for HorizontalLine</p>
 
 <h6 id="args">Args</h6>
 
 <ul>
-<li><strong>x :</strong>  (array type)</li>
-<li><strong>y :</strong>  (array type)</li>
+<li><strong>y :</strong>  (int/float) y-value where horizontal
+line is to be plotted</li>
 </ul>
 </div>
 
@@ -646,12 +720,21 @@
                                 <h5>Inherited Members</h5>
                                 <dl>
                                     <div><dt><a href="#BasePlot">BasePlot</a></dt>
-                                <dd id="LinePlot.use_shared_ax" class="function"><a href="#BasePlot.use_shared_ax">use_shared_ax</a></dd>
-                <dd id="LinePlot.use_shared_ay" class="function"><a href="#BasePlot.use_shared_ay">use_shared_ay</a></dd>
+                                <dd id="HorizontalLine.use_shared_ax" class="function"><a href="#BasePlot.use_shared_ax">use_shared_ax</a></dd>
+                <dd id="HorizontalLine.use_shared_ay" class="function"><a href="#BasePlot.use_shared_ay">use_shared_ay</a></dd>
 
             </div>
                                 </dl>
                             </div>
+                </section>
+                <section id="BarPlotHorizontalBar">
+                                <div class="attr variable"><a class="headerlink" href="#BarPlotHorizontalBar">#&nbsp;&nbsp</a>
+
+        <span class="name">BarPlotHorizontalBar</span>
+    </div>
+
+    
+
                 </section>
     </main>
 <script>
