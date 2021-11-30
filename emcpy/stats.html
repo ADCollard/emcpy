@@ -48,6 +48,9 @@
             <li>
                     <a class="function" href="#get_linear_regression">get_linear_regression</a>
             </li>
+            <li>
+                    <a class="function" href="#bootstrap">bootstrap</a>
+            </li>
     </ul>
 
 
@@ -76,7 +79,7 @@
 <span class="sd">&#39;&#39;&#39;</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mstats&#39;</span><span class="p">,</span> <span class="s1">&#39;lregress&#39;</span><span class="p">,</span> <span class="s1">&#39;ttest&#39;</span><span class="p">,</span> <span class="s1">&#39;get_weights&#39;</span><span class="p">,</span> <span class="s1">&#39;get_weighted_mean&#39;</span><span class="p">,</span>
-           <span class="s1">&#39;get_linear_regression&#39;</span><span class="p">]</span>
+           <span class="s1">&#39;get_linear_regression&#39;</span><span class="p">,</span> <span class="s1">&#39;bootstrap&#39;</span><span class="p">]</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">_np</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">t</span> <span class="k">as</span> <span class="n">_t</span>
@@ -318,6 +321,44 @@
     <span class="c1"># by y_pred = slope * x + intercept</span>
     <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">r_sq</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span>
+
+
+<span class="k">def</span> <span class="nf">bootstrap</span><span class="p">(</span><span class="n">insample</span><span class="p">,</span> <span class="n">level</span><span class="o">=.</span><span class="mi">95</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">nrepl</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate emprical bootstrap confidence intervals.</span>
+<span class="sd">    See https://ocw.mit.edu/courses/mathematics/</span>
+<span class="sd">                18-05-introduction-to-probability-and-statistics-spring-2014/</span>
+<span class="sd">                readings/MIT18_05S14_Reading24.pdf for more information.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        insample: (array like) is the array from which the estimator (u)</span>
+<span class="sd">                  was derived (x_1, x_2,....x_n).</span>
+<span class="sd">        level: (float, default=0.95) desired confidence level for CI bounds</span>
+<span class="sd">        estimator: (char, default=&#39;mean&#39;) type of statistic obtained from</span>
+<span class="sd">                  the sample (mean or median)</span>
+<span class="sd">        nrepl: (integer, default=1000) number of replicates</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Lower and upper bounds of confidence intervals</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">_np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">insample</span><span class="p">)):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{:s}&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;bootstrap_ci.py: NaN detected. Dropping NaN(s) input prior to bootstrap...&#39;</span><span class="p">)</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">insample</span><span class="p">[</span><span class="o">~</span><span class="n">_np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">insample</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">insample</span>
+
+    <span class="n">boot_dist</span> <span class="o">=</span> <span class="p">[</span><span class="n">_np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">_np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">_np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nrepl</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="n">estimator</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;mean&#39;</span><span class="p">:</span>
+        <span class="n">deltas</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">_np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">boot_dist</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">_np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">estimator</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;median&#39;</span><span class="p">:</span>
+        <span class="n">deltas</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">_np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">boot_dist</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">_np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span>
+
+    <span class="n">lower_pctile</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="p">((</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">level</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+    <span class="n">upper_pctile</span> <span class="o">=</span> <span class="mf">100.</span> <span class="o">-</span> <span class="n">lower_pctile</span>
+    <span class="n">ci_lower</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">deltas</span><span class="p">,</span> <span class="n">lower_pctile</span><span class="p">)</span>
+    <span class="n">ci_upper</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">deltas</span><span class="p">,</span> <span class="n">upper_pctile</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ci_lower</span><span class="p">,</span> <span class="n">ci_upper</span>
 </pre></div>
 
         </details>
@@ -765,6 +806,81 @@ approximation.</p>
   the R squared value, the intercept of the line, and the
   slope of the line from the equation for the predicted
   y values.</p>
+</blockquote>
+</div>
+
+
+                </section>
+                <section id="bootstrap">
+                            <div class="attr function"><a class="headerlink" href="#bootstrap">#&nbsp;&nbsp</a>
+
+        
+            <span class="def">def</span>
+            <span class="name">bootstrap</span><span class="signature">(insample, level=0.95, estimator=&#39;mean&#39;, nrepl=10000)</span>:
+    </div>
+
+                <details>
+            <summary>View Source</summary>
+            <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">bootstrap</span><span class="p">(</span><span class="n">insample</span><span class="p">,</span> <span class="n">level</span><span class="o">=.</span><span class="mi">95</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">nrepl</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate emprical bootstrap confidence intervals.</span>
+<span class="sd">    See https://ocw.mit.edu/courses/mathematics/</span>
+<span class="sd">                18-05-introduction-to-probability-and-statistics-spring-2014/</span>
+<span class="sd">                readings/MIT18_05S14_Reading24.pdf for more information.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        insample: (array like) is the array from which the estimator (u)</span>
+<span class="sd">                  was derived (x_1, x_2,....x_n).</span>
+<span class="sd">        level: (float, default=0.95) desired confidence level for CI bounds</span>
+<span class="sd">        estimator: (char, default=&#39;mean&#39;) type of statistic obtained from</span>
+<span class="sd">                  the sample (mean or median)</span>
+<span class="sd">        nrepl: (integer, default=1000) number of replicates</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Lower and upper bounds of confidence intervals</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">_np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">insample</span><span class="p">)):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;{:s}&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;bootstrap_ci.py: NaN detected. Dropping NaN(s) input prior to bootstrap...&#39;</span><span class="p">)</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">insample</span><span class="p">[</span><span class="o">~</span><span class="n">_np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">insample</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">insample</span>
+
+    <span class="n">boot_dist</span> <span class="o">=</span> <span class="p">[</span><span class="n">_np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">_np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">_np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nrepl</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="n">estimator</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;mean&#39;</span><span class="p">:</span>
+        <span class="n">deltas</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">_np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">boot_dist</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">_np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">estimator</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;median&#39;</span><span class="p">:</span>
+        <span class="n">deltas</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">_np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">boot_dist</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">_np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span>
+
+    <span class="n">lower_pctile</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span><span class="p">((</span><span class="mf">1.</span> <span class="o">-</span> <span class="n">level</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span>
+    <span class="n">upper_pctile</span> <span class="o">=</span> <span class="mf">100.</span> <span class="o">-</span> <span class="n">lower_pctile</span>
+    <span class="n">ci_lower</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">deltas</span><span class="p">,</span> <span class="n">lower_pctile</span><span class="p">)</span>
+    <span class="n">ci_upper</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">deltas</span><span class="p">,</span> <span class="n">upper_pctile</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ci_lower</span><span class="p">,</span> <span class="n">ci_upper</span>
+</pre></div>
+
+        </details>
+
+            <div class="docstring"><p>Generate emprical bootstrap confidence intervals.
+See https://ocw.mit.edu/courses/mathematics/
+            18-05-introduction-to-probability-and-statistics-spring-2014/
+            readings/MIT18_05S14_Reading24.pdf for more information.</p>
+
+<h6 id="args">Args</h6>
+
+<ul>
+<li><strong>insample:</strong>  (array like) is the array from which the estimator (u)
+was derived (x_1, x_2,....x_n).</li>
+<li><strong>level:</strong>  (float, default=0.95) desired confidence level for CI bounds</li>
+<li><strong>estimator:</strong>  (char, default='mean') type of statistic obtained from
+the sample (mean or median)</li>
+<li><strong>nrepl:</strong>  (integer, default=1000) number of replicates</li>
+</ul>
+
+<h6 id="returns">Returns</h6>
+
+<blockquote>
+  <p>Lower and upper bounds of confidence intervals</p>
 </blockquote>
 </div>
 
