@@ -127,13 +127,16 @@
                 
                         <details>
             <summary>View Source</summary>
-            <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+            <div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">emcpy</span>
 <span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="kn">as</span> <span class="nn">ccrs</span>
 <span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="kn">as</span> <span class="nn">cfeature</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span>
 <span class="kn">from</span> <span class="nn">matplotlib.figure</span> <span class="kn">import</span> <span class="n">Figure</span>
 <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
+<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="kn">as</span> <span class="nn">image</span>
 <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interpn</span>
 <span class="kn">from</span> <span class="nn">cartopy.mpl.ticker</span> <span class="kn">import</span> <span class="n">LongitudeFormatter</span><span class="p">,</span> <span class="n">LatitudeFormatter</span>
 <span class="kn">from</span> <span class="nn">emcpy.plots.map_tools</span> <span class="kn">import</span> <span class="n">Domain</span><span class="p">,</span> <span class="n">MapProjection</span>
@@ -370,6 +373,32 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xloc</span><span class="p">,</span> <span class="n">yloc</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
                      <span class="n">fontweight</span><span class="o">=</span><span class="n">fontweight</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
                      <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="n">horizontalalignment</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add_logo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xloc</span><span class="p">,</span> <span class="n">yloc</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;noaa/nws&#39;</span><span class="p">,</span>
+                 <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add NOAA/NWS logo. Requires user to adjust x and y locations.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            xloc : (int/float) x location on figure in pixels</span>
+<span class="sd">            yloc : (int/float) y location on figure in pixels</span>
+<span class="sd">            zorder : (int; default=10) The z order of the logo</span>
+<span class="sd">            which : (str; default=&#39;noaa/nws&#39;) which type of logo</span>
+<span class="sd">                    to plot. Options include &#39;noaa&#39;, &#39;nws&#39;, or</span>
+<span class="sd">                    &#39;noaa/nws&#39;</span>
+<span class="sd">            alpha : (float; default=0.5) alpha of the image</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">image_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;noaa&#39;</span><span class="p">:</span> <span class="s1">&#39;noaa_logo_75x75.png&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;nws&#39;</span><span class="p">:</span> <span class="s1">&#39;nws_logo_75x75.png&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;noaa/nws&#39;</span><span class="p">:</span> <span class="s1">&#39;noaa_nws_logo_150x75.png&#39;</span>
+        <span class="p">}</span>
+
+        <span class="n">image_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">emcpy</span><span class="o">.</span><span class="n">emcpy_directory</span><span class="p">,</span> <span class="s1">&#39;logos&#39;</span><span class="p">,</span> <span class="n">image_dict</span><span class="p">[</span><span class="n">which</span><span class="p">])</span>
+        <span class="n">im</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">figimage</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">xo</span><span class="o">=</span><span class="n">xloc</span><span class="p">,</span> <span class="n">yo</span><span class="o">=</span><span class="n">yloc</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="n">zorder</span><span class="p">,</span>
+                                <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">return_figure</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -2001,6 +2030,7 @@ a Value Error will be raised.</p>
                 <dd id="CreatePlot.add_stats_dict" class="function"><a href="#EMCPyPlots.add_stats_dict">add_stats_dict</a></dd>
                 <dd id="CreatePlot.add_legend" class="function"><a href="#EMCPyPlots.add_legend">add_legend</a></dd>
                 <dd id="CreatePlot.add_text" class="function"><a href="#EMCPyPlots.add_text">add_text</a></dd>
+                <dd id="CreatePlot.add_logo" class="function"><a href="#EMCPyPlots.add_logo">add_logo</a></dd>
                 <dd id="CreatePlot.return_figure" class="function"><a href="#EMCPyPlots.return_figure">return_figure</a></dd>
 
             </div>
@@ -2462,6 +2492,7 @@ between 0 (transparent) and 1 (opaque)</li>
                 <dd id="CreateMap.add_stats_dict" class="function"><a href="#EMCPyPlots.add_stats_dict">add_stats_dict</a></dd>
                 <dd id="CreateMap.add_legend" class="function"><a href="#EMCPyPlots.add_legend">add_legend</a></dd>
                 <dd id="CreateMap.add_text" class="function"><a href="#EMCPyPlots.add_text">add_text</a></dd>
+                <dd id="CreateMap.add_logo" class="function"><a href="#EMCPyPlots.add_logo">add_logo</a></dd>
                 <dd id="CreateMap.return_figure" class="function"><a href="#EMCPyPlots.return_figure">return_figure</a></dd>
 
             </div>
